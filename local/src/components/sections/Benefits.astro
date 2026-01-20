@@ -1,4 +1,4 @@
-<section class="benefits section section--v2">
+<section class="benefits section section--v2" id="benefits">
     <div class="container">
         <div class="benefits__items">
             <div class="benefits__left">
@@ -21,6 +21,7 @@
                 </div>
             </div>
             <div class="benefits__right">
+
                 <div class="benefits__item slide-2">
                     <div class="slide-2__inner">
                         <div class="slide-2__header">
@@ -33,7 +34,73 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="benefits__item slide-2">
+                    <div class="slide-2__inner">
+                        <div class="slide-2__header">
+                            <div class="slide-2__value">99,5%</div>
+                            <div class="slide-2__value-text">нас рекомендуют</div>
+                            <div class="slide-2__text">0,5 % хейтят,<br> но мы их тоже любим</div>
+                        </div>
+                        <div class="slide-2__img">
+                            <img class="img" src="/images/slides/hand.webp" alt="">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="benefits__item slide-3">
+                    <img class="img" src="/images/slides/pavel.webp" alt="">
+                </div>
+
             </div>
         </div>
     </div>
 </section>
+
+<script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    window.addEventListener("load", () => {
+        const benefitsSection = document.querySelector("#benefits");
+        const leftColumn = benefitsSection.querySelector(".benefits__left");
+        const rightColumn = benefitsSection.querySelector(".benefits__right");
+        
+        // Главный ScrollTrigger для фиксации левой колонки
+        ScrollTrigger.create({
+            trigger: benefitsSection,
+            start: "top top",
+            end: () => `bottom bottom`, // Фиксируем до конца секции
+            pin: leftColumn,
+            anticipatePin: 1, // Предотвращает дергание в начале
+        });
+
+        // Получаем все панели в правой колонке
+        const panels = gsap.utils.toArray(".benefits__right .benefits__item");
+
+        // Для каждой панели (кроме последней) создаем свою анимацию
+        panels.forEach((panel, i) => {
+            if (i < panels.length - 1) {
+                const nextPanel = panels[i + 1];
+
+                gsap.fromTo(panel, 
+                    { scale: 1, y: 0 }, 
+                    {
+                        scale: 0.9,
+                        y: -40,
+                        ease: "none",
+                        scrollTrigger: {
+                            trigger: nextPanel,
+                            start: "top bottom",
+                            end: "top top",
+                            scrub: 1,
+                            invalidateOnRefresh: true,
+                        }
+                    }
+                );
+            }
+        });
+    });
+</script>
