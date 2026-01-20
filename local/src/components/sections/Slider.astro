@@ -3,24 +3,28 @@ import img1 from "../../assets/images/projects/1.webp";
 import Badge from "../../assets/images/badges/cart.png";
 const items = [
     {
+        slide: 1,
         title: 'Пацан сказал — <br> пацан сделал',
         text: 'Ответственность — это база. Начали что-то делать вместе — делаем это с гордо поднятой головой. Не обещаем золотых гор, и если пацан понял, что не может сделать, то пацан заблаговременно передоговорится.',
         link_text: '',
         img: img1
     },
     {
+        slide: 2,
         title: 'Всё, что сложно —<br> ложно ',
         text: 'То, что сложно — не работает. Делаем понятно, общаемся откровенно и прямо. Спрашиваем, если не поняли, говорим о проблемах как есть, не пытаемся придумать «что имели ввиду».',
         link_text: '',
         img: img1
     },
     {
+        slide: 3,
         title: 'Общее дело —<br> общий вайб',
         text: 'Хорошее настроение — очень важно. Ценим то настроение, которое получаем от взаимодействия и сами дарим классные эмоции.',
         link_text: '',
         img: img1
     },
     {
+        slide: 4,
         title: 'Пока другие<br> спорят, мы<br> выпускаем',
         text: 'Фокус на помощь и результат. Не тратим внимание на поиск виноватых и споры «что надо было сделать». Расходуем энергию на улучшения и двигаемся к цели. ',
         link_text: '',
@@ -28,7 +32,7 @@ const items = [
     },
 ];
 ---
-<section class="section slider section--v6">
+<section class="section slider section--v6" id="slider-1">
     <div class="container">
         <div class="slider__header">
 
@@ -46,7 +50,7 @@ const items = [
         </div>
         <div class="slider__items">
             {items.map(item => (
-                <div class="slider__item slide">
+                <div class={`slider__item slide slide-v2--${item.slide}`}>
                     <h3 class="slide__title" set:html={item.title} />
                     <div class="slide__icon">
                         <svg width="38" height="48" viewBox="0 0 38 48" fill="none" xmlns="http://www.w3.org/2000/svg">

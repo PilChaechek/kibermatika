@@ -11,6 +11,11 @@ import '../styles/main.scss'
 		<title>Kibermatika</title>
 	</head>
 	<body>
-		<slot />
+		<div id="smooth-wrapper">
+			<div id="smooth-content">
+				<slot />
+			</div>
+		</div>
+		<script src="../scripts/main.js"></script>
 	</body>
 </html>

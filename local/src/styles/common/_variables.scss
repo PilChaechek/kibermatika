@@ -4,5 +4,8 @@
   --font-color: #101651;
   --font-color-text: rgba(16, 22, 81, 0.55);
   --font-color-accent: #5b58e1;;
-  --card-box-shadow: 0 4px 62px 0 rgba(17, 22, 78, 0.05);;
+  //--card-box-shadow: 0 4px 62px 0 rgba(17, 22, 78, 0.05);
+  --card-box-shadow:
+          0 2px 4px 0 rgba(17, 22, 78, 0.04),   /* Резкий контур */
+          0 8px 24px -4px rgba(17, 22, 78, 0.08); /* Мягкий объем */
 }

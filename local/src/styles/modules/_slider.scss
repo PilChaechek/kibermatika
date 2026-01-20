@@ -20,14 +20,23 @@
     line-height: 1.2;
   }
 
+  &__items {
+    display: flex;
+    width: max-content;
+    flex-wrap: nowrap;
+    @include respond(2xl) {
+      gap: 16px;
+    }
+  }
+
 }
 
 .slide {
   background: linear-gradient(360deg, #eef0f8 0%, #e2e6f5 100%);
-  //background: linear-gradient(1deg, #eef0f8 0%, #dbe0f1 100%);
   box-shadow: var(--card-box-shadow);
   padding: 3rem;
   border-radius: 1.6rem;
+  min-width: 74vw;
   &__title {
     font-weight: 500;
     margin: 0;
@@ -47,6 +56,15 @@
     line-height: 1.2;
     @include respond(2xl) {
       max-width: 440px;
+    }
+  }
+}
+
+.slide-v2--4 {
+  .slide__title {
+    @include respond(2xl) {
+      font-size: 5rem;
+      line-height: .9;
     }
   }
 }
