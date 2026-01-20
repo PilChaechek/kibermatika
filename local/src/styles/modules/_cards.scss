@@ -1,0 +1,234 @@
+@use '../mixins/breakpoints' as *;
+
+.cards {
+
+  &__title {
+    font-weight: 500;
+    margin: 0;
+    font-size: inherit;
+    text-align: center;
+    @include respond(2xl) {
+      font-size: 1.2rem;
+      margin-bottom: 32px;
+    }
+  }
+
+  &__items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    @include respond(2xl) {
+      gap: 20px;
+    }
+  }
+
+}
+
+.card {
+  --transition-spring: 600ms cubic-bezier(0.25, 0.8, 0.25, 1); /* Пружинистый эффект */
+  --hover-lift: -4px;
+  &__images {
+    background-color: var(--color-main);
+    aspect-ratio: 426 / 319;
+    overflow: hidden;
+    position: relative;
+    @include respond(2xl) {
+      border-radius: 2rem;
+    }
+  }
+
+  &__img {
+    position: absolute;
+
+    --x: 0px;
+    --y: 0px;
+    --s: 1; /* Scale */
+    --r: 0deg; /* Rotate */
+
+    /* Аппаратное ускорение */
+    transform: translate3d(var(--x), var(--y), 0) scale(var(--s)) rotate(var(--r));
+    transition: transform var(--transition-spring);
+    will-change: transform; /* Хинт браузеру: "это будет двигаться" */
+  }
+
+  &__title {
+    font-size: 2.125rem;
+    font-weight: 500;
+    @include respond(2xl) {
+      font-size: 1.8rem;
+      margin-bottom: 4rem;
+    }
+  }
+
+  &__content {
+    background: #E2E6F5;
+    margin-top: -30%;
+    position: relative;
+    z-index: 10;
+    @include respond(2xl) {
+      border-radius: 2rem;
+      padding: 26px 32px;
+      margin-top: -30%;
+    }
+  }
+  &__text {
+    color: var(--font-color-text);
+  }
+}
+
+// Card #1
+// card__img--4 - cтрелка
+// card__img--3 - #
+.card--1 {
+  .card__img--1 {
+    bottom: 20px;
+    left: -90px;
+    @include respond(2xl) {
+      bottom: 20px;
+      left: -90px;
+    }
+  }
+  .card__img--2 {
+    width: 400px;
+    z-index: 1;
+    @include respond(2xl) {
+      width: 300px;
+      left: 24px;
+      top: 50px;
+    }
+    @include respond(3xl) {
+      width: 400px;
+    }
+  }
+  .card__img--3 {
+    @include respond(2xl) {
+      width: 50px;
+      right: 30px;
+      top: 8px;
+    }
+  }
+  .card__img--4 {
+    width: 90px;
+    @include respond(2xl) {
+      width: 80px;
+      right: 98px;
+      top: 24px;
+    }
+    @include respond(3xl) {
+      width: 132px;
+    }
+  }
+
+  &:hover {
+    .card__img--1 {
+      --s: 1.05;
+      --r: -2deg;
+    }
+    .card__img--2 {
+      --x: -12px;
+      --y: -8px;
+      --r: -3deg;
+    }
+    .card__img--3 {
+      --s: 1.05;
+      --r: -2deg;
+    }
+    .card__img--4 {
+      --x: 10px;
+      --y: -15px;
+      --s: 1.05;
+    }
+
+  }
+}
+
+// Card #2
+// card__img--4 - cтрелка
+// card__img--3 - #
+.card--2 {
+  .card__img--1 {
+    bottom: 14px;
+    left: -90px;
+    @include respond(2xl) {
+      bottom: 88px;
+      left: -60px;
+    }
+  }
+  .card__img--2 {
+
+    @include respond(2xl) {
+      width: 332px;
+      left: 32px;
+      top: -82px;
+    }
+    @include respond(3xl) {
+      width: 400px;
+    }
+  }
+  .card__img--3 {
+    @include respond(2xl) {
+      width: 160px;
+      right: -24px;
+      top: 86px;
+    }
+  }
+  .card__img--4 {
+    width: 90px;
+    @include respond(2xl) {
+      width: 60px;
+      right: 24px;
+      top: 40px;
+    }
+    @include respond(3xl) {
+
+    }
+  }
+
+  &:hover {
+    .card__img--1 {
+      --s: 1.05;
+      --r: -2deg;
+    }
+    .card__img--2 {
+      --x: -12px;
+      --y: -8px;
+      --r: -3deg;
+    }
+    .card__img--3 {
+      --s: 1.05;
+      --r: -2deg;
+    }
+    .card__img--4 {
+      --x: 10px;
+      --y: -15px;
+      --s: 1.05;
+    }
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+.card--3 {
+  .card__img--1 {
+    bottom: 80px;
+    left: -36px;
+  }
+  .card__img--2 {
+
+  }
+  .card__img--3 {
+
+  }
+  .card__img--4 {
+
+  }
+}

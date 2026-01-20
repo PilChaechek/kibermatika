@@ -1,0 +1,69 @@
+---
+import Badge from "../../assets/images/badges/cart.png";
+import img1 from "../../assets/images/projects/1.webp";
+const items = [
+    {
+        title: 'Magic SEO',
+        text: 'Топ-позиции по ключевым словам',
+        desc: 'Magic — профессиональный сервис для агентств, SEO-специалистов и владельцев крупных сайтов, которые проявляют интерес к большому объему трафика с поисковых систем и стремятся к нахождению на первых местах.',
+        img: img1
+    },
+    {
+        title: 'S-Booster',
+        text: 'Продвинь свой сайт быстро и самостоятельно',
+        desc: 'S-Booster — сервис, где каждый может продвинуть свой сайт без сложных слов и понимания механик. Частный бизнес, услуги или соло-предприниматели, этот продукт создан для вас. Пошаговая инструкция прилагается.',
+        img: img1
+    },
+    {
+        title: 'BestPrice',
+        text: 'Преврати каждый сайт в набор объявлений',
+        desc: 'BestPrice — классифайд-платформа для продажи товаров и услуг с набором инструметов группировки по тэгам и продвижения, а также обеспечения бесплатного трафика.',
+        img: img1
+    },
+    {
+        title: 'PlanPoint',
+        text: 'Организуй управление по модели « План-Факт-План»',
+        desc: 'PlanPoint — SaaS-решение для бизнеса, которое позволяет внедрить и настроить систему менеджмента по модели План-Факт-План. Умная лента событий сотрудников и клиентов, которая делает планы прозрачными, а действия — целевыми.',
+        img: img1
+    }
+];
+---
+<section class="carousel section section--v4">
+    <div class="container container--full">
+        <div class="carousel__inner">
+            <div class="section__header">
+
+                <div class="section__badge">
+                    <div class="icon-badge icon-badge--v2">
+                        <div class="icon-badge__icon">
+                            <img src={Badge.src} class="img icon-badge__icon-src" alt="" width="88" height="88">
+                        </div>
+                        <div class="icon-badge__text">Рынок <br> приготовься!</div>
+                    </div>
+                </div>
+
+
+                <h2 class="section__title">Выкатываем <br> продукты и сервисы</h2>
+                <p class="section__text">Нашим фокусом всегда будут наглядные изменения, <br> а не красивые процессы. Результативность — ключевая черта <br> всех наших продуктов и сервисов. <br> За это нас и любит рынок!</p>
+            </div>
+
+            <div class="carousel__items">
+                {items.map(item => (
+                    <div class="carousel__item card-2">
+                        <div class="card-2__inner">
+                            <div class="card-2__image">
+                                <img src={item.img.src} class="img" alt="">
+                            </div>
+                            <div class="card-2__content">
+                                <h3 class="card-2__title">{item.title}</h3>
+                                <p class="card-2__sub-title">{item.text}</p>
+                                <p class="card-2__text">{item.desc}</p>
+                            </div>
+                        </div>
+
+                    </div>
+                ))}
+            </div>
+        </div>
+    </div>
+</section>

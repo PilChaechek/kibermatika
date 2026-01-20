@@ -1,0 +1,24 @@
+---
+import { Image } from 'astro:assets';
+import Logo from '../assets/images/logo.svg';
+
+const { class: className = '' } = Astro.props;
+---
+<header class="page-header section--v1">
+    <div class="container">
+        <div class="page-header__inner">
+            <div href="/" class={`logo-company ${className}`}>
+                <img src={Logo.src} class="logo-company__img img" alt="Киберматика" />
+            </div>
+            <nav class="main-nav">
+                <div class="main-nav__inner">
+                    <a href="#" class="main-nav__item main-nav__item--active">продукты</a>
+                    <a href="#" class="main-nav__item">принципы</a>
+                    <a href="#" class="main-nav__item">о нас</a>
+                    <a href="#" class="main-nav__item">контакты</a>
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+

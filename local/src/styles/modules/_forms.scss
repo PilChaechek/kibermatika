@@ -1,0 +1,26 @@
+@use '../mixins/breakpoints' as *;
+
+.input {
+  display: block;
+  width: 100%;
+}
+
+.input-button {
+  position: relative;
+  &__input {
+    height: 68px;
+    border-radius: 34px;
+    border: 1px solid transparent;
+    font-size: 1.25rem;
+    padding: 18px 30px 18px 30px;
+  }
+  &__button {
+    font-size: 0;
+    width: 58px;
+    height: 58px;
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}

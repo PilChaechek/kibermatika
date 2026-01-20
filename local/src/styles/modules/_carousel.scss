@@ -1,0 +1,101 @@
+@use '../mixins/breakpoints' as *;
+
+.section {
+
+  @include respond(2xl) {
+    padding: 64px 0;
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  &__title {
+    font-weight: 500;
+    margin: 0;
+    line-height: 1;
+    @include respond(2xl) {
+      font-size: 2.8rem;
+      margin: 0 0 2.2rem 0;
+    }
+    @include respond(3xl) {
+      font-size: 3.6rem;
+    }
+  }
+  &__text {
+    margin: 0;
+    line-height: 1.2;
+  }
+  &__badge {
+    margin-bottom: 24px;
+  }
+}
+
+.section--v1 {
+  background: #f7f8fd;
+}
+
+.section--v2 {
+  background: linear-gradient(180deg, #f7f8fd 0%, #f0f2ff 25%, #ebedf9 75%, #fff 100%);
+}
+
+.section--v3 {
+  background: linear-gradient(180deg, #f7f8fd 0%, #f0f2ff 25%, #ebedf9 75%, #fff 100%);
+}
+
+.section--v4 {
+  background: linear-gradient(180deg, #fff 0%, #f7f8fd 25%, #f0f2ff 75%, #ebedf9 78.1%, #f7f8fd 100%);
+}
+
+.section--v5 {
+  background: linear-gradient(180deg, #fff 0%, #cbd6ff 96.63%);
+}
+
+.section--v6 {
+  background: #fff;
+}
+
+
+
+.carousel {
+  &__header {
+    text-align: center;
+  }
+  &__items {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+.card-2 {
+  border-radius: 44px;
+  &__inner {
+    background-color: #fff;
+    border-radius: 44px;
+    padding: 96px;
+    text-align: center;
+  }
+  &__title {
+    font-weight: 500;
+    @include respond(2xl) {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+  }
+  &__sub-title {
+    @include respond(2xl) {
+      font-size: 1.2rem;
+      margin-bottom: .5rem;
+    }
+  }
+  &__text {
+    line-height: 1.2;
+    color: var(--font-color-text);
+  }
+  &__image {
+    .img {
+      margin-top: -50%;
+    }
+  }
+}

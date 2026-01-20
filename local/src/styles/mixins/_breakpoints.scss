@@ -1,0 +1,25 @@
+@use 'sass:map';
+
+// Карта min-width брейкпоинтов (mobile-first)
+$breakpoints: (
+        xs: 480px,
+        sm: 576px,
+        md: 768px,
+        lg: 992px,
+        xl: 1200px,
+        2xl: 1440px,
+        3xl: 1920px
+);
+
+// Миксин: @include respond(md) { ... }
+@mixin respond($point) {
+  $value: map.get($breakpoints, $point);
+
+  @if $value {
+    @media (min-width: #{$value}) {
+      @content;
+    }
+  } @else {
+    @warn "Брейкпоинт `#{$point}` не найден в `$breakpoints`.";
+  }
+}

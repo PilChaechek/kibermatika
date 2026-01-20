@@ -1,0 +1,67 @@
+---
+import img1 from "../../assets/images/projects/1.webp";
+import Badge from "../../assets/images/badges/cart.png";
+const items = [
+    {
+        title: 'Пацан сказал — <br> пацан сделал',
+        text: 'Ответственность — это база. Начали что-то делать вместе — делаем это с гордо поднятой головой. Не обещаем золотых гор, и если пацан понял, что не может сделать, то пацан заблаговременно передоговорится.',
+        link_text: '',
+        img: img1
+    },
+    {
+        title: 'Всё, что сложно —<br> ложно ',
+        text: 'То, что сложно — не работает. Делаем понятно, общаемся откровенно и прямо. Спрашиваем, если не поняли, говорим о проблемах как есть, не пытаемся придумать «что имели ввиду».',
+        link_text: '',
+        img: img1
+    },
+    {
+        title: 'Общее дело —<br> общий вайб',
+        text: 'Хорошее настроение — очень важно. Ценим то настроение, которое получаем от взаимодействия и сами дарим классные эмоции.',
+        link_text: '',
+        img: img1
+    },
+    {
+        title: 'Пока другие<br> спорят, мы<br> выпускаем',
+        text: 'Фокус на помощь и результат. Не тратим внимание на поиск виноватых и споры «что надо было сделать». Расходуем энергию на улучшения и двигаемся к цели. ',
+        link_text: '',
+        img: img1
+    },
+];
+---
+<section class="section slider section--v6">
+    <div class="container">
+        <div class="slider__header">
+
+            <div class="slider__badge">
+                <div class="icon-badge icon-badge--v3">
+                    <div class="icon-badge__icon">
+                        <img src={Badge.src} class="img icon-badge__icon-src" alt="" width="88" height="88">
+                    </div>
+                    <div class="icon-badge__text">P2b: Punk <br> to business</div>
+                </div>
+            </div>
+
+            <h2 class="slider__title section__title">От принципов <br>к делу</h2>
+            <p class="slider__text">Для нас важно не только выпускать <br> продукты, но и передавать через<br> них наши принципы и подход: к<br> бизнесу, работе и взаимодействию. </p>
+        </div>
+        <div class="slider__items">
+            {items.map(item => (
+                <div class="slider__item slide">
+                    <h3 class="slide__title" set:html={item.title} />
+                    <div class="slide__icon">
+                        <svg width="38" height="48" viewBox="0 0 38 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M34 4H31V11H27V18H38V26H34V30H31V34H27V37H23V41H19V45H15V48H8V41H11V33H15V30H4V26H0V18H4V11H8V4H11V0H34V4Z" fill="black" /><path d="M34 4H31V11H27V18H38V26H34V30H31V34H27V37H23V41H19V45H15V48H8V41H11V33H15V30H4V26H0V18H4V11H8V4H11V0H34V4Z" fill="url(#paint0_linear_1488_442)" />
+                            <defs>
+                                <linearGradient id="paint0_linear_1488_442" x1="11.9072" y1="3.95876" x2="41.6177" y2="52.6998" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#C6C9EC" />
+                                    <stop offset="1" stop-color="#EED2EC" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <p class="slide__text">{item.text}</p>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>

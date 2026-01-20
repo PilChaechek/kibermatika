@@ -1,0 +1,91 @@
+@use '../mixins/breakpoints' as *;
+
+.benefits {
+  &__items {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  &__item {
+    background-color: #fff;
+    box-shadow: var(--card-box-shadow);
+    padding: 3rem;
+    border-radius: 1.6rem;
+    height: 100%;
+    aspect-ratio: 4 / 4;
+  }
+}
+
+.slide-1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  &__title {
+    @include respond(2xl) {
+      font-weight: 500;
+      line-height: 1;
+      font-size: 2.8rem;
+      margin-bottom: 4rem;
+    }
+  }
+  &__text {
+    color: var(--font-color-text);
+  }
+  &__icon {
+    margin-bottom: -14px;
+    @include respond(2xl) {
+      margin-bottom: -14px;
+    }
+  }
+}
+
+.slide-2 {
+  padding-bottom: 0;
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+  &__header {
+    text-align: center;
+  }
+  &__value {
+    font-size: 3.6rem;
+    line-height: 1;
+
+    background: linear-gradient(170deg, #101651 0%, #945fcd 53.37%, #101651 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    @include respond(2xl) {
+      font-size: 8.3rem;
+    }
+  }
+  &__value-text {
+    font-size: 1.6rem;
+    line-height: 1;
+
+    background: linear-gradient(170deg, #101651 0%, #945fcd 53.37%, #101651 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    @include respond(2xl) {
+      font-size: 2.6rem;
+      margin-bottom: 1rem;
+    }
+  }
+  &__text {
+    color: var(--font-color-text);
+  }
+  &__img {
+    display: flex;
+    justify-content: center;
+    .img {
+      max-width: 220px;
+    }
+  }
+}

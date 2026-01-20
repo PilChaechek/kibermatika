@@ -1,0 +1,88 @@
+---
+import Badge from '../../assets/images/badges/hand.png';
+const cards = [
+    {
+        slide: 1,
+        title: 'Выходить в топ, продвигать продукты и услуги',
+        text: 'С профессиональными <br> и удобными механиками SEO',
+        imgSrc: ''
+    },
+    {
+        slide: 2,
+        title: 'Ускорять процессы и делать стуктуру эффективной',
+        text: 'Методологии и инструменты<br> аналитики данных',
+        imgSrc: ''
+    },
+    {
+        slide: 3,
+        title: 'Менять подход к работе и растить компетенции',
+        text: 'Открытые коридоры связи <br> и обучение',
+        imgSrc: ''
+    }
+];
+---
+<section class="hero section section--v3">
+    <div class="container">
+        <div class="hero__inner">
+
+            <div class="icon-badge icon-badge--v1">
+                <div class="icon-badge__icon">
+                    <img src={Badge.src} class="img icon-badge__icon-src levitate" alt="" width="88" height="88">
+                </div>
+                <div class="icon-badge__text">без корпоративной <br> чепухи с 2016 года</div>
+            </div>
+
+
+
+            <h1 class="hero__title">Вдохновляем команду, <br> бизнес и  рынок на крутые достижения <svg class="hero__title-icon" width="58" height="51" viewBox="0 0 58 51" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6.10223 28.5761H0V22.4239H6.10223V28.5761ZM7.41397 22.4239H13.5162V28.5761H7.41397V22.4239ZM14.8279 22.4239H20.9302V28.5761H14.8279V22.4239ZM22.2419 22.4239H28.3441V28.5761H22.2419V22.4239ZM29.6559 6.15216V0H35.7581V6.15216H29.6559ZM35.7581 28.5761H29.6559V22.4239H35.7581V28.5761ZM29.6559 44.8478H35.7581V51H29.6559V44.8478ZM37.0698 7.47464H43.1721V13.6268H37.0698V7.47464ZM37.0698 22.4239H43.1721V28.5761H37.0698V22.4239ZM43.1721 43.5201H37.0698V37.3679H43.1721V43.5201ZM50.586 21.0962H44.4838V14.944H50.586V21.0962ZM44.4838 28.5708V22.4186H50.586V28.5708H44.4838ZM44.4838 36.0454V29.8933H50.586V36.0454H44.4838ZM51.8978 22.4239H58V28.5761H51.8978V22.4239Z" />
+            </svg></h1>
+
+            <div class="hero__cards">
+                <div class="cards">
+                    <div class="cards__inner">
+                        <h2 class="cards__title">Разрабатываем b2b-продукты и сервисы, кайфуем от работы и помогаем:</h2>
+                        <div class="cards__items">
+                            {cards.map(card => (
+                                <div class={`cards__item card card--${card.slide}`}>
+                                    <div class="card__images">
+
+                                        {card.slide === 1 && (
+                                            <svg class="card__img card__img--1" width="685" height="358" viewBox="0 0 685 358" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M-88 108.23L146.938 295.541C172.228 315.704 208.656 292.183 200.687 260.836L158.53 94.9971C149.577 59.7765 194.97 37.227 217.627 65.6403L347.04 227.932C368.471 254.808 411.67 236.185 406.843 202.151L394.368 114.195C389.543 80.178 432.703 61.5463 454.15 88.3873L643 324.732" stroke="#64FF64" stroke-width="105" />
+                                            </svg>
+                                            <img src="/images/slides/hero/s1-1.webp" class="img card__img card__img--2" alt="">
+                                            <img src="/images/slides/hero/s1-2.webp" class="img card__img card__img--3" alt="">
+                                            <img src="/images/slides/hero/s1-3.webp" class="img card__img card__img--4" alt="">
+
+                                        )}
+                                        {card.slide === 2 && (
+                                            <svg class="card__img card__img--1" width="767" height="403" viewBox="0 0 767 403" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M-9 258.284L208.022 343.765C226.801 351.161 243.66 329.536 231.904 313.129L147.542 195.39C134.584 177.305 156.034 154.587 174.833 166.485L422.029 322.939C437.501 332.731 456.991 318.593 452.486 300.845L397.119 82.7727C392.985 66.4889 409.335 52.5431 424.763 59.1937L744 196.809" stroke="#FF78F7" stroke-width="114.75" />
+                                            </svg>
+                                            <img src="/images/slides/hero/s2-1.webp" class="img card__img card__img--2" alt="">
+                                            <img src="/images/slides/hero/s2-2.webp" class="img card__img card__img--3" alt="">
+                                            <img src="/images/slides/hero/s2-3.webp" class="img card__img card__img--4" alt="">
+                                        )}
+                                        {card.slide === 3 && (
+                                            <svg class="card__img card__img--1" width="648" height="326" viewBox="0 0 648 326" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M99.12 13.3736L59.7932 180.845C50.6832 219.64 97.1905 246.885 126.576 219.969L256.904 100.592C286.853 73.1599 334.041 101.97 323.324 141.145L303.044 215.275C292.505 253.799 338.189 282.707 368.492 256.689L526.597 120.936C533.941 114.631 543.301 111.164 552.98 111.164H647.787" stroke="#A7FF42" stroke-width="117" />
+                                            </svg>
+                                        )}
+
+                                    </div>
+                                    <div class="card__content">
+                                        <h3 class="card__title">{card.title}</h3>
+                                        <p class="card__text" set:html={card.text}></p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+

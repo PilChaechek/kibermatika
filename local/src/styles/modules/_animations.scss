@@ -1,0 +1,17 @@
+.levitate {
+  animation: levitate-animation 2s ease-in-out infinite alternate;
+  transform-origin: center;
+  transform: translate3d(0, 0, 0);
+}
+
+@keyframes levitate-animation {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}

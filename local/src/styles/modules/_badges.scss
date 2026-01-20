@@ -1,0 +1,123 @@
+@use '../mixins/breakpoints' as *;
+
+.icon-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background-color: #fff;
+  box-shadow: var(--card-box-shadow);
+  text-align: left;
+
+  @include respond(md) {
+
+  }
+  @include respond(2xl) {
+    border-radius: 18px;
+    padding: 16px;
+    gap: 30px;
+    font-size: 1.2rem;
+  }
+  @include respond(3xl) {
+    border-radius: 25px;
+    padding: 20px;
+    font-size: 1.4rem;
+  }
+  &__icon {
+    width: 56px;
+    height: 56px;
+    background-color: #101651;
+    border-radius: 50%;
+    position: relative;
+    @include respond(md) {
+      width: 28px;
+      height: 28px;
+    }
+    @include respond(2xl) {
+      width: 56px;
+      height: 56px;
+    }
+    @include respond(3xl) {
+      width: 74px;
+      height: 74px;
+    }
+  }
+  &__icon-src {
+    width: 34px;
+    height: 34px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    @include respond(md) {
+      width: 34px;
+      height: 34px;
+    }
+    @include respond(2xl) {
+      width: 66px;
+      height: 66px;
+    }
+    @include respond(3xl) {
+      width: 88px;
+      height: 88px;
+    }
+  }
+  &__text {
+    white-space: nowrap;
+  }
+}
+
+.icon-badge--v1 {
+  position: absolute;
+  right: -24px;
+  top: 0;
+  transform: rotate(-5deg);
+  padding-right: 42px;
+
+  .icon-badge__icon-src {
+    top: inherit;
+    left: inherit;
+    @include respond(2xl) {
+      width: 54px;
+      height: 54px;
+      margin-top: -2px;
+    }
+    @include respond(3xl) {
+      width: 88px;
+      height: 88px;
+    }
+  }
+}
+
+.icon-badge--v2 {
+  transform: rotate(-5deg);
+  .icon-badge__icon-src {
+    @include respond(2xl) {
+      width: 50px;
+      height: 50px;
+      margin-left: -4px;
+    }
+    @include respond(3xl) {
+      width: 88px;
+      height: 88px;
+    }
+  }
+}
+
+.icon-badge--v3 {
+  background: linear-gradient(179deg, #f4f5fb 0%, #ebedf8 100%);
+  transform: rotate(-4deg);
+  @include respond(2xl) {
+    padding: 16px 24px;
+  }
+  .icon-badge__icon-src {
+    @include respond(2xl) {
+      width: 50px;
+      height: 50px;
+      margin-left: -4px;
+    }
+    @include respond(3xl) {
+      width: 88px;
+      height: 88px;
+    }
+  }
+}

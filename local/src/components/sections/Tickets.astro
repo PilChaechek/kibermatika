@@ -1,0 +1,49 @@
+---
+import Badge from "../../assets/images/badges/cart.png";
+import img1 from "../../assets/images/projects/1.webp";
+const items = [
+    {
+        title: 'Малый бизнес',
+        text: 'Простые инструменты планирования, продвижение бизнеса в сети без найма специалистов. ',
+        link_text: 'Начнем прямо сейчас?',
+        img: img1
+    },
+    {
+        title: 'Enterprise',
+        text: 'Повышение результативности отделов и сотрудников, автоматизация процессов, технологии выхода в ТОП.',
+        link_text: 'Сделаем тест',
+        img: img1
+    },
+    {
+        title: 'Специалисты',
+        text: 'Преврати каждый сайт в набор объявлений',
+        link_text: 'Расширим партнерскую сеть?',
+        img: img1
+    }
+];
+---
+<section class="tickets section section--v1">
+    <div class="container">
+        <div class="tickets__inner">
+            <div class="section__header">
+                <h2 class="section__title">Для каждого — свой Level Up</h2>
+            </div>
+
+            <div class="tickets__items">
+                {items.map(item => (
+                    <div class="tickets__item ticket">
+                        <div class="ticket__inner">
+                            <div class="ticket__left">
+                                <h3 class="ticket__title">{item.title}</h3>
+                                <p class="ticket__text">{item.text}</p>
+                            </div>
+                            <div class="ticket__right">
+                                <div class="ticket__link">{item.link_text}</div>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </div>
+</section>

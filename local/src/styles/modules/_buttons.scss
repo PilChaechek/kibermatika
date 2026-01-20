@@ -1,0 +1,13 @@
+@use '../mixins/breakpoints' as *;
+
+.btn-reset {
+  border: none;
+  background-color: transparent;
+  color: inherit;
+  padding: 0;
+  text-align: left;
+}
+
+.btn {
+  cursor: pointer;
+}
