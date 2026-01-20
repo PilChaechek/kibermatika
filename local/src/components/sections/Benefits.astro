@@ -25,7 +25,7 @@
                 <div class="benefits__item slide-2">
                     <div class="slide-2__inner">
                         <div class="slide-2__header">
-                            <div class="slide-2__value">5000</div>
+                            <div class="slide-2__value" id="counter-5000">5000</div>
                             <div class="slide-2__value-text">клиентов</div>
                             <div class="slide-2__text">компаний, предпринимателей <br> и специалистов</div>
                         </div>
@@ -38,7 +38,7 @@
                 <div class="benefits__item slide-2">
                     <div class="slide-2__inner">
                         <div class="slide-2__header">
-                            <div class="slide-2__value">99,5%</div>
+                            <div class="slide-2__value" id="counter-99-5">99,5%</div>
                             <div class="slide-2__value-text">нас рекомендуют</div>
                             <div class="slide-2__text">0,5 % хейтят,<br> но мы их тоже любим</div>
                         </div>
@@ -100,6 +100,37 @@
                         }
                     }
                 );
+            }
+        });
+        // Анимация счетчика
+        const counter = document.querySelector("#counter-5000");
+        gsap.fromTo(counter, 
+            { innerText: 1000 }, 
+            {
+                innerText: 5000,
+                duration: 2,
+                snap: { innerText: 1 }, // Увеличиваем целыми числами
+                scrollTrigger: {
+                    trigger: counter,
+                    start: "top 80%", // Начать, когда элемент на 80% виден
+                    toggleActions: "play none none none" // Запустить один раз
+                }
+            }
+        );
+        // Анимация счетчика 99,5%
+        const counter2 = document.querySelector("#counter-99-5");
+        const counter2Proxy = { val: 0 }; // Прокси-объект для анимации
+        gsap.to(counter2Proxy, {
+            val: 99.5,
+            duration: 2,
+            scrollTrigger: {
+                trigger: counter2,
+                start: "top 80%",
+                toggleActions: "play none none none"
+            },
+            onUpdate: () => {
+                // Обновляем текст, заменяя точку на запятую
+                counter2.innerText = counter2Proxy.val.toFixed(1).replace('.', ',') + '%';
             }
         });
     });
