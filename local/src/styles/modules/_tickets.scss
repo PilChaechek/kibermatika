@@ -10,8 +10,12 @@
 .ticket {
   &__inner {
     padding: 1.5rem;
+    display: grid;
+    align-items: center;
+    justify-content: space-between;
     @include respond(2xl) {
-      padding: 2.4rem 3rem;
+      grid-template-columns: auto 300px auto;
+      padding: 2.4rem 2.5rem;
       background-color: #fff;
       border-radius: 2.2rem;
     }
@@ -25,5 +29,18 @@
   }
   &__text {
     color: var(--font-color-text);
+    @include respond(2xl) {
+
+    }
+  }
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+  }
+
+  &__link-text {
+    border-bottom: 1px solid var(--font-color-text);
+    line-height: 1;
   }
 }

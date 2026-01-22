@@ -37,8 +37,20 @@ const items = [
                                 <h3 class="ticket__title">{item.title}</h3>
                                 <p class="ticket__text">{item.text}</p>
                             </div>
+                            <div class="ticket__image"></div>
                             <div class="ticket__right">
-                                <div class="ticket__link">{item.link_text}</div>
+                                <div class="ticket__link">
+                                    <div class="ticket__link-text">{item.link_text}</div>
+                                    <svg width="15" height="27" viewBox="0 0 15 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M15 11.75H11V15.75H15V11.75Z" fill="#101651" />
+                                        <path d="M11 14.75H7V18.75H11V14.75Z" fill="#101651" />
+                                        <path d="M8 18.75H4V22.75H8V18.75Z" fill="#101651" />
+                                        <path d="M4 22.75H0V26.75H4V22.75Z" fill="#101651" />
+                                        <path d="M4 0L0 0V4H4V0Z" fill="#101651" />
+                                        <path d="M8 3.875H4V7.875H8V3.875Z" fill="#101651" />
+                                        <path d="M11 7.875H7V11.875H11V7.875Z" fill="#101651" />
+                                    </svg>
+                                </div>
                             </div>
                         </div>
                     </div>
