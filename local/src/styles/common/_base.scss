@@ -33,14 +33,15 @@ body {
   margin-inline: auto;
 
   @include respond(xs)  {
-    max-width: 480px;
+    //max-width: 480px;
     padding-inline: 16px;
   }
   @include respond(sm)  {
-    max-width: 576px;
+    //max-width: 576px;
   }
   @include respond(md)  {
-    max-width: 768px;
+    padding-inline: 30px;
+    //max-width: 768px;
   }
   @include respond(lg)  {
     max-width: 992px;

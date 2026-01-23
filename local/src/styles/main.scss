@@ -17,3 +17,12 @@
 @use 'modules/tickets';
 @use 'modules/benefits';
 @use 'modules/slider';
+
+
+
+.slider,
+.benefits {
+  display: none;
+}
+
+// .hero, .page-footer,

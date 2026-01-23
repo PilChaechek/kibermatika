@@ -1,24 +1,30 @@
 ---
 import Badge from "../../assets/images/badges/cart.png";
-import img1 from "../../assets/images/projects/1.webp";
+import img1 from "../../assets/images/tickets/1.webp";
+import img2 from "../../assets/images/tickets/3.webp";
+import img3 from "../../assets/images/tickets/2.webp";
+
 const items = [
     {
         title: 'Малый бизнес',
         text: 'Простые инструменты планирования, продвижение бизнеса в сети без найма специалистов. ',
         link_text: 'Начнем прямо сейчас?',
-        img: img1
+        img: img1,
+        key: 1,
     },
     {
         title: 'Enterprise',
         text: 'Повышение результативности отделов и сотрудников, автоматизация процессов, технологии выхода в ТОП.',
         link_text: 'Сделаем тест',
-        img: img1
+        img: img2,
+        key: 2,
     },
     {
         title: 'Специалисты',
-        text: 'Преврати каждый сайт в набор объявлений',
-        link_text: 'Расширим партнерскую сеть?',
-        img: img1
+        text: 'Организация собственных ресурсов, расширение инструментов, партнерство в смежных отраслях.',
+        link_text: 'Расширим <br> партнерскую сеть?',
+        img: img3,
+        key: 3,
     }
 ];
 ---
@@ -31,16 +37,21 @@ const items = [
 
             <div class="tickets__items">
                 {items.map(item => (
-                    <div class="tickets__item ticket">
+                    <div class={`tickets__item ticket ticket--${item.key}`}>
                         <div class="ticket__inner">
                             <div class="ticket__left">
-                                <h3 class="ticket__title">{item.title}</h3>
-                                <p class="ticket__text">{item.text}</p>
+                                <div class="ticket__content">
+                                    <h3 class="ticket__title">{item.title}</h3>
+                                    <p class="ticket__text">{item.text}</p>
+                                </div>
+                                <div class="ticket__image">
+                                    <img src={item.img.src} class="img ticket__image-src" alt="">
+                                </div>
                             </div>
-                            <div class="ticket__image"></div>
+
                             <div class="ticket__right">
                                 <div class="ticket__link">
-                                    <div class="ticket__link-text">{item.link_text}</div>
+                                    <div class="ticket__link-text" set:html={item.link_text}></div>
                                     <svg width="15" height="27" viewBox="0 0 15 27" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M15 11.75H11V15.75H15V11.75Z" fill="#101651" />
                                         <path d="M11 14.75H7V18.75H11V14.75Z" fill="#101651" />

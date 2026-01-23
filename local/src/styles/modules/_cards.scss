@@ -4,9 +4,9 @@
 
   &__title {
     font-weight: 500;
-    margin: 0;
-    font-size: inherit;
     text-align: center;
+    font-size: 1.25rem;
+    margin:0 0 2.5rem 0;
     @include respond(2xl) {
       font-size: 1.2rem;
       margin-bottom: 32px;
@@ -15,8 +15,11 @@
 
   &__items {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
+    @include respond(md){
+      gap: 12px;
+      grid-template-columns: repeat(3, 1fr);
+    }
     @include respond(2xl) {
       gap: 20px;
     }
@@ -32,6 +35,7 @@
     aspect-ratio: 426 / 319;
     overflow: hidden;
     position: relative;
+    border-radius: 1rem;
     @include respond(2xl) {
       border-radius: 2rem;
     }
@@ -52,8 +56,13 @@
   }
 
   &__title {
-    font-size: 2.125rem;
+    font-size: 1.5rem;
     font-weight: 500;
+    margin-bottom: 2rem;
+    line-height: 1.1;
+    @include respond(md){
+      font-size: 1.25rem;
+    }
     @include respond(2xl) {
       font-size: 1.8rem;
       margin-bottom: 4rem;
@@ -65,6 +74,8 @@
     margin-top: -30%;
     position: relative;
     z-index: 10;
+    padding: 1.2rem 1rem;
+    border-radius: 1rem;
     @include respond(2xl) {
       border-radius: 2rem;
       padding: 26px 32px;
@@ -77,20 +88,21 @@
 }
 
 // Card #1
-// card__img--4 - cтрелка
-// card__img--3 - #
 .card--1 {
   .card__img--1 {
-    bottom: 20px;
-    left: -90px;
+    bottom: 0;
+    left: -76px;
+    width: 584px;
     @include respond(2xl) {
       bottom: 20px;
       left: -90px;
     }
   }
   .card__img--2 {
-    width: 400px;
+    width: 260px;
     z-index: 1;
+    left: 24px;
+    top: 35px;
     @include respond(2xl) {
       width: 300px;
       left: 24px;
@@ -101,6 +113,9 @@
     }
   }
   .card__img--3 {
+    width: 42px;
+    right: 30px;
+    top: 8px;
     @include respond(2xl) {
       width: 50px;
       right: 30px;
@@ -108,7 +123,9 @@
     }
   }
   .card__img--4 {
-    width: 90px;
+    width: 70px;
+    right: 88px;
+    top: 15px;
     @include respond(2xl) {
       width: 80px;
       right: 98px;
@@ -143,19 +160,21 @@
 }
 
 // Card #2
-// card__img--4 - cтрелка
-// card__img--3 - #
 .card--2 {
   .card__img--1 {
-    bottom: 14px;
-    left: -90px;
+    left: -56px;
+    bottom: 43px;
+    width: 670px;
     @include respond(2xl) {
+      width: initial;
       bottom: 88px;
       left: -60px;
     }
   }
   .card__img--2 {
-
+    width: 271px;
+    left: 34px;
+    top: -62px;
     @include respond(2xl) {
       width: 332px;
       left: 32px;
@@ -166,6 +185,9 @@
     }
   }
   .card__img--3 {
+    width: 134px;
+    right: -24px;
+    top: 80px;
     @include respond(2xl) {
       width: 160px;
       right: -24px;
@@ -173,7 +195,9 @@
     }
   }
   .card__img--4 {
-    width: 90px;
+    width: 38px;
+    right: 24px;
+    top: 48px;
     @include respond(2xl) {
       width: 60px;
       right: 24px;
@@ -204,31 +228,70 @@
       --s: 1.05;
     }
   }
-
 }
 
-
-
-
-
-
-
-
-
-
-
+// Card #3
 .card--3 {
   .card__img--1 {
-    bottom: 80px;
-    left: -36px;
+    bottom: 48px;
+    left: -27px;
+    width: 548px;
+
+    @include respond(2xl){
+      bottom: 80px;
+      left: -36px;
+      width: initial;
+    }
   }
   .card__img--2 {
-
+    width: 92px;
+    top: 43px;
+    left: 24px;
+    @include respond(2xl) {
+      width: 120px;
+      top: 48px;
+      left: 25px;
+    }
   }
   .card__img--3 {
-
+    width: 43px;
+    top: 98px;
+    left: 60px;
+    @include respond(2xl) {
+      width: 52px;
+      top: 116px;
+      left: 73px;
+    }
   }
   .card__img--4 {
+    width: 256px;
+    right: -22px;
+    top: -18px;
+    @include respond(2xl) {
+      width: 300px;
+      right: -30px;
+      top: -8px;
+    }
+  }
 
+  &:hover {
+    .card__img--1 {
+      --s: 1.05;
+      --r: -2deg;
+    }
+    .card__img--2 {
+      --x: -12px;
+      --y: -8px;
+      --r: -3deg;
+    }
+    .card__img--3 {
+      --s: 1.05;
+      --r: -2deg;
+    }
+    .card__img--4 {
+      --x: 10px;
+      --y: -15px;
+      --s: 1.05;
+    }
   }
 }

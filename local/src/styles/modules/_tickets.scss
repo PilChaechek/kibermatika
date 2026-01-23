@@ -5,42 +5,315 @@
     display: grid;
     gap: 1rem;
   }
+  &__item {
+    cursor: pointer;
+  }
 }
 
 .ticket {
   &__inner {
-    padding: 1.5rem;
     display: grid;
     align-items: center;
     justify-content: space-between;
+    @include respond(md) {
+      grid-template-columns: 1fr 230px;
+      min-height: 152px;
+    }
     @include respond(2xl) {
-      grid-template-columns: auto 300px auto;
-      padding: 2.4rem 2.5rem;
-      background-color: #fff;
+      min-height: 192px;
+      grid-template-columns: 1fr 344px;
+    }
+  }
+
+  &__left,
+  &__right {
+    border-radius: 2rem;
+    @include respond(md) {
+      border-radius: 1.1rem;
+      background: #fff;
+      height: 100%;
+    }
+    @include respond(2xl) {
+      border-radius: 1.6rem;
+    }
+    @include respond(3xl) {
       border-radius: 2.2rem;
     }
   }
+
+  &__left {
+    background: #fff;
+    //border-radius: 2rem;
+
+    text-align: center;
+    box-shadow: 0 4px 40px 0 rgba(17, 22, 78, 0.05);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    @include respond(md) {
+      //box-shadow: none;
+      text-align: initial;
+      display: grid;
+      grid-template-columns: 1fr 186px;
+    }
+
+    @include respond(lg) {
+      grid-template-columns: 1fr 360px;
+    }
+  }
+
+  &__content {
+    padding: 1.8rem 1.5rem 3rem 1.5rem;
+    @include respond(md) {
+      padding: 1.5rem .5rem 1.5rem 1.7rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    @include respond(2xl) {
+      padding: 1.5rem 2.5rem;
+    }
+  }
+
+  &__right {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__image {
+    position: relative;
+    order: -1;
+    height: 194px;
+    overflow: hidden;
+    //padding: 0 2rem;
+    @include respond(md){
+      height: initial;
+      order: initial;
+      //padding: 0;
+      overflow: initial;
+    }
+    @include respond(2xl){
+
+    }
+  }
+
+  &__image-src {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 240px;
+
+    @include respond(md){
+      position: absolute;
+      display: block;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+      right: 12px;
+      max-width: 100%;
+
+      transform: none;
+      left: initial;
+    }
+    @include respond(2xl){
+      right: 24px;
+      object-fit: cover;
+    }
+  }
+
   &__title {
+    font-weight: 500;
+    margin: 0 0 .8rem 0;
+    font-size: 1.5rem;
+    @include respond(md){
+      font-size: 1.75rem;
+    }
     @include respond(2xl) {
       font-size: 2rem;
-      font-weight: 500;
       margin: 0 0 1rem 0;
     }
   }
   &__text {
     color: var(--font-color-text);
+    @include respond(md){
+      max-width: 245px;
+    }
     @include respond(2xl) {
-
+      max-width: 514px;
     }
   }
   &__link {
     display: flex;
     align-items: center;
     gap: .5rem;
+    height: 60px;
+    margin-top: -30px;
+    border-radius: 30px;
+    padding: 0 1rem;
+    max-width: 320px;
+    width: 100%;
+    justify-content: center;
+
+    @include respond(md){
+      max-width: 100%;
+      padding: 0;
+      height: initial;
+      background: transparent;
+      border-radius: initial;
+      margin-top: 0;
+    }
+
+    svg {
+      width: 10px;
+      @include respond(md){
+        width: 15px;
+      }
+    }
   }
 
   &__link-text {
-    border-bottom: 1px solid var(--font-color-text);
     line-height: 1;
+    text-align: center;
+
+    br {
+      display: none;
+      @include respond(md){
+        display: block;
+      }
+      @include respond(lg){
+        display: none;
+      }
+    }
+
+    @include respond(md){
+      text-decoration: underline;
+    }
+    @include respond(2xl){
+      text-decoration: none;
+      border-bottom: 1px solid var(--font-color-text);
+    }
+  }
+}
+
+.ticket--1 {
+  @include respond(md){
+    &:hover {
+      .ticket__left {
+        background: linear-gradient(90deg, #bcffc7 0%, #f0ffa5 100%)
+      }
+      .ticket__right {
+        background: #f0ffa5;
+      }
+    }
+  }
+
+  .ticket__link {
+    background: linear-gradient(90deg, #bcffc7 0%, #f0ffa5 100%);
+    @include respond(md){
+      background: none;
+    }
+  }
+
+  .ticket__image-src {
+
+    @include respond(md){
+      top: -15px;
+      //bottom: initial;
+      //max-width: 176px;
+    }
+    @include respond(2xl){
+      top: 0;
+    }
+  }
+
+}
+
+.ticket--2 {
+  @include respond(md){
+    &:hover {
+      .ticket__left {
+        background: linear-gradient(to right, #cef3ff 0%, #d8d6ff 100%);
+      }
+      .ticket__right {
+        background: #d8d6ff;
+      }
+    }
+  }
+  .ticket__inner {
+    @include respond(md) {
+      grid-template-columns: 1fr 160px;
+    }
+    @include respond(2xl) {
+      grid-template-columns: 1fr 230px;
+    }
+  }
+  .ticket__link {
+    background: linear-gradient(to right, #cef3ff 0%, #d8d6ff 100%);
+    @include respond(md){
+      background: none;
+    }
+  }
+  .ticket__left {
+    @include respond(md){
+      grid-template-columns: 1fr 226px;
+    }
+    @include respond(2xl){
+      grid-template-columns: 1fr 310px;
+    }
+  }
+
+  .ticket__image-src {
+    max-width: 300px;
+    bottom: -92px;
+    @include respond(md){
+      bottom: initial;
+      object-fit: cover;
+    }
+    @include respond(2xl){
+      max-width: 100%;
+      right: 120px;
+    }
+  }
+
+}
+
+.ticket--3 {
+  @include respond(md){
+    &:hover {
+      .ticket__left {
+        background: linear-gradient(to right, #CDF3FD 0%, #CDF3FD 49%,  #e5d0fa 100%);
+      }
+      .ticket__right {
+        background: #e5d0fa;
+      }
+    }
+  }
+  .ticket__link {
+    background: linear-gradient(to right, #CDF3FD 0%, #CDF3FD 49%,  #e5d0fa 100%);
+    @include respond(md){
+      background: none;
+    }
+  }
+  .ticket__image {
+    padding: 0 3rem;
+    @include respond(md){
+      padding: 0;
+    }
+  }
+
+  .ticket__image-src {
+    max-width: 282px;
+
+    @include respond(md){
+      max-width: 100%;
+      bottom: 10px;
+    }
+    @include respond(2xl){
+      bottom: 0;
+    }
   }
 }

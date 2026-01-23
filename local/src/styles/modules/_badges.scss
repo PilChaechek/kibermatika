@@ -63,20 +63,47 @@
   }
   &__text {
     white-space: nowrap;
+    font-size: 1.125rem;
   }
 }
 
 .icon-badge--v1 {
   position: absolute;
-  right: -24px;
-  top: 0;
-  transform: rotate(-5deg);
-  padding-right: 42px;
+  right: 50%;
+  top: 54px;
+  transform: rotate(-5deg) translateX(50%);
+  padding: .75rem 1.5rem;
+  border-radius: 1rem;
+
+  @include respond(md){
+    transform: rotate(-5deg);
+    right: -24px;
+    top: 20px;
+    padding-right: 42px;
+  }
+
+  @include respond(2xl){
+    top: 16px;
+  }
+
+  .icon-badge__icon {
+    width: 40px;
+    height: 40px;
+    @include respond(md){
+      width: 30px;
+      height: 30px;
+    }
+    @include respond(2xl){
+      width: 56px;
+      height: 56px;
+    }
+  }
 
   .icon-badge__icon-src {
     top: inherit;
-    left: inherit;
+    left: 2px;
     @include respond(2xl) {
+      left: initial;
       width: 54px;
       height: 54px;
       margin-top: -2px;

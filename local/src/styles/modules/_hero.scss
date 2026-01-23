@@ -1,16 +1,25 @@
 @use '../mixins/breakpoints' as *;
 
 .hero {
-  overflow: hidden;
   position: relative;
+  @include respond(md){
+    overflow: hidden;
+  }
   &.section {
-    padding-top: 6rem;
+    padding-top: 8.3rem;
+    @include respond(2xl){
+      padding-top: 6rem;
+    }
   }
   &__title {
     font-weight: 500;
-    margin: 0;
+    margin: 0 0 7.5rem 0;
     line-height: 1.3;
+    font-size: 2.375rem;
 
+    @include respond(md){
+      font-size: 3.125rem;
+    }
     @include respond(2xl) {
       font-size: 3.7rem;
       margin: 0 0 5rem 0;
@@ -23,6 +32,12 @@
   &__title-icon {
     fill: #101651;
     margin-bottom: -8px;
+    width: 42px;
+    height: 36px;
+    @include respond(lg){
+      width: 58px;
+      height: 51px;
+    }
   }
 
   .word-image-1 {
@@ -43,20 +58,39 @@
   display: inline-flex;
   line-height: 1;
   border-radius: 50px;
-  padding: 4px 120px 4px 20px;
+  padding: 4px 53px 4px 4px;
   position: relative;
+
+  @include respond(lg){
+    padding: 4px 120px 4px 20px;
+  }
+
   &:after {
     content: '';
     display: block;
-    width: 110px;
+
+    width: 58px;
+    border-radius: 0 0 28px 0;
+
     aspect-ratio: 308 / 299;
     background: url("/images/slides/hero/words/unicorn.webp");
     background-size: contain;
     position: absolute;
     right: -5px;
     bottom: 0;
-    border-radius: 0 0 50px 0;
+
+    @include respond(md){
+      width: 66px;
+    }
+
+    @include respond(lg){
+      width: 110px;
+      border-radius: 0 0 50px 0;
+    }
+
   }
+
+
 }
 
 .word-image-2 {
@@ -64,14 +98,17 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  padding: 4px 20px 12px 20px;
+  padding: 4px 10px 4px 4px;
+  @include respond(lg){
+    padding: 4px 20px 12px 20px;
+  }
 }
 
 .word-commands {
   display: inline-flex;
-  align-items: end;
+  align-items: center;
   gap: 8px;
-  padding: 0 16px 6px 12px;
+  padding: 3px 6px;
 
   border: 4px solid transparent; /* Прозрачная рамка резервирует место */
   border-radius: 100px;
@@ -89,6 +126,14 @@
               #FFFFFF 99%
           ) border-box;
 
+  @include respond(md){
+    padding: 0 16px 6px 12px;
+  }
+
+  @include respond(2xl){
+    align-items: end;
+  }
+
   &__items {
     display: flex;
   }
@@ -98,9 +143,10 @@
   }
   &__item {
     border-radius: 50%;
-    margin-left: -16px;
-
-    border: 4px solid transparent;
+    width: 34px;
+    height: 34px;
+    margin-left: -8px;
+    border: 2px solid transparent;
     background:
             // 1. Верхний слой: "цвет фона".
             linear-gradient(#eff1fd, #eff1fd) padding-box,
@@ -114,6 +160,17 @@
                 #FFFFFF 99%
             ) border-box;
 
+    @include respond(md){
+      width: 38px;
+      height: 38px;
+      margin-left: -12px;
+    }
+
+    @include respond(lg){
+      margin-left: -16px;
+      border: 4px solid transparent;
+    }
+
     &:first-child {
       margin-left: 0;
     }
@@ -122,6 +179,5 @@
       height: 56px;
     }
   }
-
 
 }
