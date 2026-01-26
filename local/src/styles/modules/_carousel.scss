@@ -44,7 +44,10 @@
 }
 
 .section--v3 {
-  background: linear-gradient(180deg, #f7f8fd 0%, #f0f2ff 25%, #ebedf9 75%, #fff 100%);
+  background: linear-gradient(180deg, var(--color-3) 0%, #f0f2ff 25%, #fff 75%, #fff 100%);
+  @include respond(md){
+    background: linear-gradient(180deg, var(--color-3) 0%, #f0f2ff 25%, #ebedf9 75%, #fff 100%);
+  }
 }
 
 .section--v4 {
@@ -57,6 +60,10 @@
 
 .section--v6 {
   background: #fff;
+}
+
+.section--v7 {
+  background: var(--color-3);
 }
 
 

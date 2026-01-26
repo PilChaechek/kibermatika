@@ -16,9 +16,12 @@
 }
 
 .logo-company {
-  display: flex;
-  gap: .5rem;
-  align-items: center;
+
+  &__link {
+    display: inline-flex;
+    gap: .5rem;
+    align-items: center;
+  }
   @include respond(md){
 
   }
@@ -26,14 +29,29 @@
     width: 48px;
     height: 48px;
     @include respond(md){
+      width: 24px;
+      height: 24px;
+    }
+    @include respond(3xl){
       width: 36px;
       height: 36px;
+    }
+    @include respond(3xl){
+      width: 48px;
+      height: 48px;
     }
   }
   &__text {
     display: none;
     @include respond(md){
       display: block;
+      width: 118px;
+    }
+    @include respond(2xl){
+      width: 176px;
+    }
+    @include respond(3xl){
+      width: 235px;
     }
   }
 }
@@ -54,10 +72,9 @@
   }
   &__inner {
     display: flex;
-    align-items: center;
+    align-items: end;
     justify-content: space-between;
     gap: 24px;
-    //overflow: hidden;
     padding: 1rem 0;
     @include respond(md) {
       padding: 0;
@@ -79,32 +96,97 @@
 .main-nav {
   &__inner {
     background-color: #fff;
-    display: flex;
-    border-radius: 0 0 20px 20px;
-    max-width: 812px;
+    border-radius: 0 0 1rem 1rem;
     margin: 0 auto;
+    display: grid;
+    justify-content: space-between;
 
     @include respond(md) {
-      padding: 12px 24px 0 24px;
-      justify-content: space-between;
+      padding: 12px 32px 0 32px;
+      gap: 12px;
+      grid-template-columns: repeat(4, minmax(100px, 1fr));
+      border-radius: 0 0 12px 12px;
     }
     @include respond(2xl) {
-      padding: 12px 24px 0 24px;
+      padding: 12px 46px 0 46px;
       gap: 20px;
+      grid-template-columns: repeat(4, minmax(120px, 1fr));
     }
     @include respond(3xl) {
-      padding: 12px 48px 0 48px;
+      border-radius: 0 0 20px 20px;
+      padding: 12px 54px 0 54px;
       gap: 24px;
+      grid-template-columns: repeat(4, minmax(150px, 1fr));
     }
   }
   &__item {
     text-decoration: none;
     color: inherit;
-    padding: 8px 18px 12px 18px;
     display: block;
     line-height: 1;
+    text-align: center;
+    position: relative;
+    isolation: isolate;
+    height: 26px;
+    @include respond(md){
+
+    }
+    @include respond(2xl){
+      height: 35px;
+    }
+    @include respond(3xl){
+      height: 46px;
+    }
+
   }
   &__item--active {
 
+
   }
+}
+
+.nav-bg {
+  position: absolute;
+  clip-path: url(#tab-shape);
+  width: 140%;
+  inset: 0;
+  z-index: -1;
+  background-color: var(--color-3);
+  @include respond(md){
+    left: -20%;
+    height: calc(100% + 6px);
+    top: -5px;
+  }
+  @include respond(2xl){
+    left: -20%;
+    height: 41px;
+    top: -6px;
+  }
+  @include respond(3xl){
+    height: 54px;
+  }
+}
+
+.nav-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  @include respond(md){
+    padding: 4px 12px;
+  }
+}
+
+.main-nav__item--active .nav-text {
+  position: relative;
+  z-index: 2;
+  background-color: #00f700;
+  border-radius: 14px;
+  @include respond(3xl){
+    border-radius: 20px;
+  }
+}
+
+.main-nav__item:not(.main-nav__item--active) .nav-bg {
+  display: none;
 }

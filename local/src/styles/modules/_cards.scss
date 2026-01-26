@@ -1,7 +1,6 @@
 @use '../mixins/breakpoints' as *;
 
 .cards {
-
   &__title {
     font-weight: 500;
     text-align: center;
@@ -24,35 +23,50 @@
       gap: 20px;
     }
   }
+  &__items {
+    max-width: 426px;
+    margin: auto;
+    @include respond(md){
+      max-width: 100%;
+    }
+  }
 
 }
 
 .card {
-  --transition-spring: 600ms cubic-bezier(0.25, 0.8, 0.25, 1); /* Пружинистый эффект */
+  --transition-spring: 600ms cubic-bezier(0.25, 0.8, 0.25, 1);
   --hover-lift: -4px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   &__images {
     background-color: var(--color-main);
     aspect-ratio: 426 / 319;
     overflow: hidden;
     position: relative;
-    border-radius: 1rem;
+    border-radius: 24px;
+    margin: 0 1px;
+    @include respond(md) {
+      border-radius: 18px;
+    }
     @include respond(2xl) {
-      border-radius: 2rem;
+      border-radius: 34px;
+    }
+    @include respond(3xl) {
+      border-radius: 44px;
     }
   }
 
   &__img {
     position: absolute;
-
     --x: 0px;
     --y: 0px;
-    --s: 1; /* Scale */
-    --r: 0deg; /* Rotate */
-
-    /* Аппаратное ускорение */
+    --s: 1;
+    --r: 0deg;
     transform: translate3d(var(--x), var(--y), 0) scale(var(--s)) rotate(var(--r));
     transition: transform var(--transition-spring);
-    will-change: transform; /* Хинт браузеру: "это будет двигаться" */
+    will-change: transform;
   }
 
   &__title {
@@ -70,20 +84,114 @@
   }
 
   &__content {
-    background: #E2E6F5;
-    margin-top: -30%;
+    background: linear-gradient(360deg, #e2e6f5 0%, #f3f4fb 100%);
+    margin-top: -64px;
     position: relative;
     z-index: 10;
-    padding: 1.2rem 1rem;
-    border-radius: 1rem;
-    @include respond(2xl) {
-      border-radius: 2rem;
-      padding: 26px 32px;
+    border-radius: 24px;
+    flex-grow: 1;
+    /* 2. Логика маски:
+       Слой 1: Наш SVG (в правом нижнем углу, не повторять)
+       Слой 2: Сплошная заливка (linear-gradient) на весь блок
+    */
+    -webkit-mask-image: var(--corner-mask), linear-gradient(#fff, #fff);
+    mask-image: var(--corner-mask), linear-gradient(#fff, #fff);
+    /* 3. КОМПОЗИЦИЯ (Магия вырезания):
+     Говорим браузеру: "Возьми Слой 2 (весь блок) и ВЫЧТИ из него Слой 1 (уголок)"
+     destination-out - стандарт для Webkit (Chrome/Safari)
+     exclude - стандарт спецификации CSS
+      */
+    /* Позиционирование слоев */
+    -webkit-mask-position: bottom right, center;
+    mask-position: bottom right, center;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+
+    --corner-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 83 82'%3E%3Cpath d='M83,0v82H0c13.3,0,24-10.7,24-24v-10c0-13.2,10.7-24,24-24h11c13.3,0,24-10.7,24-24Z' fill='black'/%3E%3C/svg%3E");
+    mask-size: 83px 82px, 100% 100%;
+
+
+  @include respond(md) {
       margin-top: -30%;
+      border-radius: 18px 18px 0 18px;
+      --corner-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 53 64'%3E%3Cpath d='M53,0v64H0c9.4,0,17-7.6,17-17v-12.9c0-9.4,7.6-17,17-17h1.9c9.4,0,17-7.6,17-17Z' fill='black'/%3E%3C/svg%3E");
+      mask-size: 53px 64px, 100% 100%;
+    }
+    @include respond(2xl) {
+      border-radius: 34px 34px 0 34px;
+      --corner-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 103 105'%3E%3Cpath d='M103,0v105H0c18.2,0,33-14.8,33-33v-6c0-18.2,14.8-33,33-33h4c18.2,0,33-14.8,33-33Z' fill='black'/%3E%3C/svg%3E");
+      /* Размер маски равен размеру SVG (103px ширина, 105px высота) */
+      mask-size: 103px 105px, 100% 100%;
+    }
+    @include respond(3xl) {
+      border-radius: 44px 44px 0 44px;
+    }
+
+    @include respond(2xl) {
+
+    }
+
+  }
+  &__content-inner {
+    padding: 1.2rem 1rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    @include respond(2xl) {
+      padding: 26px 32px;
     }
   }
   &__text {
     color: var(--font-color-text);
+    padding-right: 52px;
+    @include respond(md){
+      padding-right: 24px;
+    }
+    @include respond(2xl){
+      padding-right: 48px;
+    }
+    @include respond(3xl){
+      padding-right: 54px;
+    }
+  }
+  &__footer {
+    display: flex;
+  }
+  &__footer-inner {
+
+  }
+  &__footer-icon {
+    isolation: isolate;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+  }
+}
+
+.card-icon {
+  background-color: #101651;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  @include respond(md){
+    width: 30px;
+    height: 30px;
+  }
+  @include respond(2xl){
+    width: 56px;
+    height: 56px;
+  }
+  &__img {
+    aspect-ratio: 1 / 1;
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    position: absolute;
+    top: -2px;
   }
 }
 

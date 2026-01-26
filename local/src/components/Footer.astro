@@ -13,10 +13,10 @@
                         </svg>
                     </div>
                     <div class="page-footer__contacts-link">
-                        <a class="link link--color" href="mailto:hey@cybermatica.com">hey@cybermatica.com</a>
+                        <a class="link link--color-2" href="mailto:hey@cybermatica.com">hey@cybermatica.com</a>
                     </div>
                     <div class="page-footer__contacts-link">
-                        <a class="link link--color" href="tel:79992345678">+7 999 2345678</a>
+                        <a class="link link--color-2" href="tel:79992345678">+7 999 2345678</a>
                     </div>
                 </div>
 
@@ -41,22 +41,22 @@
 
             <nav class="page-footer__nav footer-nav">
                 <div class="footer-nav__item">
-                    <a href="#" class="footer-nav__link">продукты</a>
+                    <a href="#" class="footer-nav__link link--color">продукты</a>
                 </div>
                 <div class="footer-nav__item">
-                    <a href="#" class="footer-nav__link">команды</a>
+                    <a href="#" class="footer-nav__link link--color">команды</a>
                 </div>
                 <div class="footer-nav__item">
-                    <a href="#" class="footer-nav__link">вакансии</a>
+                    <a href="#" class="footer-nav__link link--color">вакансии</a>
                 </div>
                 <div class="footer-nav__item">
-                    <a href="#" class="footer-nav__link">люди</a>
+                    <a href="#" class="footer-nav__link link--color">люди</a>
                 </div>
                 <div class="footer-nav__item">
-                    <a href="#" class="footer-nav__link">музыка</a>
+                    <a href="#" class="footer-nav__link link--color">музыка</a>
                 </div>
                 <div class="footer-nav__item">
-                    <a href="#" class="footer-nav__link">фестивали</a>
+                    <a href="#" class="footer-nav__link link--color">фестивали</a>
                 </div>
             </nav>
 
@@ -64,19 +64,57 @@
                 <div class="page-footer__bottom-item">
                     <a class="link">© ООО «Киберматика» 2025</a>
                 </div>
+
                 <div class="page-footer__bottom-item page-footer__sphere">
                     <div class="sphere">
-                        <div class="sphere__text">дропнуть <br> басс</div>
+                        <button class="sphere__btn btn-reset" type="button" aria-label="Дропнуть басс">
+                            <video
+                                    class="sphere-video"
+                                    src="/assets/video/bass4.mp4"
+                                    autoplay
+                                    muted
+                                    loop
+                                    playsinline
+                            ></video>
+                            <span class="sphere__text">дропнуть <br> басс</span>
+                        </button>
                     </div>
                 </div>
+
                 <div class="page-footer__bottom-item page-footer__quote">
                     без корпоративной чепухи
                 </div>
             </div>
             <div class="page-footer__copyright">
-                <a class="link" href="#">Политика обработки персональных данных</a>
+                <a class="link link--color" href="#">Политика обработки персональных данных</a>
             </div>
         </div>
     </div>
 </footer>
+<script>
+    // Ждем загрузки DOM
+    document.addEventListener('DOMContentLoaded', () => {
+        const sphereContainer = document.querySelector('.sphere');
+        const btn = document.querySelector('.sphere__btn');
 
+        if (sphereContainer && btn) {
+            btn.addEventListener('click', () => {
+                createRipple(sphereContainer);
+            });
+        }
+
+        function createRipple(container) {
+            const ripple = document.createElement('span');
+            ripple.classList.add('ripple-wave');
+
+            // Добавляем волну в контейнер
+            container.appendChild(ripple);
+
+            // Удаляем элемент из DOM после завершения анимации (1.5 сек)
+            // Время должно совпадать с animation-duration в CSS
+            setTimeout(() => {
+                ripple.remove();
+            }, 1500);
+        }
+    });
+</script>

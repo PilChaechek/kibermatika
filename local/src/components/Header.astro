@@ -5,19 +5,45 @@ import LogoText from '../assets/images/logoText.svg';
 
 const { class: className = '' } = Astro.props;
 ---
-<header class="page-header section--v1">
+<header class="page-header section--v7">
     <div class="container">
         <div class="page-header__inner">
             <div href="/" class={`logo-company ${className}`}>
-                <img src={Logo.src} class="logo-company__img img" alt="Киберматика" />
-                <img src={LogoText.src} class="logo-company__text img" alt="Киберматика" />
+                <div class="logo-company__link">
+                    <img src={Logo.src} class="logo-company__img img" alt="Киберматика" />
+                    <img src={LogoText.src} class="logo-company__text img" alt="Киберматика" />
+                </div>
             </div>
+            <svg width="0" height="0" style="position: absolute;">
+                <defs>
+                    <clipPath id="tab-shape" clipPathUnits="objectBoundingBox">
+                        <path
+                                transform="scale(0.00641025, 0.025)"
+                                d="M156,40H0c9.1,0,16.5-7.4,16.5-16.5v-3.5C16.5,9,25.5,0,36.5,0h83c11,0,20,9,20,20v3.5c0,9.1,7.4,16.5,16.5,16.5Z"
+                        />
+                    </clipPath>
+                </defs>
+            </svg>
             <nav class="page-header__nav main-nav">
                 <div class="main-nav__inner">
-                    <a href="#" class="main-nav__item main-nav__item--active">продукты</a>
-                    <a href="#" class="main-nav__item">принципы</a>
-                    <a href="#" class="main-nav__item">о нас</a>
-                    <a href="#" class="main-nav__item">контакты</a>
+                    <a href="#" class="main-nav__item main-nav__item--active">
+                        <span class="nav-bg"></span>
+                        <span class="nav-text">продукты</span>
+                    </a>
+                    <!-- Активный элемент -->
+                    <a href="#" class="main-nav__item ">
+                        <!-- Отдельный слой для фона с обрезкой -->
+                        <span class="nav-bg"></span>
+                        <span class="nav-text">принципы</span>
+                    </a>
+                    <a href="#" class="main-nav__item ">
+                        <span class="nav-bg"></span>
+                        <span class="nav-text">о нас</span>
+                    </a>
+                    <a href="#" class="main-nav__item">
+                        <span class="nav-bg"></span>
+                        <span class="nav-text">контакты</span>
+                    </a>
                 </div>
             </nav>
             <button class="page-header__mobile-menu-btn mobile-menu-btn btn-reset">

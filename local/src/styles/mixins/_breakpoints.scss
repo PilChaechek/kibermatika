@@ -1,8 +1,10 @@
 @use 'sass:map';
+@use "sass:math";
 
 // Карта min-width брейкпоинтов (mobile-first)
 $breakpoints: (
-        xs: 480px,
+        xxs: 360px,
+        xs: 390px,
         sm: 576px,
         md: 744px,
         lg: 992px,
@@ -22,4 +24,12 @@ $breakpoints: (
   } @else {
     @warn "Брейкпоинт `#{$point}` не найден в `$breakpoints`.";
   }
+}
+
+// В ремы
+$design-base-size: 16;
+
+@function toRem($px, $base: $design-base-size) {
+  // Выполняем деление на указанный базовый размер и возвращаем с единицей rem.
+  @return math.div($px, $base) * 1rem;
 }

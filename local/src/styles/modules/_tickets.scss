@@ -11,6 +11,15 @@
 }
 
 .ticket {
+
+  &:hover {
+    @include respond(md){
+      .ticket__image-src {
+        transform: scale(1.12);
+      }
+    }
+  }
+
   &__inner {
     display: grid;
     align-items: center;
@@ -106,6 +115,7 @@
     left: 50%;
     transform: translateX(-50%);
     max-width: 240px;
+    transition: all .2s ease;
 
     @include respond(md){
       position: absolute;
@@ -219,11 +229,8 @@
   }
 
   .ticket__image-src {
-
     @include respond(md){
       top: -15px;
-      //bottom: initial;
-      //max-width: 176px;
     }
     @include respond(2xl){
       top: 0;
