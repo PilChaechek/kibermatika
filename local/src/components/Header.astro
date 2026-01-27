@@ -9,18 +9,15 @@ const { class: className = '' } = Astro.props;
     <div class="container">
         <div class="page-header__inner">
             <div href="/" class={`logo-company ${className}`}>
-                <div class="logo-company__link">
+                <a href="/" class="logo-company__link">
                     <img src={Logo.src} class="logo-company__img img" alt="Киберматика" />
                     <img src={LogoText.src} class="logo-company__text img" alt="Киберматика" />
-                </div>
+                </a>
             </div>
             <svg width="0" height="0" style="position: absolute;">
                 <defs>
                     <clipPath id="tab-shape" clipPathUnits="objectBoundingBox">
-                        <path
-                                transform="scale(0.00641025, 0.025)"
-                                d="M156,40H0c9.1,0,16.5-7.4,16.5-16.5v-3.5C16.5,9,25.5,0,36.5,0h83c11,0,20,9,20,20v3.5c0,9.1,7.4,16.5,16.5,16.5Z"
-                        />
+                        <path transform="scale(0.00641025, 0.025)" d="M156,40H0c9.1,0,16.5-7.4,16.5-16.5v-3.5C16.5,9,25.5,0,36.5,0h83c11,0,20,9,20,20v3.5c0,9.1,7.4,16.5,16.5,16.5Z"/>
                     </clipPath>
                 </defs>
             </svg>
@@ -46,7 +43,7 @@ const { class: className = '' } = Astro.props;
                     </a>
                 </div>
             </nav>
-            <button class="page-header__mobile-menu-btn mobile-menu-btn btn-reset">
+            <button class="page-header__mobile-menu-btn mobile-menu-btn btn-reset js-menu-toggle">
                 <svg width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M4.30581 4.5H0V0.5H4.30581V4.5ZM5.2314 0.5H9.53721V4.5H5.2314V0.5ZM10.4628 0.5H14.7686V4.5H10.4628V0.5ZM15.6942 0.5H20V4.5H15.6942V0.5Z" fill="#101651" />
                     <path d="M4.30581 11.5H0V7.5H4.30581V11.5ZM5.2314 7.5H9.53721V11.5H5.2314V7.5ZM10.4628 7.5H14.7686V11.5H10.4628V7.5ZM15.6942 7.5H20V11.5H15.6942V7.5Z" fill="#101651" />

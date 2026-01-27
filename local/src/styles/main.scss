@@ -1,6 +1,3 @@
-
-
-
 @use 'common/variables';
 @use 'common/base';
 @use 'common/fonts';
@@ -12,6 +9,7 @@
 @use 'modules/forms';
 @use 'modules/animations';
 
+@use 'modules/mobilemenu';
 @use 'modules/badges';
 @use 'modules/boxes';
 @use 'modules/hero';

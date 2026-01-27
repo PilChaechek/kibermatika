@@ -1,3 +1,13 @@
+import menuToggle from './components/mobileMenu.js'
+
+
+document.addEventListener('DOMContentLoaded', () => {
+	menuToggle()
+})
+
+
+
+
 document.addEventListener('DOMContentLoaded', () => {
 	const nav = document.querySelector('.main-nav');
 
