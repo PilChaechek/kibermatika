@@ -1,5 +1,3 @@
-//import 'swiper/css';
-
 let pathSwiper = null;
 
 export default async function swiper() {
@@ -21,8 +19,6 @@ export default async function swiper() {
 			await initPathSwiper();
 
 		} else {
-			// === МЫ ВНЕ ДИАПАЗОНА (<400 или >940) ===
-
 			if (pathSwiper) {
 				pathSwiper.destroy(true, true);
 				pathSwiper = null;

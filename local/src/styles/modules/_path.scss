@@ -79,11 +79,12 @@
     }
   }
   &__header-badge {
-    transform: translate(10px, -10px);
+    transform: translate(0, -10px);
     position: relative;
     z-index: 1;
     @include respond(md){
       padding-right: 20px;
+      transform: translate(10px, -10px);
     }
     @include respond(2xl){
       margin-bottom: 6px;
@@ -202,19 +203,20 @@
     height: 100%;
   }
   &__image {
-    background-color: var(--color-main);
-    height: 254px;
-    border-radius: 32px;
     position: relative;
-    @include respond(2xl){
-      height: 254px;
-      border-radius: 32px;
-    }
   }
-  &__img-1 {
-    position: absolute;
-    right: 20px;
-    top: 20px;
+  &__img {
+    height: 100%;
+    border-radius: var(--border-radius-xs);
+    @include respond(md){
+
+    }
+    @include respond(2xl){
+      border-radius: var(--border-radius-2xl);
+    }
+    @include respond(3xl){
+      border-radius: var(--border-radius-3xl);
+    }
   }
   &__category {
     background-color: #fff;
@@ -247,16 +249,21 @@
   }
   &__content {
     background-color: #fff;
-    border-radius: 0 32px 32px 32px;
+    border-radius: 0 var(--border-radius-xs) var(--border-radius-xs) var(--border-radius-xs);
     padding: 24px 22px;
     display: flex;
     flex-direction: column;
     flex: auto;
     @include respond(2xl){
-      border-radius: 0 32px 32px 32px;
+      border-radius: 0 var(--border-radius-2xl) var(--border-radius-2xl) var(--border-radius-2xl);
       padding: 24px 22px;
       min-height: 254px;
     }
+    @include respond(3xl){
+      border-radius: 0 var(--border-radius-3xl) var(--border-radius-3xl) var(--border-radius-3xl);
+    }
+
+
   }
   &__title {
     margin-bottom: 1rem;

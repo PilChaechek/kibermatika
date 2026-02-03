@@ -6,6 +6,7 @@
 
 .culture {
   .section__title {
+    margin-bottom: 20px;
     br {
       display: none;
       @include respond(md){
@@ -14,18 +15,37 @@
     }
   }
 
+  &__header {
+    position: relative;
+    .icon-badge {
+      margin-bottom: 40px;
+      min-width: 284px;
+      @include respond(md){
+        min-width: initial;
+        margin-bottom: 20px;
+      }
+      @include respond(2xl){
+        position: absolute;
+        left: 0;
+        top: -30px;
+      }
+    }
+  }
+
   &__stats {
-    display: grid;
-    gap: 24px;
+    display: flex;
+    gap: 40px;
     margin-bottom: 50px;
+    flex-direction: column;
     @include respond(md){
-      grid-template-columns: repeat(3,1fr);
-      gap: 40px;
+      justify-content: space-between;
+      flex-direction: row;
       margin-bottom: 40px;
     }
     @include respond(2xl){
       gap: 90px;
-      margin-bottom: 72px;
+      margin: 0 auto 72px auto;
+      max-width: 992px;
     }
     @include respond(3xl){
       gap: 120px;
@@ -34,6 +54,16 @@
   }
   &__stats-item {
     text-align: center;
+    &:last-child {
+      .culture__stats-item-text {
+        br {
+          display: none;
+          @include respond(md){
+            display: block;
+          }
+        }
+      }
+    }
   }
   &__stats-item-title {
     color: var(--font-color-accent);
@@ -63,15 +93,15 @@
     }
   }
   &__items {
-    display: grid;
-    gap: 24px;
+    //display: grid;
+    //gap: 24px;
     margin-bottom: 50px;
     @include respond(md){
       margin-bottom: 40px;
     }
     @include respond(2xl){
       margin-bottom: 100px;
-      grid-template-columns: repeat(3,1fr);
+      //grid-template-columns: repeat(3,1fr);
     }
     @include respond(3xl){
       margin-bottom: 102px;
@@ -100,13 +130,13 @@
   &__image {
     border-radius: 24px;
     @include respond(md){
-      border-radius: 18px;
+      border-radius: var(--border-radius-md);
     }
     @include respond(2xl){
-      border-radius: 32px;
+      border-radius: var(--border-radius-2xl);
     }
     @include respond(3xl){
-      border-radius: 44px;
+      border-radius: var(--border-radius-3xl);
     }
   }
   &__media {
@@ -115,12 +145,76 @@
 
   &__title {
     position: absolute;
-    right: 0;
+    right: -1px;
     bottom: 0;
     background-color: #fff;
-    padding: 1rem;
+    padding: 10px 10px 10px 16px;
+    line-height: 1;
+    border-radius: 24px 0 0 0;
+    @include respond(md){
+      border-radius: var(--border-radius-md) 0 0 0;
+    }
     @include respond(2xl){
-      border-radius: 32px 32px 0 0;
+      border-radius: var(--border-radius-2xl) 0 0 0;
+      padding: 1rem;
+    }
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      left: -23px;
+      bottom: 0;
+      background-image: radial-gradient(
+          circle at -1px 0,
+          transparent 24px,
+          #fff 24.5px
+      );
+      @include respond(2xl){
+        width: 32px;
+        height: 32px;
+        left: -31px;
+        background-image: radial-gradient(
+            circle at -1px 0,
+            transparent 32px,
+            #fff 32.5px
+        );
+      }
+      @include respond(3xl){
+        width: 44px;
+        height: 44px;
+        left: -41px;
+        background-image: radial-gradient(
+            circle at -1px 0,
+            transparent 44px,
+            #fff 44.5px
+        );
+      }
+    }
+    &:after {
+      content: '';
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      right: 0;
+      top: -23px;
+      background-image: radial-gradient(
+          circle at -1px -1px,
+          transparent 24px,
+          #fff 24.5px
+      );
+      @include respond(2xl){
+        width: 32px;
+        height: 32px;
+        top: -31px;
+        background-image: radial-gradient(
+            circle at -1px 0,
+            transparent 32px,
+            #fff 32.5px
+        );
+      }
     }
   }
+
 }

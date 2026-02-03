@@ -20,7 +20,8 @@
     }
     @include respond(2xl) {
       font-size: toRem(56, 20);
-      margin: 0 0 2.2rem 0;
+      //margin: 0 0 2.2rem 0;
+      margin: 0 0 1rem 0;
     }
     @include respond(3xl) {
       font-size: toRem(72, 24);

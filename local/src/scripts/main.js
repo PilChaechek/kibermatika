@@ -1,10 +1,12 @@
 import menuToggle from './components/mobileMenu.js'
 import swiper from "./components/swiper.js";
+import cultureSwiper from "./components/cultureSwiper.js";
 
 
 document.addEventListener('DOMContentLoaded', () => {
 	menuToggle()
 	swiper()
+	cultureSwiper()
 })
 
 
