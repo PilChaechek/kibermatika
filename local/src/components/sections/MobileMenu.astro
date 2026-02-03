@@ -1,0 +1,46 @@
+---
+import Logo from '../../assets/images/logo.svg';
+---
+<div class="mobile-menu">
+    <div class="mobile-menu__inner">
+        <div class="mobile-menu__header">
+            <div class="mobile-menu__logo logo-company">
+                <a href="/" class="logo-company__link">
+                    <img src={Logo.src} class="logo-company__img img" alt="Киберматика" />
+                </a>
+            </div>
+            <button class="btn-reset mobile-menu__btn js-menu-toggle">
+                <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0.121094" y="21.4198" width="4.82427" height="4.82427" transform="rotate(-45 0.121094 21.4198)" fill="#101651"/>
+                    <rect x="4.59375" y="16.9479" width="4.82427" height="4.82427" transform="rotate(-45 4.59375 16.9479)" fill="#101651"/>
+                    <rect x="9.06445" y="12.476" width="4.82427" height="4.82427" transform="rotate(-45 9.06445 12.476)" fill="#101651"/>
+                    <rect x="13.5371" y="8.00403" width="4.82427" height="4.82427" transform="rotate(-45 13.5371 8.00403)" fill="#101651"/>
+                    <rect x="18.0098" y="3.5321" width="4.82427" height="4.82427" transform="rotate(-45 18.0098 3.5321)" fill="#101651"/>
+                    <rect x="3.41211" y="0.000488281" width="4.82427" height="4.82427" transform="rotate(45 3.41211 0.000488281)" fill="#101651"/>
+                    <rect x="7.88477" y="4.47241" width="4.82427" height="4.82427" transform="rotate(45 7.88477 4.47241)" fill="#101651"/>
+                    <rect x="12.3555" y="8.94434" width="4.82427" height="4.82427" transform="rotate(45 12.3555 8.94434)" fill="#101651"/>
+                    <rect x="16.8281" y="13.4163" width="4.82427" height="4.82427" transform="rotate(45 16.8281 13.4163)" fill="#101651"/>
+                    <rect x="21.3008" y="17.8882" width="4.82427" height="4.82427" transform="rotate(45 21.3008 17.8882)" fill="#101651"/>
+                </svg>
+            </button>
+        </div>
+        <nav class="mobile-menu__nav">
+            <a class="mobile-menu__link">Продукты</a>
+            <a class="mobile-menu__link">Принципы</a>
+            <a class="mobile-menu__link mobile-menu__link--active">О нас</a>
+            <a class="mobile-menu__link">Контакты</a>
+        </nav>
+        <nav class="mobile-menu__sub-nav">
+            <a class="mobile-menu__link">люди</a>
+            <a class="mobile-menu__link">команда</a>
+            <a class="mobile-menu__link">музыка</a>
+            <a class="mobile-menu__link">контакты</a>
+            <a class="mobile-menu__link">вакансии</a>
+            <a class="mobile-menu__link">фестивали</a>
+        </nav>
+        <div class="mobile-menu__contacts">
+            <a class="link link--color-2" href="mailto:hey@cybermatica.com">hey@cybermatica.com</a>
+            <a class="link link--color-2" href="tel:79992345678">+7 999 2345678</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,126 @@
+@use '../mixins/breakpoints' as *;
+@include respond(md){}
+@include respond(2xl){}
+@include respond(3xl){}
+
+
+.culture {
+  .section__title {
+    br {
+      display: none;
+      @include respond(md){
+        display: block;
+      }
+    }
+  }
+
+  &__stats {
+    display: grid;
+    gap: 24px;
+    margin-bottom: 50px;
+    @include respond(md){
+      grid-template-columns: repeat(3,1fr);
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    @include respond(2xl){
+      gap: 90px;
+      margin-bottom: 72px;
+    }
+    @include respond(3xl){
+      gap: 120px;
+      margin-bottom: 96px;
+    }
+  }
+  &__stats-item {
+    text-align: center;
+  }
+  &__stats-item-title {
+    color: var(--font-color-accent);
+    font-size: toRem(70,16);
+    white-space: nowrap;
+    @include respond(md){
+      font-size: toRem(56,16);
+    }
+    @include respond(2xl){
+      font-size: toRem(82,20);
+    }
+    @include respond(3xl){
+      font-size: toRem(110,24);
+    }
+  }
+  &__stats-item-text {
+    line-height: 1;
+    font-size: toRem(20,16);
+    @include respond(md){
+
+    }
+    @include respond(2xl){
+      font-size: toRem(28,20);
+    }
+    @include respond(3xl){
+      font-size: toRem(36,24);
+    }
+  }
+  &__items {
+    display: grid;
+    gap: 24px;
+    margin-bottom: 50px;
+    @include respond(md){
+      margin-bottom: 40px;
+    }
+    @include respond(2xl){
+      margin-bottom: 100px;
+      grid-template-columns: repeat(3,1fr);
+    }
+    @include respond(3xl){
+      margin-bottom: 102px;
+    }
+  }
+  &__footer {
+    text-align: center;
+    font-size: toRem(20,16);
+    line-height: 1.1;
+    @include respond(md){
+
+    }
+    @include respond(2xl){
+      font-size: toRem(28,20);
+    }
+    @include respond(3xl){
+      font-size: toRem(36,24);
+    }
+  }
+}
+
+.story-card {
+
+  position: relative;
+
+  &__image {
+    border-radius: 24px;
+    @include respond(md){
+      border-radius: 18px;
+    }
+    @include respond(2xl){
+      border-radius: 32px;
+    }
+    @include respond(3xl){
+      border-radius: 44px;
+    }
+  }
+  &__media {
+
+  }
+
+  &__title {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background-color: #fff;
+    padding: 1rem;
+    @include respond(2xl){
+      border-radius: 32px 32px 0 0;
+    }
+  }
+}

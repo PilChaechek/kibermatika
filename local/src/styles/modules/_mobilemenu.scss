@@ -1,0 +1,88 @@
+@use '../mixins/breakpoints' as *;
+
+.show-mobile-nav {
+  .mobile-menu {
+    transform: translate3d(0%, 0, 0);
+  }
+}
+
+.mobile-menu {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, #f3f4fd 0%, #e2e6f5 75%, #fff 100%);
+  //max-width: 320px;
+  width: 100%;
+  transition: transform 0.3s;
+  transform: translate3d(-100%, 0, 0);
+  z-index: 10;
+  overflow-x: hidden;
+  @include respond(md){
+    display: none;
+  }
+  &__inner {
+    padding: 1rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  &__btn {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    svg {
+      width: 25px;
+      height: 25px;
+    }
+  }
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 46px;
+  }
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: toRem(38,16);
+    line-height: 1.3;
+    gap: 12px;
+    margin-bottom: 1.6rem;
+  }
+  &__sub-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 1.5rem;
+    color: var(--font-color-text);
+    font-size: toRem(20,16);
+  }
+  &__link {
+    display: inline-flex;
+    align-items: center;
+  }
+  &__link--active {
+    border-bottom: 5px solid var(--color-4);
+    gap: 12px;
+    &:before {
+      content: '';
+      display: inline-block;
+      width: 21px;
+      height: 24px;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+
+      /* символ # в цвете заменен на %23 */
+      background-image: url("data:image/svg+xml,%3Csvg width='21' height='24' viewBox='0 0 21 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 10.5524H2.9459V13.4476H0L0 10.5524ZM3.57916 10.5524H6.52506V13.4476H3.57916V10.5524ZM7.15831 2.89514V0L10.1042 0V2.89514H7.15831ZM10.1042 13.4476H7.15831V10.5524H10.1042V13.4476ZM7.15831 21.1049H10.1042V24H7.15831V21.1049ZM10.7375 3.51748H13.6834V6.41261H10.7375V3.51748ZM10.7375 10.5524H13.6834V13.4476H10.7375V10.5524ZM13.6834 20.48H10.7375V17.5849H13.6834V20.48ZM17.2625 9.9276H14.3166V7.03247H17.2625V9.9276ZM14.3166 13.4451V10.5499H17.2625V13.4451H14.3166ZM14.3166 16.9626V14.0674H17.2625V16.9626H14.3166ZM17.8958 10.5524H20.8417V13.4476H17.8958V10.5524Z' fill='%23101651' /%3E%3C/svg%3E");
+    }
+  }
+  &__contacts {
+    display: flex;
+    flex-direction: column;
+    font-size: toRem(20,16);
+    gap: 6px;
+  }
+}

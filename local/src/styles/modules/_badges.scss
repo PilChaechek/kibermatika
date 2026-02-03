@@ -7,9 +7,10 @@
   background-color: #fff;
   box-shadow: var(--card-box-shadow);
   text-align: left;
-
+  border-radius: 16px;
+  padding: 10px 14px;
   @include respond(md) {
-
+    padding: 12px;
   }
   @include respond(2xl) {
     border-radius: 18px;
@@ -23,8 +24,8 @@
     font-size: 1.4rem;
   }
   &__icon {
-    width: 56px;
-    height: 56px;
+    width: 40px;
+    height: 40px;
     background-color: #101651;
     border-radius: 50%;
     position: relative;
@@ -63,7 +64,11 @@
   }
   &__text {
     white-space: nowrap;
-    font-size: 1.125rem;
+    font-size: toRem(18,16);
+    line-height: 1.1;
+    @include respond(md) {
+      font-size: 1rem;
+    }
     @include respond(3xl){
       font-size: toRem(28,24);
     }
@@ -112,9 +117,10 @@
   .icon-badge__icon-src {
     top: inherit;
     left: 2px;
-    //aspect-ratio: 3/4;
-    @include respond(2xl) {
+    @include respond(md){
       left: initial;
+    }
+    @include respond(2xl) {
       width: 54px;
       height: 54px;
       margin-top: -2px;

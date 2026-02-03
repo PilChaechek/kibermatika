@@ -11,3 +11,52 @@
 .btn {
   cursor: pointer;
 }
+
+.btn-block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-5);
+  cursor: pointer;
+  line-height: 1;
+  transition: background-color .2s ease;
+  height: 80px;
+  border-radius: 40px;
+  font-size: toRem(20,16);
+  &:hover {
+    background-color: var(--color-1);
+  }
+  @include respond(md){
+    font-size: toRem(24,16);
+    height: 70px;
+    border-radius: 45px;
+  }
+  @include respond(2xl){
+    font-size: toRem(30,20);
+    height: 90px;
+    border-radius: 45px;
+  }
+  @include respond(3xl){
+    font-size: toRem(40,24);
+    height: 120px;
+    border-radius: 60px;
+  }
+  svg {
+    fill: var(--color-main);
+    width: 16px;
+    height: auto;
+    @include respond(md){
+      width: 14px;
+      height: auto;
+    }
+  }
+  &__inner {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+  }
+}
+
+//    @include respond(md){}
+//    @include respond(2xl){}
+//    @include respond(3xl){}

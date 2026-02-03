@@ -1,0 +1,69 @@
+---
+const stats = [
+    {
+        title: '200+',
+        text: 'людей с горящими <br> глазами',
+    },
+    {
+        title: '1000 и 1',
+        text: 'протестированная <br> гипотеза за год',
+    },
+    {
+        title: '~ЯРД',
+        text: 'годовой <br> оборот',
+    },
+];
+const items = [
+    {
+        img: '/images/slides/culture/1.webp',
+        title: 'Релиз Бустера'
+    },
+    {
+        img: '/images/slides/culture/2.webp',
+        title: 'Наш коммерческий <br> директор при заключении <br> сделки с Enterprise'
+    },
+    {
+        img: '/images/slides/culture/1.webp',
+        title: 'Зажигали на съемках ролика о команде'
+    }
+];
+---
+<section class="section culture">
+    <div class="container">
+        <div class="section__header">
+            <h2 class="section__title">Нам не нужен галстук, <br> чтобы быть профессионалами</h2>
+            <p class="culture__description">Изобретательные разработчики, улетные продажники, неутомимые руководители. <br> Сотня киберматов и ни одного нормального человека.</p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="culture__stats">
+            {stats.map(item => (
+                <div class="culture__stats-item">
+                    <div class="culture__stats-item-title">{item.title}</div>
+                    <div class="culture__stats-item-text" set:html={item.text}></div>
+                </div>
+            ))}
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="culture__items">
+            {items.map(item => (
+                <div class="culture__item story-card">
+                    <div class="story-card__media">
+                        <img src={item.img} class="img story-card__image" alt="">
+                    </div>
+                    <div class="story-card__title" set:html={item.title}></div>
+                </div>
+            ))}
+        </div>
+
+    </div>
+
+
+    <div class="container">
+        <div class="culture__footer">
+            Хочешь к нам? Посмотри <a target="_blank" href="https://docs.google.com/document/d/18hC8WYZsN-GgDRvamVJufta0kmYdgrOAXiIzNUyF5kI/edit?tab=t.9q747ljbfzli" class="link link--color-2 link--icon">документ о менеджменте</a> <br> и листай дальше
+        </div>
+    </div>
+</section>

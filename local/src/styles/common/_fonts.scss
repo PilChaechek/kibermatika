@@ -5,4 +5,31 @@
   font-weight: 500; /* Regular */
   font-style: normal;
   font-display: swap;
+  ascent-override: 80%;  /* Обрезаем пустоту сверху */
+  descent-override: 20%; /* Обрезаем пустоту снизу */
+  line-gap-override: 0%; /* Убираем межстрочный интервал */
+}
+
+@font-face {
+  font-family: 'Cygre2';
+  src: url('/assets/fonts/cygre-medium-webfont.woff2') format('woff2'),
+  url('/assets/fonts/cygre-medium-webfont.woff') format('woff');
+  font-weight: 500; /* Regular */
+  font-style: normal;
+  font-display: swap;
+  ascent-override: 80%;  /* Обрезаем пустоту сверху */
+  descent-override: 20%; /* Обрезаем пустоту снизу */
+  line-gap-override: 0%; /* Убираем межстрочный интервал */
+}
+
+@font-face {
+  font-family: 'Cygre3';
+  src: url('/assets/fonts/Cygre-Medium2.woff2') format('woff2'),
+  url('/assets/fonts/Cygre-Medium2.woff') format('woff');
+  font-weight: 500; /* Regular */
+  font-style: normal;
+  font-display: swap;
+  ascent-override: 80%;  /* Обрезаем пустоту сверху */
+  descent-override: 20%; /* Обрезаем пустоту снизу */
+  line-gap-override: 0%; /* Убираем межстрочный интервал */
 }

@@ -1,8 +1,10 @@
 import menuToggle from './components/mobileMenu.js'
+import swiper from "./components/swiper.js";
 
 
 document.addEventListener('DOMContentLoaded', () => {
 	menuToggle()
+	swiper()
 })
 
 

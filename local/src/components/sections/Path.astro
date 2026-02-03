@@ -1,0 +1,128 @@
+---
+import Badge from "../../assets/images/badges/cart.png";
+
+import img1 from "../../assets/images/tickets/1.webp";
+import img2 from "../../assets/images/tickets/3.webp";
+import img3 from "../../assets/images/tickets/2.webp";
+
+import iconRight from "../../assets/icons/arrow-right.svg?raw";
+import iconMage from "../../assets/icons/mage.svg?raw";
+import iconInfo from "../../assets/icons/info.svg?raw";
+
+const items = [
+    {
+        title: 'Из РОП в бизнес-аналитику',
+        text: 'Горизонтально-диагональное развитие в структуре. Как реализовать себя в том, чем кайфуешь.',
+        category: 'История Васи',
+        img: img1,
+        key: 1,
+    },
+    {
+        title: 'Сотрудник 1.1',
+        text: 'Свои критерии внутри команды вне должностных обязанностей. Как построить работу на 110%?',
+        category: 'Философия КБМ',
+        img: img2,
+        key: 2,
+    },
+    {
+        title: 'Красавчик или м..',
+        text: 'Критерии оценки руководителей отделов, полная прозрачность целей перед сотрудниками',
+        category: 'Менеджмент',
+        img: img3,
+        key: 3,
+    }
+];
+---
+<section class="section section--v8 path">
+
+    <div class="container">
+        <div class="path__header">
+            <div class="path__header-top">
+                <div class="path__header-badge">
+                    <div class="icon-badge icon-badge--v2">
+                        <div class="icon-badge__icon">
+                            <img src={Badge.src} class="img icon-badge__icon-src" alt="" width="88" height="88">
+                        </div>
+                        <div class="icon-badge__text">меньше лишнего <br> больше своего</div>
+                    </div>
+                </div>
+                <div class="path__header-top-box"></div>
+            </div>
+            <div class="path__header-bottom">
+                <h2 class="path__title section__title">
+                        <span class="path__title-inner">
+                            Путь
+                            <a href="#" class="link link--underline link--color">кибермата</a>
+                            <button
+                                    class="path__info btn-reset term-trigger"
+                                    data-tippy-content="Так мы называем себя и команду"
+                                    aria-label="Подробнее о термине Кибермат"
+                                    set:html={iconInfo}>
+                            </button>
+                        </span>
+                </h2>
+                <p class="path__description">У нас — интенсив, а не болото. Смотрим шире должностных обязанностей, развиваем талант и творчество в людях. Собрали лучшие практики команды и управления и делимся ими с миром</p>
+                <div class="path__header-img" set:html={iconMage}></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="path__container container">
+        <div class="path__inner">
+            <div class="swiper swiper-v1" id="path-cards">
+                <div class="swiper-wrapper path__items">
+                    {items.map(item => (
+                        <div class="card-v2 swiper-v1 swiper-slide">
+                            <a href="javascript:void(0)" class="card-v2__link link">
+                                <div class="card-v2__image">
+                                    <!--<img src={item.img} class="img card-v2__img card-v2__img&#45;&#45;1" alt="">-->
+                                    <div class="card-v2__category">{item.category}</div>
+                                </div>
+                                <div class="card-v2__content">
+                                    <h3 class="card-v2__title">{item.title}</h3>
+                                    <div class="card-v2__description">{item.text}</div>
+                                </div>
+                            </a>
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="container">
+        <div class="path__footer">
+            <a href="javascript:void(0)" class="link btn-block">
+                <span class="btn-block__inner">
+                    <span>Читать всё</span>
+                    <span class="" set:html={iconRight}></span>
+                </span>
+            </a>
+        </div>
+    </div>
+</section>
+<script>
+    import tippy from 'tippy.js';
+    import 'tippy.js/dist/tippy.css';
+    //import 'tippy.js/animations/scale.css';
+
+    tippy('.term-trigger', {
+        trigger: 'click',
+        //trigger: 'mouseenter focus',
+        placement: 'right-end',
+        offset: ({ placement }) => {
+            const isMobile = window.innerWidth < 768;
+            // Если тултип перевернулся вниз
+            if (placement.startsWith('bottom')) {
+                return [0, 10]; // 0 сдвиг, 10 отступ вниз
+            }
+            // Если он все еще справа (десктоп или планшет)
+            return isMobile ? [-12, 4] : [-24, 6];
+        },
+        //animation: 'scale',
+        theme: 'custom',
+        maxWidth: 367,
+        interactive: true,
+        appendTo: () => document.body,
+    });
+</script>

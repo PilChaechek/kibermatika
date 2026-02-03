@@ -50,10 +50,10 @@
     }
   }
   .word-commands {
-    @include respond(2xl){
-      position: relative;
-      bottom: -0.5rem;
-    }
+    //@include respond(2xl){
+    //  position: relative;
+    //  bottom: -0.5rem;
+    //}
   }
 }
 
@@ -226,4 +226,123 @@
     }
   }
 
+}
+
+
+.hero-1 {
+  &.section {
+    background: #fff;
+  }
+  .word-commands {
+    //vertical-align: middle;
+  }
+
+  .word-image-2 {
+
+
+    // 1. Расширяем область рисования фона под границы
+    background-origin: border-box;
+    // 2. Добавляем прозрачную рамку (буферная зона для твоего фона)
+    border: 2px solid transparent;
+    // 3. Гарантируем, что фон не обрезается (обычно по умолчанию border-box, но для надежности)
+    background-clip: border-box;
+    // Убедись, что размер фона растягивается на всю новую область
+    background-size: 100% 100%;
+
+    padding: 0 10px;
+
+    @include respond(2xl){
+      padding: 0 20px;
+
+    }
+    @include respond(3xl){
+      padding: 0 32px;
+
+    }
+
+    span {
+      display: block;
+      line-height: 54px;
+      margin-top: -4%;
+    }
+  }
+
+}
+
+.hero-2 {
+  &.section {
+    background: #fff;
+  }
+  .word-image-2 {
+    //background: var(--color-4);
+    font-family: "Cygre3", sans-serif;
+    span {
+      //transform: translateY(-6px);
+    }
+  }
+}
+
+.hero-3 {
+  &.section {
+    background: #fff;
+  }
+  .word-image-2 {
+    font-family: "Cygre2", sans-serif;
+
+    // 1. База контейнера
+    position: relative; // Чтобы позиционировать псевдо-элемент
+    display: inline-flex;
+    align-items: center; // Центрируем текст вертикально
+    justify-content: center; // Центрируем текст горизонтально
+    z-index: 1; // Создаем контекст наложения, чтобы текст был сверху
+
+    // Убираем фон отсюда, он будет в ::before
+    background: none;
+    border: none;
+
+    // 2. Размеры контейнера (твои брейкпоинты)
+    height: 46px;
+    padding: 0 12px; // Боковые отступы, чтобы текст не прилипал
+
+    @include respond(md){
+      height: 54px;
+    }
+
+    @include respond(2xl){
+      height: 86px;
+      padding: 0 24px;
+    }
+
+    @include respond(3xl){
+      height: 114px;
+      padding: 0 32px;
+    }
+
+    // 3. ФОН ЧЕРЕЗ ПСЕВДО-ЭЛЕМЕНТ (Решение проблемы обрезки)
+    &::before {
+      content: "";
+      position: absolute;
+      z-index: -1; // Кладем ПОД текст
+
+      // Растягиваем фон чуть шире границ контейнера.
+      // Это гарантирует, что края картинки не обрежутся.
+      inset: -2px; // top: -2px, right: -2px... (или -1px, если артефакты останутся)
+
+      background: url("/images/slides/hero/words/green.webp") no-repeat center;
+      background-size: 100% 100%; // Растягиваем картинку
+
+      // Если у картинки есть скругления, можно добавить border-radius сюда,
+      // но обычно для растра это не нужно, если inset подобран верно.
+      pointer-events: none; // Чтобы клики проходили сквозь (на всякий случай)
+    }
+
+    // 4. Сброс стилей для текста
+    span {
+      display: block;
+      line-height: 60px; // Сбрасываем твой 54px, он всё ломает
+      margin: 0; // Убираем margin-top -4%, он нестабилен
+      position: relative;
+      transform: translateY(-6px);
+    }
+  }
 }
