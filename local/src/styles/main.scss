@@ -20,10 +20,10 @@
 @use 'modules/slider';
 @use 'modules/path';
 @use 'modules/culture';
+@use 'modules/orbit';
 
-.slider,
-.benefits {
+.slider {
   display: none;
 }
 
-// .hero, .page-footer,
+// .hero, .page-footer, .benefits

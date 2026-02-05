@@ -3,55 +3,222 @@
 .benefits {
   &__items {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+
+
     align-items: flex-start; // Выравниваем колонки по верху
+    @include respond(md){
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    @include respond(2xl){
+      gap: 20px;
+    }
   }
 
   &__item {
     background-color: #fff;
     box-shadow: var(--card-box-shadow);
-    padding: 3rem;
-    border-radius: 1.6rem;
+    border-radius: 32px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    aspect-ratio: 1/1;
     overflow: hidden;
+    padding: 42px 12px;
+    aspect-ratio: 1 / 1;
+    @include respond(xs){
+      aspect-ratio: 524/330;
+    }
+    @include respond(md){
+      padding: 2rem 1rem;
+      aspect-ratio: 1/1;
+    }
+    @include respond(2xl){
+      padding: 3rem;
+    }
+  }
+
+  &__left {
+    aspect-ratio: 1 / 1;
+    margin-bottom: 12px;
+    @include respond(xs){
+      aspect-ratio: initial;
+    }
+    @include respond(md){
+      aspect-ratio: 1 / 1;
+      margin-bottom: 0;
+    }
+  }
+
+  &__right {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    @include respond(md){
+      gap: 0;
+    }
   }
 }
 
+
+
 .benefits__right {
   // Добавляем небольшой отступ между карточками, когда они еще не "прилипли"
-  .benefits__item:not(:last-child) {
-    margin-bottom: 2rem;
-  }
+  //.benefits__item:not(:last-child) {
+  //  margin-bottom: 2rem;
+  //}
 
   // Каждая карточка в правой колонке будет "прилипать" к верху
   .benefits__item {
-    position: sticky;
-    top: 5vh; // Прилипаем на 5% от высоты экрана, чтобы был небольшой отступ сверху
+    //position: sticky;
+    //top: 5vh; // Прилипаем на 5% от высоты экрана, чтобы был небольшой отступ сверху
   }
 }
 
 
 .slide-1 {
-  
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  &__header {
+    display: flex;
+    justify-content: center;
+
+
+    &:after {
+      @include respond(md){
+        content: "";
+        background-color: #fff;
+        flex: auto;
+        border-radius: 18px 18px 0 0;
+      }
+
+      @include respond(2xl){
+        border-radius: var(--border-radius-2xl) var(--border-radius-2xl) 0 0;
+      }
+    }
+  }
+  &__header-box {
+    position: relative;
+    &:before,
+    &:after {
+      @include respond(md){
+        content: '';
+        display: block;
+        width: 32px;
+        height: 32px;
+        position: absolute;
+      }
+    }
+    &:before {
+      background-color: #fff;
+      right: 100%;
+      bottom: 0;
+    }
+    &:after {
+      background-color: #f7f8fd;
+      position: absolute;
+      right: 100%;
+      bottom: 0;
+      @include respond(md){
+        border-bottom-right-radius: 32px;
+      }
+      @include respond(3xl){
+        border-bottom-right-radius: 44px;
+      }
+    }
+  }
+  &__content {
+    flex: auto;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    padding: 24px;
+    border-radius: 32px;
+
+    @include respond(xs){
+      aspect-ratio: 524/330;
+    }
+
+    @include respond(md){
+      aspect-ratio: initial;
+      padding: 12px 24px 24px 24px;
+      border-radius: 18px 0 18px 18px;
+    }
+
+    @include respond(2xl){
+      padding: 56px;
+      border-radius: var(--border-radius-2xl) 0 var(--border-radius-2xl) var(--border-radius-2xl);
+    }
+
+  }
+  &__badge {
+    margin-bottom: 24px;
+    @include respond(md){
+      margin-bottom: 12px;
+      padding-right: 12px;
+    }
+    @include respond(2xl){
+      padding-right: 24px;
+      margin-bottom: 24px;
+    }
+    .icon-badge {
+      position: relative;
+      z-index: 1;
+      padding-left: 24px;
+      padding-right: 24px;
+      @include respond(md){
+        padding-left: 12px;
+        padding-right: 12px;
+      }
+
+      @include respond(2xl){
+        padding-left: 28px;
+        padding-right: 28px;
+      }
+
+    }
+  }
   &__title {
+    font-weight: 500;
+    line-height: 1;
+    margin-bottom: auto;
+    font-size: toRem(36,16);
+    @include respond(xs){
+
+    }
+    @include respond(md){
+      font-size: toRem(32,16);
+    }
     @include respond(2xl) {
-      font-weight: 500;
-      line-height: 1;
       font-size: 2.8rem;
-      margin-bottom: 4rem;
     }
   }
   &__text {
     color: var(--font-color-text);
   }
   &__icon {
-    margin-bottom: -14px;
+    display: inline-block;
+    height: 0;
+    position: relative;
+    vertical-align: middle;
     @include respond(2xl) {
-      margin-bottom: -14px;
+
+    }
+    svg {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 39px;
+      @include respond(md){
+        width: 32px;
+        height: 30px;
+      }
+      @include respond(xl){
+        width: 62px;
+        height: 58px;
+      }
     }
   }
 }
@@ -68,23 +235,32 @@
     text-align: center;
   }
   &__value {
-    font-size: 3.6rem;
-    line-height: 1;
     background: linear-gradient(170deg, #101651 0%, #945fcd 53.37%, #101651 100%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+
+    font-size: toRem(90,16);
+    line-height: .9;
+    @include respond(md){
+
+    }
     @include respond(2xl) {
       font-size: 8.3rem;
     }
   }
   &__value-text {
     font-size: 1.6rem;
-    line-height: 1;
+    line-height: .9;
+    margin-bottom: 14px;
     background: linear-gradient(170deg, #101651 0%, #945fcd 53.37%, #101651 100%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    @include respond(md){
+      font-size: toRem(40,16);
+      margin-bottom: 8px;
+    }
     @include respond(2xl) {
       font-size: 2.6rem;
       margin-bottom: 1rem;
@@ -97,7 +273,27 @@
     display: flex;
     justify-content: center;
     .img {
-      max-width: 220px;
+      max-width: 124px;
+      @include respond(md){
+        max-width: 104px;
+      }
+      @include respond(2xl){
+        max-width: 220px;
+      }
+    }
+  }
+}
+
+.slide-2--v2 {
+  .slide-2__text {
+    br {
+
+      @include respond(md){
+        display: none;
+      }
+      @include respond(2xl){
+        display: block;
+      }
     }
   }
 }
