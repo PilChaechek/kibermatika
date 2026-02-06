@@ -1,13 +1,13 @@
 ---
 import iconDino from "../../assets/icons/dino.svg?raw";
 import Badge from "../../assets/images/badges/hand3.png";
-import {Image} from "astro:assets";
+import { Image } from "astro:assets";
 ---
+
 <section class="benefits section section--v2" id="benefits">
     <div class="container">
         <div class="benefits__items">
             <div class="benefits__left">
-
                 <div class="slide-1">
                     <div class="slide-1__header">
                         <div class="slide-1__badge">
@@ -23,34 +23,45 @@ import {Image} from "astro:assets";
                                         />
                                     </div>
                                 </div>
-                                <div class="icon-badge__text">честно и открыто<br> для всего рынка</div>
+                                <div class="icon-badge__text">
+                                    честно и открыто<br /> для всего рынка
+                                </div>
                             </div>
                         </div>
                         <div class="slide-1__header-box"></div>
                     </div>
                     <div class="slide-1__content">
                         <h3 class="slide-1__title">
-                            Без притворства <br> и спасения<br> мира
-                            <span class="slide-1__icon" set:html={iconDino}></span>
+                            Без притворства <br /> и спасения<br /> мира
+                            <span class="slide-1__icon" set:html={iconDino} />
                         </h3>
-                        <p class="slide-1__text">Наше видение весьма простое — продолжать создавать полезные инструменты для бизнеса, помогать достигать большего и развивать партнерские отношения на равных.</p>
+                        <p class="slide-1__text">
+                            Наше видение весьма простое — продолжать создавать
+                            полезные инструменты для бизнеса, помогать достигать
+                            большего и развивать партнерские отношения на
+                            равных.
+                        </p>
                     </div>
                 </div>
-
-
-
             </div>
             <div class="benefits__right">
-
                 <div class="benefits__item slide-2">
                     <div class="slide-2__inner">
                         <div class="slide-2__header">
-                            <div class="slide-2__value" id="counter-5000">5000</div>
+                            <div class="slide-2__value" id="counter-5000">
+                                5000
+                            </div>
                             <div class="slide-2__value-text">клиентов</div>
-                            <div class="slide-2__text">компаний, предпринимателей <br> и специалистов</div>
+                            <div class="slide-2__text">
+                                компаний, предпринимателей <br /> и специалистов
+                            </div>
                         </div>
                         <div class="slide-2__img">
-                            <img class="img" src="/images/slides/cat.webp" alt="">
+                            <img
+                                class="img"
+                                src="/images/slides/cat.webp"
+                                alt=""
+                            />
                         </div>
                     </div>
                 </div>
@@ -58,102 +69,128 @@ import {Image} from "astro:assets";
                 <div class="benefits__item slide-2 slide-2--v2">
                     <div class="slide-2__inner">
                         <div class="slide-2__header">
-                            <div class="slide-2__value" id="counter-99-5">99,5%</div>
-                            <div class="slide-2__value-text">нас рекомендуют</div>
-                            <div class="slide-2__text">0,5 % хейтят,<br> но мы их тоже любим</div>
+                            <div class="slide-2__value" id="counter-99-5">
+                                99,5%
+                            </div>
+                            <div class="slide-2__value-text">
+                                нас рекомендуют
+                            </div>
+                            <div class="slide-2__text">
+                                0,5 % хейтят,<br /> но мы их тоже любим
+                            </div>
                         </div>
                         <div class="slide-2__img">
-                            <img class="img" src="/images/slides/hand.webp" alt="">
+                            <img
+                                class="img"
+                                src="/images/slides/hand.webp"
+                                alt=""
+                            />
                         </div>
                     </div>
                 </div>
 
                 <div class="benefits__item slide-3">
-                    <img class="img" src="/images/slides/pavel.webp" alt="">
+                    <img class="img" src="/images/slides/pavel.webp" alt="" />
                 </div>
-
             </div>
         </div>
     </div>
 </section>
 
 <script>
-    // import { gsap } from "gsap";
-    // import { ScrollTrigger } from "gsap/ScrollTrigger";
-    //
-    // gsap.registerPlugin(ScrollTrigger);
-    //
-    // window.addEventListener("load", () => {
-    //     const benefitsSection = document.querySelector("#benefits");
-    //     const leftColumn = benefitsSection.querySelector(".benefits__left");
-    //     const rightColumn = benefitsSection.querySelector(".benefits__right");
-    //
-    //     // Главный ScrollTrigger для фиксации левой колонки
-    //     ScrollTrigger.create({
-    //         trigger: benefitsSection,
-    //         start: "top top",
-    //         end: () => `bottom bottom`, // Фиксируем до конца секции
-    //         pin: leftColumn,
-    //         anticipatePin: 1, // Предотвращает дергание в начале
-    //     });
-    //
-    //     // Получаем все панели в правой колонке
-    //     const panels = gsap.utils.toArray(".benefits__right .benefits__item");
-    //
-    //     // Для каждой панели (кроме последней) создаем свою анимацию
-    //     panels.forEach((panel, i) => {
-    //         if (i < panels.length - 1) {
-    //             const nextPanel = panels[i + 1];
-    //
-    //             gsap.fromTo(panel,
-    //                 { scale: 1, y: 0 },
-    //                 {
-    //                     scale: 0.9,
-    //                     y: -40,
-    //                     ease: "none",
-    //                     scrollTrigger: {
-    //                         trigger: nextPanel,
-    //                         start: "top bottom",
-    //                         end: "top top",
-    //                         scrub: 1,
-    //                         invalidateOnRefresh: true,
-    //                     }
-    //                 }
-    //             );
-    //         }
-    //     });
-    //
-    //     // Анимация счетчика
-    //     const counter = document.querySelector("#counter-5000");
-    //     gsap.fromTo(counter,
-    //         { innerText: 1000 },
-    //         {
-    //             innerText: 5000,
-    //             duration: 2,
-    //             snap: { innerText: 1 }, // Увеличиваем целыми числами
-    //             scrollTrigger: {
-    //                 trigger: counter,
-    //                 start: "top 80%", // Начать, когда элемент на 80% виден
-    //                 toggleActions: "play none none none" // Запустить один раз
-    //             }
-    //         }
-    //     );
-    //
-    //     // Анимация счетчика 99,5%
-    //     const counter2 = document.querySelector("#counter-99-5");
-    //     const counter2Proxy = { val: 0 }; // Прокси-объект для анимации
-    //     gsap.to(counter2Proxy, {
-    //         val: 99.5,
-    //         duration: 2,
-    //         scrollTrigger: {
-    //             trigger: counter2,
-    //             start: "top 80%",
-    //             toggleActions: "play none none none"
-    //         },
-    //         onUpdate: () => {
-    //             // Обновляем текст, заменяя точку на запятую
-    //             counter2.innerText = counter2Proxy.val.toFixed(1).replace('.', ',') + '%';
-    //         }
-    //     });
-    // });
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    window.addEventListener("load", () => {
+        let mm = gsap.matchMedia();
+
+        // Анимации для экранов шире 744px
+        mm.add("(min-width: 744px)", () => {
+            const benefitsSection = document.querySelector("#benefits");
+            if (!benefitsSection) return;
+
+            const leftCard = benefitsSection.querySelector(".slide-1");
+            if (!leftCard) return;
+
+            // Получаем все панели в правой колонке
+            const panels = gsap.utils.toArray(
+                ".benefits__right .benefits__item",
+            );
+
+            // Главный ScrollTrigger для фиксации левой карточки
+            // ScrollTrigger.create({
+            //     trigger: benefitsSection,
+            //     start: "top top",
+            //     end: "bottom bottom", // Фиксируем до конца секции
+            //     pin: leftCard,
+            //     pinSpacing: false, // Не добавляем отступов
+            //     anticipatePin: 1,
+            // });
+
+            // Для каждой панели (кроме последней) создаем свою анимацию
+            // panels.forEach((panel, i) => {
+            //     if (i < panels.length - 1) {
+            //         const nextPanel = panels[i + 1];
+            //
+            //         gsap.fromTo(
+            //             panel as any,
+            //             { scale: 1, y: 0 },
+            //             {
+            //                 scale: 0.9,
+            //                 y: -40,
+            //                 ease: "none",
+            //                 scrollTrigger: {
+            //                     trigger: nextPanel as any,
+            //                     start: "top bottom",
+            //                     end: "top top",
+            //                     scrub: 1,
+            //                     invalidateOnRefresh: true,
+            //                 },
+            //             },
+            //         );
+            //     }
+            // });
+        });
+
+        // Анимация счетчика (работает везде)
+        const counter = document.querySelector("#counter-5000");
+        if (counter) {
+            gsap.fromTo(
+                counter,
+                { innerText: 1000 },
+                {
+                    innerText: 5000,
+                    duration: 2,
+                    snap: { innerText: 1 }, // Увеличиваем целыми числами
+                    scrollTrigger: {
+                        trigger: counter,
+                        start: "top 80%", // Начать, когда элемент на 80% виден
+                        toggleActions: "play none none none", // Запустить один раз
+                    },
+                },
+            );
+        }
+
+        // Анимация счетчика 99,5% (работает везде)
+        const counter2 = document.querySelector("#counter-99-5");
+        if (counter2) {
+            const counter2Proxy = { val: 0 }; // Прокси-объект для анимации
+            gsap.to(counter2Proxy, {
+                val: 99.5,
+                duration: 2,
+                scrollTrigger: {
+                    trigger: counter2,
+                    start: "top 80%",
+                    toggleActions: "play none none none",
+                },
+                onUpdate: () => {
+                    // Обновляем текст, заменяя точку на запятую
+                    counter2.innerText =
+                        counter2Proxy.val.toFixed(1).replace(".", ",") + "%";
+                },
+            });
+        }
+    });
 </script>

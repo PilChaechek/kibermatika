@@ -3,8 +3,6 @@
 .benefits {
   &__items {
     display: grid;
-
-
     align-items: flex-start; // Выравниваем колонки по верху
     @include respond(md){
       grid-template-columns: 1fr 1fr;
@@ -46,6 +44,8 @@
     @include respond(md){
       aspect-ratio: 1 / 1;
       margin-bottom: 0;
+      position: sticky;
+      top: 40px;
     }
   }
 
@@ -54,7 +54,8 @@
     flex-direction: column;
     gap: 12px;
     @include respond(md){
-      gap: 0;
+      //gap: 0;
+      gap: 20px;
     }
   }
 }
