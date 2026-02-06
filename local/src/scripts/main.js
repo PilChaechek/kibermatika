@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-
+// Активный пункт для меню
 document.addEventListener('DOMContentLoaded', () => {
 	const nav = document.querySelector('.main-nav');
 

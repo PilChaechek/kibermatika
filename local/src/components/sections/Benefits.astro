@@ -104,57 +104,15 @@ import { Image } from "astro:assets";
     gsap.registerPlugin(ScrollTrigger);
 
     window.addEventListener("load", () => {
-        let mm = gsap.matchMedia();
+        //let mm = gsap.matchMedia();
+        // // Анимации для экранов шире 744px
+        // mm.add("(min-width: 744px)", () => {
+        //     const benefitsSection = document.querySelector("#benefits");
+        //     if (!benefitsSection) return;
+        //
+        // });
 
-        // Анимации для экранов шире 744px
-        mm.add("(min-width: 744px)", () => {
-            const benefitsSection = document.querySelector("#benefits");
-            if (!benefitsSection) return;
-
-            const leftCard = benefitsSection.querySelector(".slide-1");
-            if (!leftCard) return;
-
-            // Получаем все панели в правой колонке
-            const panels = gsap.utils.toArray(
-                ".benefits__right .benefits__item",
-            );
-
-            // Главный ScrollTrigger для фиксации левой карточки
-            // ScrollTrigger.create({
-            //     trigger: benefitsSection,
-            //     start: "top top",
-            //     end: "bottom bottom", // Фиксируем до конца секции
-            //     pin: leftCard,
-            //     pinSpacing: false, // Не добавляем отступов
-            //     anticipatePin: 1,
-            // });
-
-            // Для каждой панели (кроме последней) создаем свою анимацию
-            // panels.forEach((panel, i) => {
-            //     if (i < panels.length - 1) {
-            //         const nextPanel = panels[i + 1];
-            //
-            //         gsap.fromTo(
-            //             panel as any,
-            //             { scale: 1, y: 0 },
-            //             {
-            //                 scale: 0.9,
-            //                 y: -40,
-            //                 ease: "none",
-            //                 scrollTrigger: {
-            //                     trigger: nextPanel as any,
-            //                     start: "top bottom",
-            //                     end: "top top",
-            //                     scrub: 1,
-            //                     invalidateOnRefresh: true,
-            //                 },
-            //             },
-            //         );
-            //     }
-            // });
-        });
-
-        // Анимация счетчика (работает везде)
+        // Анимация счетчика 5000
         const counter = document.querySelector("#counter-5000");
         if (counter) {
             gsap.fromTo(
@@ -173,7 +131,7 @@ import { Image } from "astro:assets";
             );
         }
 
-        // Анимация счетчика 99,5% (работает везде)
+        // Анимация счетчика 99,5%
         const counter2 = document.querySelector("#counter-99-5");
         if (counter2) {
             const counter2Proxy = { val: 0 }; // Прокси-объект для анимации
