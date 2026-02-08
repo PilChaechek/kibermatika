@@ -1,27 +1,17 @@
 ---
-import {Image} from "astro:assets";
-import { getImage } from "astro:assets";
-
 import Badge from "../../assets/images/badges/cart.png";
-
-import img1 from "../../assets/images/slider/1.png";
-import img2 from "../../assets/images/slider/2.png";
-import img3 from "../../assets/images/slider/3.png";
-import img4 from "../../assets/images/slider/4.png";
 
 import icon1 from "../../assets/icons/lightning.svg?raw";
 import icon2 from "../../assets/icons/hammer.svg?raw";
 import icon3 from "../../assets/icons/heart.svg?raw";
 import icon4 from "../../assets/icons/star.svg?raw";
 
-
-const rawItems = [
+const items = [
     {
         slide: 1,
         title: 'Пацан сказал — <br> пацан сделал',
         text: 'Ответственность — это база. Начали что-то делать вместе — делаем это с гордо поднятой головой. Не обещаем золотых гор, и если пацан понял, что не может сделать, то пацан заблаговременно передоговорится.',
         link_text: '',
-        img: img1,
         icon: icon1
     },
     {
@@ -29,7 +19,6 @@ const rawItems = [
         title: 'Всё, что сложно —<br> ложно ',
         text: 'То, что сложно — не работает. Делаем понятно, общаемся откровенно и прямо. Спрашиваем, если не поняли, говорим о проблемах как есть, не пытаемся придумать «что имели ввиду».',
         link_text: '',
-        img: img2,
         icon: icon2
     },
     {
@@ -37,7 +26,6 @@ const rawItems = [
         title: 'Общее дело —<br> общий вайб',
         text: 'Хорошее настроение — очень важно. Ценим то настроение, которое получаем от взаимодействия и сами дарим классные эмоции.',
         link_text: '',
-        img: img3,
         icon: icon3
     },
     {
@@ -45,25 +33,10 @@ const rawItems = [
         title: 'Пока другие спорят, мы выпускаем',
         text: 'Фокус на помощь и результат. Не тратим внимание на поиск виноватых и споры «что надо было сделать». Расходуем энергию на улучшения и двигаемся к цели. ',
         link_text: '',
-        img: img4,
         icon: icon4
     },
 ];
 
-const items = await Promise.all(
-    rawItems.map(async (item) => {
-        const optimizedBg = await getImage({
-            src: item.img,
-            format: 'webp', // Конвертируем в WebP
-            quality: 90     // Качество, как ты хотел
-        });
-
-        return {
-            ...item,
-            bgUrl: optimizedBg.src // Сохраняем готовый URL
-        };
-    })
-);
 ---
 <section class="section slider section--v6" id="slider-1">
     <div class="container">
@@ -81,22 +54,20 @@ const items = await Promise.all(
             <h2 class="slider__title section__title">От принципов <br>к делу</h2>
             <p class="slider__text">Для нас важно не только выпускать <br> продукты, но и передавать через<br> них наши принципы и подход: к<br> бизнесу, работе и взаимодействию. </p>
         </div>
-        <div class="slider__items">
-            {items.map(item => (
-                    <div
-                            class={`slider__item slide slide-v2--${item.slide}`}
-                            style={`--slide-bg: url(${item.bgUrl});`}
-                    >
-                    <h3 class="slide__title" set:html={item.title} />
-                    <div class="slide__icon" set:html={item.icon}></div>
-                    <p class="slide__text">{item.text}</p>
-                </div>
-            ))}
-        </div>
     </div>
-</section>
-<style>
-    .slide-v2--1 {
+        <div class="swiper">
+            <div class="slider__items swiper-wrapper">
+                {items.map(item => (
+                        <div
+                                class={`slider__item swiper-slide slide slide-v2--${item.slide}`}
+                        >
+                            <h3 class="slide__title" set:html={item.title} />
+                            <div class="slide__icon" set:html={item.icon}></div>
+                            <p class="slide__text">{item.text}</p>
+                        </div>
+                ))}
+            </div>
+        </div>
 
-    }
-</style>
+
+</section>

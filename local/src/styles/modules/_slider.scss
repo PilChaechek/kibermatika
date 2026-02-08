@@ -3,6 +3,12 @@
 @include respond(2xl){}
 
 .slider {
+  .swiper {
+    max-width: 1920px;
+    @include respond(2xl){
+
+    }
+  }
   &__header {
     margin-bottom: 50px;
     @include respond(md){
@@ -70,11 +76,16 @@
   }
 
   &__items {
-    //display: flex;
-    //width: max-content;
+    display: flex;
     flex-wrap: nowrap;
+
+    @include respond(md) {
+      gap: 8px;
+      margin-left: 30px;
+    }
     @include respond(2xl) {
-      gap: 16px;
+      gap: 20px;
+      margin-left: 16px;
     }
   }
 
@@ -82,9 +93,13 @@
     min-height: 640px;
     @include respond(md){
       min-height: 350px;
+      &.swiper-slide {
+        margin: 0;
+      }
     }
     @include respond(2xl){
       min-height: 550px;
+      max-width: 90vw;
     }
   }
 
@@ -153,12 +168,13 @@
 }
 // Slide 1
 .slide-v2--1 {
+  --slide-bg: url("/images/slides/slider/1.webp");
   background-size: 94%, 100%;
   @include respond(md){
     background-size: 42%, 100%;
   }
   @include respond(2xl){
-    background-size: 40%, 100%;
+    background-size: 35%, 100%;
   }
 
   .slide__icon svg {
@@ -180,14 +196,16 @@
 }
 // Slide 2
 .slide-v2--2 {
+  --slide-bg: url("/images/slides/slider/2-1.webp");
   background-size: 100%, 100%;
   @include respond(md){
+    --slide-bg: url("/images/slides/slider/2.webp");
     background-size: 46%, 100%;
     //background-position: right -120px bottom 10px, center center;
   }
   @include respond(2xl){
     background-position: right bottom -98px, center center;
-    background-size: 55%, 100%;
+    background-size: 50%, 100%;
   }
 
   .slide__icon svg {
@@ -209,12 +227,14 @@
 }
 // Slide 3
 .slide-v2--3 {
+  --slide-bg: url("/images/slides/slider/3-1.webp");
   background-size: 100%, 100%;
   @include respond(md){
+    --slide-bg: url("/images/slides/slider/3.webp");
     background-size: 48%, 100%;
   }
   @include respond(2xl){
-    background-size: 700px, 100%;
+    background-size: 40%, 100%;
   }
   .slide__icon svg {
     width: 65px;
@@ -240,6 +260,7 @@
 }
 // Slide 4
 .slide-v2--4 {
+  --slide-bg: url("/images/slides/slider/4.webp");
   background-size: 120%, 100%;
   background-position: right -40px bottom, center center;
   @include respond(md){
@@ -247,7 +268,7 @@
     background-position: right bottom -40px, center center;
   }
   @include respond(2xl){
-    background-size: 56%, 100%;
+    background-size: 50%, 100%;
     background-position: right bottom -100px, center center;
   }
   .slide__title {

@@ -8,7 +8,7 @@ export default async function cultureSwiper() {
 	const initCultureSwiper = async () => {
 		const { default: Swiper } = await import('swiper');
 
-		const pathSwiper = new Swiper(container, {
+		const cultureSwiper = new Swiper(container, {
 			slidesPerView: 1.1,
 			spaceBetween: 12,
 			grabCursor: true,

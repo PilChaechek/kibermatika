@@ -10,6 +10,39 @@
 
 .btn {
   cursor: pointer;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1;
+  font-weight: 500;
+  padding: 0 24px;
+  height: 70px;
+  border-radius: 35px;
+  transition: background-color .2s ease;
+  &:hover {
+    background-color: var(--color-8);
+  }
+  @include respond(md){
+    font-size: toRem(24,16);
+
+    padding: 0 30px;
+  }
+  @include respond(2xl){
+    font-size: toRem(30,20);
+    height: 90px;
+    border-radius: 45px;
+    padding: 0 40px;
+  }
+  @include respond(3xl){
+    font-size: toRem(40,24);
+    height: 120px;
+    border-radius: 60px;
+  }
+}
+
+.btn--main {
+  background-color: var(--color-main);
+  color: #fff;
 }
 
 .btn-block {
