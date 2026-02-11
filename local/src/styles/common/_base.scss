@@ -145,8 +145,9 @@ body {
     }
   }
   &__text {
-    margin: 0;
     line-height: 1.2;
+    max-width: 860px;
+    margin: 0 auto;
   }
   &__badge {
     margin-bottom: 24px;

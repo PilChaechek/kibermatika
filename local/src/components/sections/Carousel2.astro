@@ -1,0 +1,160 @@
+---
+
+import Badge from "../../assets/images/badges/hand4.png";
+
+import img1 from "../../assets/images/carousel/values/1.png";
+import img2 from "../../assets/images/carousel/values/2.png";
+import img3 from "../../assets/images/carousel/values/3.png";
+import img4 from "../../assets/images/carousel/values/4.png";
+
+import {Image} from "astro:assets";
+
+const items = [
+    {
+        slide: '1',
+        title: 'будь продюсером,<br> а не передастом',
+        desc: 'Нам не нужны те, кто просто передает информацию. Работаем только с продюсерами — теми, кто отвечает за весь процесс: от критической оценки поступающей ему информации до результата своего труда.',
+        img: img1,
+    },
+    {
+        slide: '2',
+        title: 'цени свое<br> и наше время',
+        desc: 'Нам не нужны те, кто просто передает информацию. Работаем только с продюсерами — теми, кто отвечает за весь процесс: от критической оценки поступающей ему информации до результата своего труда.',
+        img: img2,
+    },
+    {
+        slide: '3',
+        title: 'делай в кайф',
+        desc: 'Нам не нужны те, кто просто передает информацию. Работаем только с продюсерами — теми, кто отвечает за весь процесс: от критической оценки поступающей ему информации до результата своего труда.',
+        img: img3,
+    },
+    {
+        slide: '4',
+        title: 'говори прямо,<br> реагируй быстро',
+        desc: 'Нам не нужны те, кто просто передает информацию. Работаем только с продюсерами — теми, кто отвечает за весь процесс: от критической оценки поступающей ему информации до результата своего труда.',
+        img: img4,
+    }
+];
+---
+
+<section class="carousel carousel--v2 section section--v4">
+    <div class="container container--full">
+        <div class="carousel__inner">
+            <div class="container">
+                <div class="section__header">
+                    <div class="section__badge">
+                        <div class="icon-badge icon-badge--v2">
+                            <div class="icon-badge__icon">
+                                <img src={Badge.src} class="img icon-badge__icon-src pulse" alt="" width="88" height="88">
+                            </div>
+                            <div class="icon-badge__text">что нам <br> действительно важно</div>
+                        </div>
+                    </div>
+
+                    <h2 class="section__title">Узнаем своих по ценностям, <br> а не по резюме</h2>
+                    <p class="section__text">Мы успели поработать в больших компаниях и решили <br> не тратить время на корпоративную чушь. Вот чего <br> мы ждем от партнерства прежде всего:</p>
+                </div>
+            </div>
+
+            <div class="swiper-perspective-wrap">
+                <div class="swiper js-3d-carousel-2">
+                    <div class="swiper-wrapper">
+                        {items.map(item => (
+                                <div class={`swiper-slide swiper-slide--${item.slide}`}>
+                                    <article class="card-2">
+                                        <div class="card-2__inner">
+                                            <div class="card-2__image-wrapper">
+                                                <Image
+                                                        src={item.img}
+                                                        alt={item.title}
+                                                        format="webp"
+                                                        quality={95}
+                                                        class="img card-2__img"
+                                                />
+                                            </div>
+                                            <div class="card-2__content">
+                                                <h3 class="card-2__title" set:html={item.title}></h3>
+                                                <p class="card-2__text">{item.desc}</p>
+                                            </div>
+
+                                        </div>
+                                    </article>
+                                </div>
+                        ))}
+                    </div>
+
+                    <div class="swiper-pagination swiper-pagination--custom"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+<script>
+    import Swiper from 'swiper';
+    import { Pagination, EffectCreative } from 'swiper/modules';
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const slider = new Swiper('.js-3d-carousel-2', {
+            modules: [Pagination, EffectCreative],
+            loop: true,
+            speed: 600,
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: 'auto',
+            slideToClickedSlide: true,
+            effect: 'creative',
+
+            creativeEffect: {
+                limitProgress: 2,
+                prev: {
+                    translate: ['-95%', '-15%', 0],
+                    rotate: [0, 0, 0],
+                    scale: 0.9,
+                },
+                next: {
+                    // [X, Y, Z]
+                    translate: ['95%', '-15%', 0],
+                    rotate: [0, 0, 0],
+                    scale: 0.9,
+                },
+                perspective: true,
+                shadowPerProgress: false,
+            },
+
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+
+            breakpoints: {
+                400: {
+
+                },
+                740: {
+                    slidesPerView: 'auto',
+                    creativeEffect: {
+                        limitProgress: 2,
+                        prev: {
+                            translate: ['-95%', '-15%', 0],
+                            rotate: [0, 0, 0],
+                            scale: 0.9,
+                        },
+                        next: {
+                            // [X, Y, Z]
+                            translate: ['95%', '-15%', 0],
+                            rotate: [0, 0, 0],
+                            scale: 0.9,
+                        },
+                        perspective: true,
+                        shadowPerProgress: false,
+                    },
+                },
+            }
+
+        });
+    });
+</script>
