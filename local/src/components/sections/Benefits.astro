@@ -1,6 +1,7 @@
 ---
 import iconDino from "../../assets/icons/dino.svg?raw";
 import Badge from "../../assets/images/badges/hand3.png";
+import slideImg3 from "../../assets/images/benefits/1.jpg";
 import { Image } from "astro:assets";
 ---
 
@@ -46,7 +47,7 @@ import { Image } from "astro:assets";
             </div>
             <div class="benefits__right">
                 <div class="benefits__item slide-2">
-                    <div class="slide-2__inner">
+                    <div class="benefits__item-inner slide-2__inner">
                         <div class="slide-2__header">
                             <div class="slide-2__value" id="counter-5000">
                                 5000
@@ -67,7 +68,7 @@ import { Image } from "astro:assets";
                 </div>
 
                 <div class="benefits__item slide-2 slide-2--v2">
-                    <div class="slide-2__inner">
+                    <div class="benefits__item-inner slide-2__inner">
                         <div class="slide-2__header">
                             <div class="slide-2__value" id="counter-99-5">
                                 99,5%
@@ -90,7 +91,31 @@ import { Image } from "astro:assets";
                 </div>
 
                 <div class="benefits__item slide-3">
-                    <img class="img" src="/images/slides/pavel.webp" alt="" />
+                    <div class="benefits__item-inner">
+                        <Image
+                                src={slideImg3}
+                                alt=""
+                                format="webp"
+                                quality={90}
+                                class="img slide-3__img"
+                        />
+                    </div>
+                    <div class="slide-3__badge slide-badge">
+                        <div class="slide-badge__icon">
+                            <svg width="32" height="36" viewBox="0 0 32 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M31.4848 19.5448L23.0785 13.2846C22.5205 12.902 21.9977 12.7077 21.514 12.6944C20.9056 12.6777 20.3751 12.8981 19.9152 13.3518C19.4552 13.8054 19.2189 14.3974 19.1988 15.1275L18.8791 26.7508C18.8646 27.2791 19.0356 27.7281 19.3883 28.105C19.7411 28.4819 20.1832 28.6739 20.711 28.6885L31.2253 28.9776L31.0413 35.6698L11.9549 35.1449L12.5106 14.9399C12.5307 14.2098 12.3236 13.6056 11.893 13.1274C11.4587 12.6492 10.9191 12.3994 10.2704 12.3815C9.74268 12.367 9.21356 12.536 8.67584 12.8848L0.000440343 18.6751L0.197925 11.495L16.27 0.000220472L31.686 12.361L31.4885 19.5412L31.4848 19.5448Z" fill="#11164E" />
+                                <path d="M31.4848 19.5448L23.0785 13.2846C22.5205 12.902 21.9977 12.7077 21.514 12.6944C20.9056 12.6777 20.3751 12.8981 19.9152 13.3518C19.4552 13.8054 19.2189 14.3974 19.1988 15.1275L18.8791 26.7508C18.8646 27.2791 19.0356 27.7281 19.3883 28.105C19.7411 28.4819 20.1832 28.6739 20.711 28.6885L31.2253 28.9776L31.0413 35.6698L11.9549 35.1449L12.5106 14.9399C12.5307 14.2098 12.3236 13.6056 11.893 13.1274C11.4587 12.6492 10.9191 12.3994 10.2704 12.3815C9.74268 12.367 9.21356 12.536 8.67584 12.8848L0.000440343 18.6751L0.197925 11.495L16.27 0.000220472L31.686 12.361L31.4885 19.5412L31.4848 19.5448Z" fill="url(#paint0_linear_3455_630)" />
+                                <defs>
+                                    <linearGradient id="paint0_linear_3455_630" x1="32.5134" y1="36.8357" x2="0.144511" y2="13.4369" gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="#C6C9EC" />
+                                        <stop offset="0.543315" stop-color="#EED2EC" />
+                                        <stop offset="1" stop-color="#D9DBF2" />
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                        <div class="slide-badge__text">А это - Павел, довольный руководитель клиентского отдела</div>
+                    </div>
                 </div>
             </div>
         </div>

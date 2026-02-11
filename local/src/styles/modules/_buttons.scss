@@ -19,6 +19,8 @@
   height: 70px;
   border-radius: 35px;
   transition: background-color .2s ease;
+  text-decoration: none;
+  color: inherit;
   &:hover {
     background-color: var(--color-8);
   }
@@ -43,6 +45,39 @@
 .btn--main {
   background-color: var(--color-main);
   color: #fff;
+}
+
+.btn--v2 {
+  height: 48px;
+  font-size: toRem(16,16);
+  border-radius: 24px;
+  gap: 6px;
+  @include respond(md){
+    height: 56px;
+    border-radius: 28px;
+    font-size: toRem(18,20);
+  }
+  @include respond(2xl){
+    font-size: toRem(24,20);
+    height: 68px;
+    border-radius: 34px;
+  }
+  &:after {
+    content: '';
+    background-image: url("/images/slides/arrow-left.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 10px;
+    height: 18px;
+    @include respond(md){
+      width: 9px;
+      height: 16px;
+    }
+    @include respond(2xl){
+      width: 11px;
+      height: 20px;
+    }
+  }
 }
 
 .btn-block {

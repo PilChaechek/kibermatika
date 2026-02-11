@@ -1,118 +1,252 @@
 @use '../mixins/breakpoints' as *;
 
-.section {
-  padding: 32px 0;
-  @include respond(2xl) {
-    padding: 64px 0;
-  }
-
-  &__header {
-    text-align: center;
-    margin-bottom: 40px;
-  }
-  &__title {
-    font-weight: 500;
-    margin: 0;
-    line-height: 1;
-    font-size: toRem(34, 16);
-    @include respond(md) {
-      font-size: toRem(40, 16);
-    }
-    @include respond(2xl) {
-      font-size: toRem(56, 20);
-      //margin: 0 0 2.2rem 0;
-      margin: 0 0 1rem 0;
-    }
-    @include respond(3xl) {
-      font-size: toRem(72, 24);
-    }
-  }
-  &__text {
-    margin: 0;
-    line-height: 1.2;
-  }
-  &__badge {
-    margin-bottom: 24px;
-  }
-}
-
-.section--v1 {
-  background: #f7f8fd;
-}
-
-.section--v2 {
-  background: #f7f8fd;
-}
-
-.section--v3 {
-  background: linear-gradient(180deg, var(--color-3) 0%, #f0f2ff 25%, #fff 75%, #fff 100%);
-  @include respond(md){
-    background: linear-gradient(180deg, var(--color-3) 0%, #f0f2ff 25%, #ebedf9 75%, #fff 100%);
-  }
-}
-
-.section--v4 {
-  background: linear-gradient(180deg, #fff 0%, #f7f8fd 25%, #f0f2ff 75%, #ebedf9 78.1%, #f7f8fd 100%);
-}
-
-.section--v5 {
-  background: linear-gradient(180deg, #fff 0%, #cbd6ff 96.63%);
-}
-
-.section--v6 {
-  background: #fff;
-}
-
-.section--v7 {
-  background: var(--color-3);
-}
-
-.section--v8 {
-  background: linear-gradient(180deg, #f7f8fd 0%, #f7f8fd 25%, #ebedf9 75%, #fff 100%);
-}
-
-
 
 .carousel {
-  display: none;
-  &__header {
-    text-align: center;
+  overflow: hidden;
+  padding: 40px 0;
+
+  .section__header {
+    margin-bottom: 0;
   }
-  &__items {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+
+  .section__title {
+    margin-bottom: 24px;
+    @include respond(2xl){
+      margin-bottom: 48px;
+    }
   }
+
+  .section__text {
+    br {
+      display: none;
+      @include respond(md){
+        display: block;
+      }
+    }
+  }
+
+  &__inner {
+    width: 100%;
+    position: relative;
+
+    @include respond(md){
+      mask-image: linear-gradient(
+                      to right,
+                      transparent 0%,
+                      black 10%,
+                      black 90%,
+                      transparent 100%
+      );
+    }
+  }
+
+  .swiper-slide {
+    height: auto;
+    will-change: transform, opacity, filter;
+    width: 94%;
+
+    @include respond(xs){
+      width: 320px;
+    }
+
+    @include respond(md) {
+      width: 540px;
+    }
+    @include respond(2xl) {
+      width: 100%;
+      max-width: 820px;
+    }
+  }
+
+  .swiper-pagination {
+    margin-top: 20px;
+    @include respond(md){
+      margin-top: 40px;
+    }
+    @include respond(2xl){
+      margin-top: 80px;
+    }
+  }
+  
+  .swiper-pagination-bullet {
+    background-color: #fff;
+  }
+
 }
 
 .card-2 {
-  border-radius: 44px;
+  transition: all 0.4s ease;
+  transform: scale(0.9);
+  filter: blur(5px);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
   &__inner {
-    background-color: #fff;
-    border-radius: 44px;
-    padding: 96px;
     text-align: center;
+    position: relative;
+    padding-top: 40px;
+    @include respond(md) {
+      padding: 40px 0 0 0;
+    }
+    @include respond(2xl) {
+      padding: 60px 0 0 0;
+    }
   }
+
+  &__image-wrapper {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: 2;
+    margin-bottom: -70px;
+
+    @include respond(md){
+      margin-bottom: -124px;
+    }
+    @include respond(2xl){
+      margin-bottom: -140px;
+    }
+
+    .img {
+      width: auto;
+      max-height: 170px;
+      @include respond(md){
+        max-height: 270px;
+      }
+      @include respond(2xl){
+        max-height: 400px;
+      }
+    }
+  }
+
+  &__content {
+
+    transition: all .2s;
+    position: relative;
+    z-index: 1;
+    background-color: #fff;
+    border-radius: 16px;
+    padding: 84px 16px 32px 16px;
+    @include respond(md){
+      opacity: 0;
+      padding: 148px 20px 20px 20px;
+      border-radius: 24px;
+    }
+    @include respond(2xl){
+      padding: 170px 46px 46px 46px;
+      border-radius: 44px;
+      min-height: 472px;
+    }
+  }
+
   &__title {
     font-weight: 500;
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+
     @include respond(2xl) {
       font-size: 2rem;
       margin-bottom: 1rem;
     }
   }
+
   &__sub-title {
+    margin-bottom: .5rem;
+    font-size: 1rem;
+
     @include respond(2xl) {
-      font-size: 1.2rem;
-      margin-bottom: .5rem;
+      font-size: toRem(24,20);
     }
   }
+
   &__text {
     line-height: 1.2;
     color: var(--font-color-text);
   }
-  &__image {
-    .img {
-      margin-top: -50%;
+
+  &__footer {
+    opacity: 0;
+  }
+
+  &__btn {
+    position: relative;
+    z-index: 1;
+    margin-top: -50%;
+    @include respond(md){
+
     }
+    @include respond(2xl){
+
+    }
+  }
+
+}
+
+.swiper-slide-active {
+  z-index: 10;
+
+  .card-2 {
+    //opacity: 1;
+    filter: blur(0);
+    transform: scale(1);
+  }
+  .card-2__content {
+    opacity: 1;
+  }
+  .card-2__footer {
+    opacity: 1;
+  }
+}
+
+.swiper-slide--1 {
+  .card-2__btn {
+    background: linear-gradient(180deg, #e4f5fc 0%, #fff7df 100%),#d5ddfe;
+  }
+}
+.swiper-slide--2 {
+  .card-2__btn {
+    background: linear-gradient(151deg, rgba(122, 205, 255, 0.5) 0%, rgba(199, 125, 244, 0.5) 51.73%, rgba(243, 52, 195, 0.5) 93.26%),#d5ddfe;
+  }
+}
+.swiper-slide--3 {
+  .card-2__btn {
+    background: linear-gradient(150deg, rgba(52, 245, 31, 0.5) 6.74%, rgba(71, 238, 160, 0.5) 100%), #fff;
+  }
+}
+.swiper-slide--4 {
+  .card-2__btn {
+    background: linear-gradient(151deg, rgba(40, 200, 64, 0.5) 0%, rgba(254, 188, 48, 0.5) 100%),#fff;
+  }
+}
+
+.swiper-pagination--custom {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  @include respond(md){
+    gap: 12px;
+  }
+  .swiper-pagination-bullet {
+    opacity: 1;
+    width: 40px;
+    height: 10px;
+    border-radius: 5px;
+    @include respond(md){
+      width: 68px;
+      height: 14px;
+      border-radius: 7px;
+    }
+
+    @include respond(2xl){
+      width: 112px;
+      height: 24px;
+      border-radius: 12px;
+    }
+  }
+
+  .swiper-pagination-bullet-active {
+    background-color: var(--color-main);
   }
 }

@@ -3,10 +3,13 @@
 .benefits {
   &__items {
     display: grid;
-    align-items: flex-start; // Выравниваем колонки по верху
+    align-items: flex-start;
+    max-width: 500px;
+    margin: auto;
     @include respond(md){
       grid-template-columns: 1fr 1fr;
       gap: 10px;
+      max-width: 100%;
     }
     @include respond(2xl){
       gap: 20px;
@@ -14,24 +17,31 @@
   }
 
   &__item {
-    background-color: #fff;
-    box-shadow: var(--card-box-shadow);
-    border-radius: 32px;
+
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    overflow: hidden;
-    padding: 42px 12px;
+
+
+
+  }
+
+  &__item-inner {
+    background-color: #fff;
+    box-shadow: var(--card-box-shadow);
+    border-radius: 32px;
     aspect-ratio: 1 / 1;
+    overflow: hidden;
+    padding: 42px 12px 0 12px;
     @include respond(xs){
-      aspect-ratio: 524/330;
+      //aspect-ratio: 524/330;
     }
     @include respond(md){
-      padding: 2rem 1rem;
+      padding: 2rem 1rem 0 1rem;
       aspect-ratio: 1/1;
     }
     @include respond(2xl){
-      padding: 3rem;
+      padding: 3rem 3rem 0 3rem;
     }
   }
 
@@ -59,8 +69,6 @@
     }
   }
 }
-
-
 
 .benefits__right {
   // Добавляем небольшой отступ между карточками, когда они еще не "прилипли"
@@ -300,5 +308,75 @@
 }
 
 .slide-3 {
-  padding: 0;
+  position: relative;
+  align-items: center;
+  .benefits__item-inner {
+    padding: 0;
+  }
+
+  &__badge {
+    transform: rotate(2deg);
+    margin-top: 12px;
+    @include respond(md){
+      position: absolute;
+      bottom: 24%;
+      left: 50%;
+      z-index: 1;
+      transform: translateX(-50%) rotate(2deg);
+    }
+  }
+
+  &__img {
+    height: auto;
+  }
+}
+
+.slide-badge {
+  background: linear-gradient(16deg, #fff 0%, #efe 25%, #edeef9 50%, #ffecfd 75%, #fff 99.04%), #fff;
+  display: grid;
+  align-items: center;
+  width: 280px;
+  border-radius: 12px;
+  grid-template-columns: 64px auto;
+  box-shadow: var(--card-box-shadow);
+  @include respond(md){
+    grid-template-columns: 54px auto;
+  }
+  @include respond(2xl){
+    grid-template-columns: 104px auto;
+    border-radius: 18px;
+    width: 450px;
+  }
+  @include respond(3xl){}
+
+  &__icon {
+    display: flex;
+    justify-content: center;
+    svg {
+      width: 20px;
+      height: 22px;
+      @include respond(md){
+        width: 22px;
+        height: 26px;
+      }
+      @include respond(2xl){
+        width: 32px;
+        height: 36px;
+      }
+    }
+  }
+
+  &__text {
+    line-height: 1.1;
+    padding: 10px 16px 10px 0;
+    font-size: toRem(14,16);
+    @include respond(md){
+      padding: 12px 24px 12px 0;
+      font-size: toRem(16,16);
+    }
+    @include respond(2xl){
+      font-size: toRem(24,20);
+      padding: 16px 24px 16px 0;
+    }
+  }
 }
