@@ -1,0 +1,289 @@
+@use '../../mixins/breakpoints' as *;
+
+.hero-2 {
+  &__title {
+    font-size: toRem(38,16);
+    font-weight: 500;
+    margin-bottom: 40px;
+    @include respond(md){
+      font-size: toRem(50,16);
+      margin-bottom: 24px;
+    }
+    @include respond(2xl){
+      font-size: toRem(74,20);
+      margin-bottom: 74px;
+    }
+    @include respond(3xl){
+      font-size: toRem(98,24);
+    }
+  }
+  &__content {
+    padding-bottom: 100px;
+    position: relative;
+    @include respond(md){
+      display: grid;
+      grid-template-columns: 1fr minmax(0, 380px);
+      align-items: center;
+      gap: 80px;
+      padding-bottom: 0;
+    }
+    @include respond(2xl){
+
+      grid-template-columns: 465px minmax(0, 684px);
+      justify-content: space-between;
+    }
+  }
+  &__content-left {
+
+  }
+  &__text {
+    color: var(--font-color-text);
+    font-size: toRem(16,16);
+    line-height: 1.2;
+    @include respond(md){
+      margin-bottom: 12px;
+    }
+    @include respond(2xl){
+      font-size: toRem(24,20);
+      margin-bottom: 28px;
+    }
+    @include respond(3xl){
+      font-size: toRem(28,24);
+    }
+  }
+  &__icon {
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    @include respond(md){
+      position: static;
+    }
+
+    svg {
+      height: auto;
+      width: 82px;
+      @include respond(md){
+        width: 38px;
+      }
+      @include respond(2xl){
+        width: 72px;
+      }
+      @include respond(3xl){
+        width: 96px;
+      }
+    }
+  }
+  &__radio {
+    margin: 40px 0 20px 0;
+    @include respond(md){
+      margin: 0;
+    }
+  }
+  &.section {
+    padding-top: 8.3rem;
+    @include respond(2xl){
+      padding-top: 6rem;
+    }
+  }
+}
+
+.title-item {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+  gap: 12px;
+
+  @include respond(md){
+    display: flex;
+  }
+  @include respond(2xl){
+    display: inline-flex;
+  }
+  @include respond(3xl){
+
+  }
+
+  .img {
+    height: auto;
+    width: 42px;
+    @include respond(md){
+      width: 60px;
+    }
+    @include respond(2xl){
+      width: 90px;
+    }
+    @include respond(3xl){
+      width: 120px;
+    }
+  }
+}
+
+.title-item-2 {
+  display: inline-flex;
+  position: relative;
+  background: linear-gradient(90deg, #ff00f1 0%, #ff60f6 13.47%, #ffcefc 75.49%, #ffaefb 100%);
+
+  border-radius: 24px;
+  padding: 0 54px 0 12px;
+  margin: 12px 0;
+
+  @include respond(md){
+    border-radius: 50px;
+    padding: 0 86px 0 12px;
+
+  }
+  @include respond(2xl){
+    padding: 0 132px 0 32px;
+  }
+  @include respond(3xl){
+
+  }
+
+  &__img {
+    height: auto;
+    position: absolute;
+    right: 8px;
+    bottom: 0;
+    width: 40px;
+    @include respond(md){
+      width: 60px;
+      right: 12px;
+    }
+    @include respond(2xl){
+      width: 100px;
+      border-radius: 0 0 24px 0;
+      right: 20px;
+    }
+  }
+}
+
+.title-item-3 {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+  gap: 12px;
+  .img {
+    height: auto;
+    width: 64px;
+    @include respond(md){
+      width: 80px;
+    }
+    @include respond(2xl){
+      width: 124px;
+    }
+    @include respond(3xl){
+      width: 144px;
+    }
+  }
+}
+
+.radio-lines {
+  &__item {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 12px;
+    align-items: center;
+    height: 46px;
+    border-radius: 12px;
+    padding: 0 18px;
+    font-size: toRem(18,16);
+    background-color: #fff;
+    box-shadow: 0 4px 67px 0 rgba(17, 22, 78, 0.11);
+    max-width: 390px;
+    @include respond(md){
+      height: 52px;
+      border-radius: 12px;
+      padding: 0 18px;
+      gap: 18px;
+      max-width: 100%;
+    }
+    @include respond(2xl){
+      height: 96px;
+      border-radius: 24px;
+      padding: 0 40px;
+      font-size: toRem(28,20);
+      gap: 40px;
+    }
+    @include respond(3xl){
+      height: 128px;
+      border-radius: 32px;
+      padding: 0 18px;
+    }
+    &:nth-child(1){
+      transform: rotate(-2deg);
+    }
+    &:nth-child(2){
+      transform: rotate(1deg);
+      margin-left: -12px;
+      @include respond(md){
+        margin-left: -24px;
+      }
+    }
+    &:nth-child(3){
+      transform: rotate(-2deg);
+    }
+  }
+  &__slider {
+    height: 12px;
+    @include respond(md){
+
+    }
+    @include respond(2xl){
+      height: 24px;
+    }
+    @include respond(3xl){
+      height: 24px;
+    }
+  }
+  &__track {
+    height: 100%;
+    position: relative;
+  }
+  &__track-inner {
+    height: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #f0f0f5;
+  }
+  &__handle {
+    width: 30px;
+    height: 30px;
+    background: url("/images/slides/hero2/button.png");
+    background-size: cover;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    @include respond(md){
+      width: 32px;
+      height: 32px;
+    }
+    @include respond(2xl){
+      width: 62px;
+      height: 62px;
+    }
+    @include respond(3xl){
+      width: 82px;
+      height: 82px;
+    }
+  }
+  &__progress {
+    height: 100%;
+  }
+  &__progress--color-1{
+    background: linear-gradient(90deg, rgba(0, 247, 0, 0.22) 0%, rgba(0, 247, 0, 0.55) 100%);
+  }
+  &__progress--color-2 {
+    background: linear-gradient(94deg, rgba(255, 0, 241, 0.11) 0%, rgba(255, 0, 241, 0.55) 100%);
+  }
+  &__progress--color-3 {
+    background: linear-gradient(
+      90deg,
+      #ff5ce4 0%,
+      #a644ff 55%,
+      #ffc7fa 100%
+    );
+  }
+}

@@ -1,0 +1,97 @@
+---
+import icon from "../../../assets/icons/unicorn.svg?raw";
+import img1 from "../../../assets/images/hero2/logo.png";
+import img2 from "../../../assets/images/hero2/2.png";
+import img3 from "../../../assets/images/hero2/3.png";
+import { Image } from "astro:assets";
+const radioLines = [
+    { label: "Серьезность", progress: "25%", color: "color-1" },
+    { label: "Системность", progress: "75%", color: "color-2" },
+    { label: "Антикорпоративность", progress: "95%", color: "color-3" },
+];
+---
+
+<div class="hero-2 section section--v3">
+    <div class="container">
+        <div class="hero-2__header">
+            <h1 class="hero-2__title">
+                <span class="title-item">
+                    <span class="title-item__text">Киберматика</span>
+                    <Image
+                        src={img1}
+                        alt=""
+                        format="webp"
+                        width={119}
+                        height={114}
+                        quality={95}
+                        class="img title-item__img"
+                    />
+                </span>
+                <span>—</span>
+                <span class="title-item-2">
+                    <span class="title-item-2__text">не компания,</span>
+                    <Image
+                        src={img2}
+                        alt=""
+                        format="webp"
+                        width={172}
+                        height={221}
+                        quality={95}
+                        class="img title-item-2__img"
+                    />
+                </span>
+                <span class="title-item-3">
+                    <span class="title-item-3__text">а образ</span>
+                    <Image
+                        src={img3}
+                        alt=""
+                        format="webp"
+                        width={200}
+                        height={125}
+                        quality={95}
+                        class="img title-item-3__img"
+                    />
+                </span>
+
+                <span>мышления</span>
+            </h1>
+        </div>
+
+        <div class="hero-2__content">
+            <div class="hero-2__content-left">
+                <p class="hero-2__text">
+                    Не серьезные, не бирюзовые, антикорпоративные. Взрослые люди,
+                    которые отказались от корпоративной чепухи, чтобы исполнять свои
+                    идеи, развивать навыки и создавать каждый день по-настоящему
+                    важное.
+                </p>
+                <div class="hero-2__icon" set:html={icon} />
+            </div>
+            <div class="hero-2__radio radio-lines">
+                {
+                    radioLines.map((item) => (
+                        <div class="radio-lines__item">
+                            <span class="radio-lines__label">{item.label}</span>
+                            <div class="radio-lines__slider">
+                                <div class="radio-lines__track">
+                                    <div class="radio-lines__track-inner">
+                                        <div
+                                            class={`radio-lines__progress radio-lines__progress--${item.color}`}
+                                            style={`width: ${item.progress}`}
+                                        />
+                                    </div>
+                                    <div
+                                        class="radio-lines__handle"
+                                        style={`left: ${item.progress}`}
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+
+
+    </div>
+</div>
