@@ -1,6 +1,32 @@
 @use '../../mixins/breakpoints' as *;
 
 .hero-2 {
+  &:before {
+
+    @include respond(md){
+      width: 400px;
+
+      content: '';
+      display: block;
+      position: absolute;
+      background-image: url("/images/slides/hero2/bg.webp");
+      background-size: cover;
+      right: 0;
+      top: 80px;
+      aspect-ratio: 866/997;
+    }
+    @include respond(2xl){
+      width: 700px;
+
+    }
+    @include respond(3xl){
+      width: 900px;
+    }
+  }
+  &__inner {
+    position: relative;
+    z-index: 10;
+  }
   &__title {
     font-size: toRem(38,16);
     font-weight: 500;

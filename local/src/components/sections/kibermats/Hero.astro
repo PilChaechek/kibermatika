@@ -12,7 +12,7 @@ const radioLines = [
 ---
 
 <div class="hero-2 section section--v3">
-    <div class="container">
+    <div class="container hero-2__inner">
         <div class="hero-2__header">
             <h1 class="hero-2__title">
                 <span class="title-item">
@@ -52,7 +52,6 @@ const radioLines = [
                         class="img title-item-3__img"
                     />
                 </span>
-
                 <span>мышления</span>
             </h1>
         </div>
@@ -91,7 +90,29 @@ const radioLines = [
                 }
             </div>
         </div>
-
-
     </div>
 </div>
+
+<script>
+    import { gsap } from "gsap";
+
+    const tl = gsap.timeline({
+        defaults: {
+            duration: 1.5,
+            ease: "power2.out",
+        },
+    });
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const progressBars = document.querySelectorAll(".radio-lines__progress");
+        const handles = document.querySelectorAll(".radio-lines__handle");
+
+        progressBars.forEach((bar) => {
+            tl.fromTo(bar, { width: "0%" }, { width: bar.style.width }, 0);
+        });
+
+        handles.forEach((handle) => {
+            tl.fromTo(handle, { left: "0%" }, { left: handle.style.left }, 0);
+        });
+    });
+</script>
