@@ -1,2 +1,106 @@
 ---
+
+import img4 from "../../../assets/images/evolution/4.png";
+import img3 from "../../../assets/images/evolution/3.png";
+import img2 from "../../../assets/images/evolution/2.png";
+import img1 from "../../../assets/images/evolution/1.png";
+import {Image} from "astro:assets";
+
+const items = [
+    {
+        year: '2016',
+        text: 'Специализируемся на SEO. Автоматизируем все процессы маркетинга',
+        img: img4,
+    },
+    {
+        year: '2020',
+        text: 'Разрабатываем самый большой лидген в России',
+        img: img3,
+    },
+    {
+        year: '2024',
+        text: 'Автоматизируем SEO-процессы, запускаем продукт Magic',
+        img: img2,
+    },
+    {
+        year: '2025',
+        text: 'За год запускаем 5 новых продуктов, кратно растем в показателях',
+        img: img1,
+    }
+];
 ---
+<section class="section evolution">
+    <div class="container">
+        <div class="evolution__inner">
+            <div class="evolution__header">
+                <div>
+                    <div class="">Наша история</div>
+                </div>
+                <h2 class="section__title">Эволюция в Киберматику</h2>
+            </div>
+            <div class="evolution__content">
+                <div class="evolution-cards swiper" id="evolution-cards">
+                    <div class="evolution-cards__items swiper-wrapper">
+                        {items.map(item => (
+                            <div class="evolution-card swiper-slide">
+                                <div class="evolution-card__year">{item.year}</div>
+                                <div class="evolution-card__text">{item.text}</div>
+                                <div class="evolution-card__image">
+                                    <Image
+                                        src={item.img}
+                                        alt=""
+                                        format="webp"
+                                        quality={95}
+                                        class="img evolution-card__img"
+                                    />
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    import Swiper from "swiper";
+    import "swiper/css";
+
+    let evolutionSwiper = null;
+
+    const container = document.getElementById('evolution-cards');
+    if (container) {
+        const breakpoint = window.matchMedia('(max-width: 739px)');
+
+        const handleResize = () => {
+            if (breakpoint.matches) {
+                if (evolutionSwiper) return;
+                initSwiper();
+            } else {
+                if (evolutionSwiper) {
+                    evolutionSwiper.destroy(true, true);
+                    evolutionSwiper = null;
+                }
+            }
+        };
+
+        const initSwiper = () => {
+            evolutionSwiper = new Swiper(container, {
+                slidesPerView: 1,
+                spaceBetween: 8,
+                grabCursor: true,
+                slidesOffsetBefore: 12,
+                slidesOffsetAfter: 12,
+                breakpoints: {
+                    740:{
+                        enabled: false,
+                    }
+                }
+            });
+        };
+
+        breakpoint.addEventListener('change', handleResize);
+        handleResize();
+    }
+</script>

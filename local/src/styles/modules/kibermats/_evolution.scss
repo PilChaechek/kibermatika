@@ -1,0 +1,138 @@
+@use '../../mixins/breakpoints' as *;
+
+.evolution {
+  padding-bottom: 0;
+  &__header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  &__inner {
+
+  }
+}
+
+.evolution-cards {
+  overflow: hidden;
+  @include respond(md){
+    background: linear-gradient(360deg, #e2e6f5 0%, #fff 100%), #fff;
+  }
+  @include respond(2xl){
+    border-radius: 44px;
+  }
+  @include respond(3xl){
+
+  }
+  &__items {
+    @include respond(md){
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+    @include respond(2xl){
+      padding: 2rem 2rem 0 2rem;
+      gap: 8px;
+    }
+    @include respond(3xl){
+
+    }
+    &.swiper-wrapper {
+      @include respond(md){
+        display: grid;
+        box-sizing: border-box;
+      }
+    }
+  }
+  .swiper-slide {
+    display: flex;
+    @include respond(md){
+
+    }
+  }
+}
+
+.evolution-card {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 440px;
+  background: #e2e6f5;
+
+  @include respond(md){
+    background: none;
+    min-height: auto;
+  }
+
+  &__year {
+    font-size: toRem(38,16);
+    font-weight: 500;
+    color: var(--font-color-accent);
+    @include respond(md){
+      font-size: toRem(32,20);
+    }
+    @include respond(2xl){
+      font-size: toRem(54,20);
+    }
+    @include respond(3xl){
+      font-size: toRem(72,24);
+    }
+  }
+  &__text {
+    color: var(--font-color-text);
+    margin-bottom: 12px;
+    @include respond(2xl){
+      margin-bottom: 24px;
+
+    }
+  }
+  &__image {
+    margin-top: auto;
+    display: flex;
+    justify-content: center;
+  }
+  &__img {
+    height: auto;
+  }
+  &:nth-child(1){
+    .evolution-card__img {
+      width: 164px;
+      @include respond(md){
+        width: 92px;
+      }
+      @include respond(2xl){
+        width: 180px;
+      }
+    }
+  }
+  &:nth-child(2){
+    .evolution-card__img {
+      width: 180px;
+      @include respond(md){
+        width: 96px;
+      }
+      @include respond(2xl){
+        width: 186px;
+      }
+    }
+  }
+  &:nth-child(3){
+    .evolution-card__img {
+      width: 182px;
+      @include respond(md){
+        width: 104px;
+      }
+      @include respond(2xl){
+        width: 198px;
+      }
+    }
+  }
+  &:nth-child(4){
+    .evolution-card__img {
+      width: 202px;
+      @include respond(md){
+        width: 128px;
+      }
+      @include respond(2xl){
+        width: 246px;
+      }
+    }
+  }
+}

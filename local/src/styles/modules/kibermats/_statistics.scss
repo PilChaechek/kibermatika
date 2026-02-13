@@ -1,0 +1,61 @@
+@use '../../mixins/breakpoints' as *;
+@include respond(md){
+
+}
+@include respond(2xl){
+
+}
+@include respond(3xl){
+
+}
+.statistics {
+  background: url("/images/slides/statistics/unicorn.webp");
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  background-size: contain;
+
+  padding: 64px 0;
+  @include respond(md){
+    background-position: right top;
+  }
+  @include respond(2xl) {
+    padding: 128px 0;
+  }
+  &__items {
+    @include respond(md){
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+  &__item {
+    text-align: center;
+  }
+  &__item-value {
+    font-size: toRem(70,16);
+    color: var(--font-color-accent);
+    @include respond(md){
+      font-size: toRem(56,20);
+    }
+    @include respond(2xl){
+      font-size: toRem(82,20);
+    }
+    @include respond(3xl){
+      font-size: toRem(110,24);
+    }
+  }
+  &__item-text {
+    font-size: toRem(20,20);
+    @include respond(md){
+
+    }
+    @include respond(2xl){
+      font-size: toRem(28,20);
+    }
+    @include respond(3xl){
+      font-size: toRem(36,24);
+    }
+  }
+  .section__text {
+    color: var(--font-color-text);
+  }
+}

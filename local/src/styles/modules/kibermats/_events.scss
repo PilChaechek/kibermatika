@@ -1,13 +1,5 @@
 @use '../../mixins/breakpoints' as *;
-@include respond(md){
 
-}
-@include respond(2xl){
-
-}
-@include respond(3xl){
-
-}
 .events {
   &__items {
     display: flex;
@@ -55,7 +47,7 @@
     align-items: start;
     background-color: rgba(0,0,0, 0.2);
     position: relative;
-    padding: 12px 24px;
+    padding: 24px 24px 132px 24px;
 
     @include respond(md){
       padding: 12px 24px;
@@ -102,5 +94,55 @@
   }
   &__text {
     color: #fff;
+  }
+}
+
+.event-card {
+
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  border-radius: 24px;
+  overflow: hidden;
+
+  /* --- НАСТРОЙКИ --- */
+  --cut-w: 24px;      /* Ширина твоего SVG */
+  --cut-h: 48px;      /* Высота твоего SVG */
+  --bottom-pos: 80px; /* Высота нижней панели/кнопки */
+
+  /* --- MASK DEFINITION --- */
+  mask-image:
+          /* 1. Сплошная заливка (Основа) */
+          linear-gradient(#000 0 0),
+
+            /* 2. ПРАВЫЙ вырез (Твой SVG) */
+          url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 48'%3E%3Cpath d='M24,0v48c0-13.25-10.74-24-24-24,13.26,0,24-10.74,24-24Z' fill='black'/%3E%3C/svg%3E"),
+
+            /* 3. ЛЕВЫЙ вырез (Твой SVG, отзеркаленный кодом) */
+          url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 48'%3E%3Cg transform='scale(-1, 1) translate(-24, 0)'%3E%3Cpath d='M24,0v48c0-13.25-10.74-24-24-24,13.26,0,24-10.74,24-24Z' fill='black'/%3E%3C/g%3E%3C/svg%3E");
+
+  /* --- MASK POSITION (Сдвиг -1px убирает линии) --- */
+  mask-position:
+          0 0, /* Заливка */
+
+            /* Правый: сдвигаем на 1px вправо (-1px от края) */
+          right -1px bottom var(--bottom-pos),
+
+            /* Левый: сдвигаем на 1px влево (-1px от края) */
+          left 0 bottom var(--bottom-pos);
+
+  /* --- MASK SIZE --- */
+  mask-size:
+          100% 100%,
+          var(--cut-w) var(--cut-h),
+          var(--cut-w) var(--cut-h);
+
+  mask-repeat: no-repeat;
+
+  /* --- COMPOSITE (Вычитание) --- */
+  mask-composite: exclude;
+  -webkit-mask-composite: xor; /* Chrome/Safari */
+  @include respond(md){
+    mask: none;
   }
 }

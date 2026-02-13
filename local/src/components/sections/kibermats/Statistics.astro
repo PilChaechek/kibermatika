@@ -1,2 +1,47 @@
 ---
+const stats = [
+    {
+        value: "200+",
+        label: "людей с горящими <br> глазами",
+    },
+    {
+        value: "1000 и 1",
+        label: "протестированная <br> гипотеза за год",
+    },
+    {
+        value: "~ЯРД",
+        label: "годовой <br> оборот",
+    },
+];
 ---
+
+<section class="section statistics">
+    <div class="container">
+        <div class="statistics__inner">
+            <div class="section__header">
+                <h2 class="section__title">Киберматика сейчас</h2>
+                <p class="section__text">
+                    Запредельный темп и невероятные результаты каждый день
+                    приближают <br />нас ко встрече с единорогом!
+                </p>
+            </div>
+            <div class="statistics__items">
+                {
+                    stats.map((item) => (
+                        <div class="statistics__item">
+                            <div class="statistics__value-wrapper">
+                                <div class="statistics__item-value">
+                                    {item.value}
+                                </div>
+                            </div>
+                            <p
+                                class="statistics__item-text"
+                                set:html={item.label}
+                            />
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </div>
+</section>
