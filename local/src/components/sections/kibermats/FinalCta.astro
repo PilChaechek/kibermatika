@@ -1,0 +1,22 @@
+---
+import img2 from "../../../assets/images/hero2/unicorn2.png";
+import {Image} from "astro:assets";
+---
+<section class="section final-cta">
+    <div class="container">
+        <h2 class="final-cta__title section__title">и вот, мы стали еще ближе к единорогу. <br>
+            <span class="final-cta__btn title-item-4">
+                <span class="title-item-4__text">ты с нами?</span>
+                <Image
+                    src={img2}
+                    alt=""
+                    format="webp"
+                    width={289}
+                    height={161}
+                    quality={90}
+                    class="img title-item-4__img"
+                />
+            </span>
+        </h2>
+    </div>
+</section>

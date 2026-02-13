@@ -1,0 +1,63 @@
+---
+import Badge from "../../../assets/images/badges/cart.png";
+const items = [
+    {
+        title: 'GRANI FESTIVAL',
+        text: 'Первый drum\'n\'bass фестиваль с симфоническим оркестром в России',
+        category: 'Музыка',
+        img: '',
+        video: ''
+    },
+    {
+        title: 'Киберматика трофи',
+        text: 'Гонки на внедорожниках по Подмосковью',
+        category: 'Экстрим',
+        img: '',
+        video: ''
+    },
+    {
+        title: 'Героическая стратсессия',
+        text: 'Планирование бизнеса по методике режиссера «Рик и Морти»',
+        category: 'Обучение',
+        img: '',
+        video: ''
+    },
+    {
+        title: 'ИГРИСТАЯ',
+        text: 'Музыкальная и перформанс-площадка на фестивале SYSTO',
+        category: 'Музыка',
+        img: '',
+        video: ''
+    },
+];
+---
+<section class="section events section--v9">
+    <div class="container">
+        <div class="events__inner">
+            <div class="events__header">
+                <div class="slider__header">
+                    <div class="slider__badge">
+                        <div class="icon-badge icon-badge--v3">
+                            <div class="icon-badge__icon">
+                                <img src={Badge.src} class="img icon-badge__icon-src" alt="" width="88" height="88">
+                            </div>
+                            <div class="icon-badge__text">не только<br> про работу</div>
+                        </div>
+                    </div>
+                    <h2 class="slider__title section__title">Творчество<br>  во всех проявлениях</h2>
+                    <p class="slider__text">Наше желание создавать выходит
+                        за пределы B2B-продуктов и IT-сферы. Музыка, фестивали и события — разносторонний опыт для себя и других.</p>
+                </div>
+            </div>
+            <div class="events__items">
+                {items.map(item => (
+                    <div class="event-card">
+                        <div class="event__category">{item.category}</div>
+                        <h3 class="event__title">{item.title}</h3>
+                        <div class="event__text">{item.text}</div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </div>
+</section>

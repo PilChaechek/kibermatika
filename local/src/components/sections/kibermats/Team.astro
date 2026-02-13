@@ -1,0 +1,65 @@
+---
+import {Image} from "astro:assets";
+
+import Badge from "../../../assets/images/badges/cart.png";
+
+import img1 from "../../../assets/images/team/1.jpg";
+import img2 from "../../../assets/images/team/2.jpg";
+import img3 from "../../../assets/images/team/3.jpg";
+import img4 from "../../../assets/images/team/4.jpg";
+
+const items = [
+    {
+        title: 'Департамент <br> продаж',
+        img: img1
+    },
+    {
+        title: 'СТО',
+        img: img2
+    },
+    {
+        title: 'Коммерческий <br> директор',
+        img: img3
+    },
+    {
+        title: 'Команда <br> разработки',
+        img: img4
+    },
+];
+---
+<section class="section team">
+    <div class="container">
+        <div class="team__inner">
+            <div class="slider__header">
+                <div class="slider__badge">
+                    <div class="icon-badge icon-badge--v3">
+                        <div class="icon-badge__icon">
+                            <img src={Badge.src} class="img icon-badge__icon-src" alt="" width="88" height="88">
+                        </div>
+                        <div class="icon-badge__text">В главных ролях</div>
+                    </div>
+                </div>
+                <h2 class="slider__title section__title">Объединяя <br> не-нормальных <br> людей</h2>
+                <p class="slider__text">Мы называем себя панками, фриками и пиратами — из-за неутомимого желания что-то менять, делать еще круче и брать на себя эту ответственность. Всеми силами боремся со «средними» и «нормальными». Уровень кибермата — гораздо выше.</p>
+            </div>
+
+            <div class="team__items">
+                {items.map(item => (
+                    <div class="team-card team__item">
+                        <div class="story-card__media">
+                            <Image
+                                src={item.img}
+                                alt={item.title}
+                                format="webp"
+                                quality={95}
+                                class="img story-card__image"
+                            />
+                        </div>
+                        <div class="story-card__title" set:html={item.title}/>
+                    </div>
+                ))}
+            </div>
+
+        </div>
+    </div>
+</section>

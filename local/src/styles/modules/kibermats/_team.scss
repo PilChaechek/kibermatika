@@ -1,0 +1,48 @@
+@use '../../mixins/breakpoints' as *;
+
+.team {
+  .slider__header {
+    align-items: center;
+  }
+  &__items {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    @include respond(md){
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+  }
+}
+
+.team-card {
+  position: relative;
+  .img {
+    height: auto;
+  }
+  &:nth-child(1){
+    grid-column: span 2;
+
+  }
+  &:nth-child(2){
+    grid-column: span 1;
+
+  }
+  &:nth-child(3){
+    grid-column: span 1;
+
+  }
+  &:nth-child(4){
+    grid-column: span 2;
+
+  }
+
+  .story-card__title {
+    br {
+      @include respond(2xl){
+        display: none;
+      }
+    }
+  }
+
+}

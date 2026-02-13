@@ -1,0 +1,57 @@
+@use '../../mixins/breakpoints' as *;
+
+.final-cta {
+  &__title {
+    text-align: center;
+    margin-bottom: 0;
+  }
+  &__btn {
+    &.title-item-4 {
+      margin: 24px 0 0 0;
+    }
+  }
+}
+
+.title-item-4 {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  background: linear-gradient(90deg, #94ffa6 0%, #e8ff79 100%);
+  height: 62px;
+  border-radius: 32px;
+  padding: 0 124px 0 22px;
+  margin: 12px 0;
+
+  @include respond(md){
+    border-radius: 27px;
+    padding: 0 124px 0 22px;
+    height: 54px;
+  }
+  @include respond(2xl){
+    padding: 0 176px 0 32px;
+    height: 86px;
+    border-radius: 43px;
+  }
+  @include respond(3xl){
+    height: 114px;
+    border-radius: 67px;
+  }
+
+  &__img {
+    height: auto;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 128px;
+    @include respond(md){
+      width: 134px;
+    }
+    @include respond(2xl){
+      width: 200px;
+      border-radius: 0 0 24px 0;
+    }
+    @include respond(3xl){
+      width: 289px;
+    }
+  }
+}

@@ -147,6 +147,9 @@
     padding: 10px 10px 10px 16px;
     line-height: 1;
     border-radius: 24px 0 0 0;
+    min-height: 52px;
+    display: flex;
+    align-items: center;
     @include respond(md){
       border-radius: var(--border-radius-md) 0 0 0;
     }
@@ -163,10 +166,18 @@
       left: -23px;
       bottom: 0;
       background-image: radial-gradient(
-          circle at -1px 0,
+          circle at 0 0,
           transparent 24px,
           #fff 24.5px
       );
+      @include respond(md){
+        background-image: radial-gradient(
+            circle at -1px 0,
+            transparent 24px,
+            #fff 24.5px
+        );
+      }
+
       @include respond(2xl){
         width: 32px;
         height: 32px;
