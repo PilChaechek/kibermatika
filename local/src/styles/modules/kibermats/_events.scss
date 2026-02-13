@@ -1,1 +1,106 @@
 @use '../../mixins/breakpoints' as *;
+@include respond(md){
+
+}
+@include respond(2xl){
+
+}
+@include respond(3xl){
+
+}
+.events {
+  &__items {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+}
+
+.event-card {
+  height: 360px;
+  background-color: #333;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: height .2s ease;
+  background-size: cover;
+  @include respond(md){
+    height: 124px;
+    border-radius: 18px;
+    overflow: hidden;
+  }
+  @include respond(2xl){
+    height: 190px;
+    border-radius: 32px;
+  }
+  @include respond(3xl){
+    height: 254px;
+    border-radius: 44px;
+  }
+  &:hover {
+    @include respond(md){
+      height: 260px;
+    }
+    @include respond(2xl){
+      height: 450px;
+    }
+    @include respond(3xl){
+      height: 600px;
+    }
+  }
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: start;
+    background-color: rgba(0,0,0, 0.2);
+    position: relative;
+    padding: 12px 24px;
+
+    @include respond(md){
+      padding: 12px 24px;
+    }
+    @include respond(2xl){
+      padding: 22px 44px;
+    }
+    @include respond(3xl){
+      padding: 0 60px;
+    }
+
+  }
+
+  &__category {
+    display: inline-flex;
+    background-color: #fff;
+    font-size: 1rem;
+    line-height: 1;
+    border-radius: 16px;
+    padding: 6px 12px;
+    @include respond(md){
+      padding: 4px 8px;
+      border-radius: 8px;
+    }
+    @include respond(2xl){
+      padding: 4px 12px;
+      border-radius: 12px;
+    }
+    @include respond(3xl){
+      padding: 8px 16px;
+      border-radius: 16px;
+    }
+  }
+  &__title {
+    color: #fff;
+    margin-top: auto;
+    font-weight: 500;
+    @include respond(md){
+      margin-bottom: 4px;
+    }
+    @include respond(2xl){
+      font-size: toRem(36,20);
+    }
+  }
+  &__text {
+    color: #fff;
+  }
+}
