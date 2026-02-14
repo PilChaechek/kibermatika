@@ -150,6 +150,9 @@ body {
     line-height: 1.2;
     max-width: 860px;
     margin: 0 auto;
+    @include respond(3xl){
+      max-width: 960px;
+    }
   }
   &__badge {
     margin-bottom: 24px;

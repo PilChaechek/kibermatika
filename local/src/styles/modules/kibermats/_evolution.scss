@@ -148,6 +148,7 @@
   }
   .swiper-slide {
     display: flex;
+    height: auto;
     @include respond(md){
 
     }

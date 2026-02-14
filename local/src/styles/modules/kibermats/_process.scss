@@ -6,26 +6,88 @@
 .info-pills {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 8px;
   justify-content: center;
   align-items: center;
+  @include respond(md){
+    gap: 14px;
+  }
+
   &__row {
 
+    &:first-child {
+      &.swiper {
+        padding-top: 12px;
+        @include respond(md){
+          padding-top: 0;
+        }
+      }
+    }
+
+    &.swiper {
+      padding: 2px 0;
+      width: 100%;
+      @include respond(md){
+        overflow: initial;
+      }
+    }
+
+    .swiper-wrapper {
+      @include respond(md){
+        justify-content: center;
+        //overflow: initial;
+      }
+    }
+
+    .swiper-slide {
+      display: inline-flex;
+      //width: 300px;
+      width: initial;
+    }
+
+  }
+
+  &__after, &__before {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  &__after {
+    &:after {
+      content: '';
+      width: 23px;
+      height: 18px;
+      background: url("/images/slides/process/arrows-right.svg") center no-repeat;
+      background-size: contain;
+    }
+  }
+
+  &__before {
+    &:before {
+      content: '';
+      width: 23px;
+      height: 18px;
+      background: url("/images/slides/process/arrows-right.svg") center no-repeat;
+      background-size: contain;
+      transform: rotate(180deg);
+    }
   }
 }
 
 .pill {
-  display: inline-flex;
+  display: inline-flex !important;
   align-items: center;
   border: 2px solid #dbdfff;
   height: 60px;
   border-radius: 30px;
   font-size: toRem(18,16);
   padding-inline: 22px;
+  gap: 4px;
   @include respond(md){
-    height: 42px;
-    border-radius: 21px;
-    //font-size: toRem(18,20);
+    height: 44px;
+    border-radius: 22px;
+    gap: 8px;
   }
   @include respond(2xl){
     height: 68px;
@@ -34,22 +96,78 @@
     padding-inline: 30px;
   }
   @include respond(3xl){
-    height: 68px;
-    border-radius: 34px;
-    font-size: toRem(30,20);
+    height: 90px;
+    border-radius: 45px;
+    font-size: toRem(40,24);
+    padding-inline: 36px;
+    gap: 12px;
   }
   &__link {
     display: flex;
+    height: 100%;
+    align-items: center;
+    padding-left: 0;
+  }
+  &__img {
+    height: auto;
+  }
+  &__text {
+    position: relative;
+  }
+  &__tippy {
+    svg {
+      fill: rgba(16, 22, 81, 0.3);
+    }
+  }
+
+}
+
+.pill--link {
+  padding: 0;
+  .pill__link {
+    padding: 0 44px 0 22px;
+  }
+  .pill__tippy {
+    position: absolute;
+    right: 12px;
+    top: 12px;
   }
 }
 
 .pill--v1 {
+  padding-right: 0;
+  overflow: hidden;
+  .pill__img {
+    @include respond(md){
 
+    }
+    @include respond(2xl){
+      width: 60px;
+    }
+    @include respond(3xl){
+      width: 100px;
+    }
+  }
 }
 
 .pill--v2 {
   background: linear-gradient(90deg, #ff00f1 0%, #ff60f6 0%, #ffcefc 75.49%, #ffaefb 100%), #fff;
   border: none;
+  display: flex;
+  padding-right: 0;
+  .pill__img {
+    width: 74px;
+    align-self: end;
+    @include respond(md){
+
+    }
+    @include respond(2xl){
+      width: 90px;
+    }
+    @include respond(3xl){
+      width: 118px;
+    }
+  }
 }
 
 .pill--v3 {
@@ -63,20 +181,77 @@
   border: 2px solid transparent;
   background-origin: border-box;
   background-clip: padding-box, border-box;
-  box-shadow:
-          0 4px 20px -2px rgba(144, 207, 255, 0.3),
-          0 1px 2px rgba(0, 0, 0, 0.02);
+
   background-image:
           linear-gradient(105deg, var(--c-bg-start) 10%, var(--c-bg-mid) 25%, var(--c-bg-end) 100%),
           linear-gradient(105deg, var(--c-border-start) 0%, var(--c-border-end) 100%);
+
+  @include respond(md){
+    box-shadow:
+            0 4px 20px -2px rgba(144, 207, 255, 0.3),
+            0 1px 2px rgba(0, 0, 0, 0.02);
+  }
 }
 
 .pill--v4 {
   background: linear-gradient(311deg, #d9e1ff 0%, #f7f8fd 100%), #eef1f9;
   border: none;
+  padding-right: 0;
+
+  .pill__img {
+    width: 50px;
+    align-self: end;
+    @include respond(md){
+
+    }
+    @include respond(2xl){
+      width: 70px;
+    }
+    @include respond(3xl){
+      width: 92px;
+    }
+  }
 }
 
 .pill--v6 {
   background: linear-gradient(90deg, #94ffa6 0%, #e8ff79 100%), #fff;
   border: none;
+  padding-right: 0;
+  overflow: hidden;
+
+  .pill__img {
+    width: 72px;
+    align-self: end;
+    @include respond(md){
+
+    }
+    @include respond(2xl){
+
+    }
+    @include respond(3xl){
+      width: 100px;
+    }
+  }
+
+}
+
+.pill--v7 {
+  padding-right: 12px;
+  .pill__img {
+    width: 50px;
+    align-self: end;
+    @include respond(md){
+
+    }
+    @include respond(2xl){
+      width: 62px;
+    }
+    @include respond(3xl){
+      width: 86px;
+    }
+  }
+}
+
+.tippy-box[data-theme~=custom] .tippy-content {
+  white-space: initial !important;
 }
