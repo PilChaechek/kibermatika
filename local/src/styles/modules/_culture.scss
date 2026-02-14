@@ -120,11 +120,10 @@
 }
 
 .story-card {
-
   position: relative;
-
   &__image {
-    border-radius: 24px;
+    border-radius: 16px;
+    width: 100%;
     @include respond(md){
       border-radius: var(--border-radius-md);
     }
@@ -144,9 +143,9 @@
     right: -1px;
     bottom: 0;
     background-color: #fff;
-    padding: 10px 10px 10px 16px;
+    padding: 8px 10px 10px 12px;
     line-height: 1;
-    border-radius: 24px 0 0 0;
+    border-radius: 16px 0 0 0;
     min-height: 52px;
     display: flex;
     align-items: center;
@@ -161,16 +160,21 @@
     &:before {
       content: '';
       position: absolute;
-      width: 24px;
-      height: 24px;
-      left: -23px;
+      width: 16px;
+      height: 16px;
+      left: -16px;
       bottom: 0;
       background-image: radial-gradient(
           circle at 0 0,
-          transparent 24px,
-          #fff 24.5px
+          transparent 16px,
+          #fff 16.5px
       );
       @include respond(md){
+
+        width: 24px;
+        height: 24px;
+        left: -23px;
+
         background-image: radial-gradient(
             circle at -1px 0,
             transparent 24px,

@@ -17,6 +17,9 @@
       margin-bottom: 2.8rem;
       grid-template-columns: auto 500px;
     }
+    @include respond(3xl){
+      grid-template-columns: auto 668px;
+    }
   }
   &__contacts {
     font-size: 2.25rem;

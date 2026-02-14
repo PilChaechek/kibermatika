@@ -58,16 +58,14 @@ const items = [
         <div class="swiper">
             <div class="slider__items swiper-wrapper">
                 {items.map(item => (
-                        <div
-                                class={`slider__item swiper-slide slide slide-v2--${item.slide}`}
-                        >
-                            <h3 class="slide__title" set:html={item.title} />
-                            <div class="slide__icon" set:html={item.icon}></div>
-                            <p class="slide__text">{item.text}</p>
-                        </div>
+                    <div
+                            class={`slider__item swiper-slide slide slide-v2--${item.slide}`}
+                    >
+                        <h3 class="slide__title" set:html={item.title} />
+                        <div class="slide__icon" set:html={item.icon}></div>
+                        <p class="slide__text">{item.text}</p>
+                    </div>
                 ))}
             </div>
         </div>
-
-
 </section>

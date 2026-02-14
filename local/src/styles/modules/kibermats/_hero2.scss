@@ -54,9 +54,12 @@
       padding-bottom: 0;
     }
     @include respond(2xl){
-
       grid-template-columns: 465px minmax(0, 684px);
       justify-content: space-between;
+      align-items: baseline;
+    }
+    @include respond(3xl){
+      grid-template-columns: 620px minmax(0, 920px);
     }
   }
   &__content-left {
@@ -164,6 +167,7 @@
   }
   @include respond(2xl){
     padding: 0 132px 0 32px;
+    border-radius: 60px;
   }
   @include respond(3xl){
 
@@ -237,7 +241,7 @@
     @include respond(3xl){
       height: 128px;
       border-radius: 32px;
-      padding: 0 18px;
+      padding: 0 50px;
     }
     &:nth-child(1){
       transform: rotate(-2deg);
@@ -290,12 +294,12 @@
       height: 32px;
     }
     @include respond(2xl){
-      width: 62px;
-      height: 62px;
+      width: 58px;
+      height: 58px;
     }
     @include respond(3xl){
-      width: 82px;
-      height: 82px;
+      width: 78px;
+      height: 78px;
     }
   }
   &__progress {

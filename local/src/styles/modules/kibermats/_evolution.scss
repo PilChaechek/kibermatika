@@ -167,20 +167,6 @@
     min-height: auto;
   }
 
-  &::before {
-    content: "";
-    position: absolute;
-    /* Размещаем линию ровно посередине зоны отступа (2-й ряд грида) */
-    top: calc(1.5em + var(--tl-gap-year-line));
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background-color: var(--tl-color-line);
-    z-index: -1; /* Уводим назад */
-  }
-
-
-
   &__year {
     font-size: toRem(38,16);
     font-weight: 500;
@@ -282,6 +268,13 @@
       @include respond(2xl){
         width: 246px;
       }
+    }
+  }
+  &:last-child {
+    .evolution-card__year:after {
+      width: calc(50% + 40px);
+      right: initial;
+      left: calc(50% + 1px);
     }
   }
 }

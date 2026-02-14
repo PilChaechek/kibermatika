@@ -59,10 +59,8 @@ export default function slider() {
 				slidesOffsetAfter: 12,
 				breakpoints: {
 					744: {
-						slidesPerView: 1.8,
-						spaceBetween: 16,
-						slidesOffsetBefore: 16,
-						slidesOffsetAfter: 16,
+						//enabled: false,
+						slidesPerView: "auto"
 					},
 				}
 			});

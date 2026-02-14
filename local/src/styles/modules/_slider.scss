@@ -4,7 +4,7 @@
 
 .slider {
   .swiper {
-    max-width: 1920px;
+    //max-width: 1920px;
     @include respond(2xl){
 
     }
@@ -90,17 +90,28 @@
   }
 
   &__item {
-    min-height: 640px;
-    @include respond(md){
-      min-height: 350px;
-      &.swiper-slide {
+
+    &.swiper-slide {
+      height: auto;
+      min-height: 640px;
+      max-width: 90vw;
+      @include respond(md){
+        display: flex;
+        //max-width: 644px;
+        min-height: 350px;
         margin: 0;
       }
+      @include respond(2xl){
+        max-width: 1210px;
+        min-height: 550px;
+
+      }
+      @include respond(3xl){
+        max-width: 1760px;
+        min-height: 735px;
+      }
     }
-    @include respond(2xl){
-      min-height: 550px;
-      max-width: 90vw;
-    }
+
   }
 
 }
@@ -163,6 +174,9 @@
     }
     @include respond(2xl) {
       max-width: 440px;
+    }
+    @include respond(3xl){
+      max-width: 585px;
     }
   }
 }

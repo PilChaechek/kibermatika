@@ -23,6 +23,10 @@
       border-radius: 34px;
       padding: 4px 0 4px 30px;
     }
+    @include respond(3xl){
+      height: 90px;
+      border-radius: 45px;
+    }
   }
   &__button {
     font-size: 0;
