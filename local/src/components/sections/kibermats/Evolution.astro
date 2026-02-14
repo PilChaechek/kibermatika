@@ -33,12 +33,15 @@ const items = [
     <div class="container">
         <div class="evolution__inner">
             <div class="evolution__header">
-                <div>
-                    <div class="">Наша история</div>
+                <div class="evolution__header-inner">
+                    <div class="evolution__header-item evolution__header-item--left"></div>
+                    <div class="evolution__badge">Наша история</div>
+                    <div class="evolution__header-item evolution__header-item--right"></div>
                 </div>
-                <h2 class="section__title">Эволюция в Киберматику</h2>
+
             </div>
             <div class="evolution__content">
+                <h2 class="section__title text-center">Эволюция в Киберматику</h2>
                 <div class="evolution-cards swiper" id="evolution-cards">
                     <div class="evolution-cards__items swiper-wrapper">
                         {items.map(item => (
@@ -88,7 +91,7 @@ const items = [
         const initSwiper = () => {
             evolutionSwiper = new Swiper(container, {
                 slidesPerView: 1,
-                spaceBetween: 8,
+                spaceBetween: 0,
                 grabCursor: true,
                 slidesOffsetBefore: 12,
                 slidesOffsetAfter: 12,

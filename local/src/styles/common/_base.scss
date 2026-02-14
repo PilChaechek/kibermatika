@@ -1,5 +1,7 @@
 @use '../mixins/breakpoints' as *;
-
+@include respond(md){}
+@include respond(2xl){}
+@include respond(3xl){}
 * {
   box-sizing: border-box;
   margin: 0;
@@ -152,6 +154,10 @@ body {
   &__badge {
     margin-bottom: 24px;
   }
+}
+
+.text-center {
+  text-align: center;
 }
 
 .section--v1 {

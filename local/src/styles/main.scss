@@ -13,13 +13,6 @@
 @use 'modules/badges';
 @use 'modules/boxes';
 @use 'modules/hero';
-@use 'modules/kibermats/hero2';
-@use 'modules/kibermats/videoCompany';
-@use 'modules/kibermats/team';
-@use 'modules/kibermats/finalCta';
-@use 'modules/kibermats/events';
-@use 'modules/kibermats/evolution';
-@use 'modules/kibermats/statistics';
 @use 'modules/cards';
 @use 'modules/carousel';
 @use 'modules/tickets';
@@ -28,3 +21,12 @@
 @use 'modules/path';
 @use 'modules/culture';
 @use 'modules/orbit';
+
+@use 'modules/kibermats/hero2';
+@use 'modules/kibermats/videoCompany';
+@use 'modules/kibermats/team';
+@use 'modules/kibermats/finalCta';
+@use 'modules/kibermats/events';
+@use 'modules/kibermats/evolution';
+@use 'modules/kibermats/statistics';
+@use 'modules/kibermats/process';

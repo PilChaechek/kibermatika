@@ -4,32 +4,137 @@
   padding-bottom: 0;
   &__header {
     text-align: center;
-    margin-bottom: 2rem;
   }
   &__inner {
+
+    border-radius: 32px;
+    overflow: hidden;
+
+  }
+  &__content {
+    //overflow: hidden;
+    padding-top: 2rem;
+    background: #e2e6f5;
+    @include respond(md){
+      background: linear-gradient(360deg, #e2e6f5 0%, #f6f7fc 100%), #fff;
+    }
+    @include respond(md){
+      //background: linear-gradient(360deg, #e2e6f5 0%, #fff 100%), #fff;
+    }
+    @include respond(2xl){
+      //border-radius: 44px;
+    }
+    @include respond(3xl){
+
+    }
+  }
+  &__badge {
+    background: linear-gradient(360deg, #e2e6f5 0%, #f2f3fa 100%), #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    white-space: nowrap;
+    height: 60px;
+    border-radius: 30px;
+    padding: 0 32px;
+    margin-bottom: 8px;
+    position: relative;
+    z-index: 1;
+
+    @include respond(md){
+      height: 45px;
+      margin-bottom: 12px;
+      border-radius: 22px;
+      padding: 0 16px;
+    }
+
+    @include respond(2xl){
+      height: 75px;
+      border-radius: 24px;
+      padding: 0 40px;
+      margin-bottom: 12px;
+    }
+
+  }
+  &__header-inner {
+    display: flex;
+    gap: 8px;
+    @include respond(md){
+      gap: 12px;
+    }
+  }
+  &__header-item {
+    width: 100%;
+    height: auto;
+    background: var(--color-9);
+    flex: auto;
+    position: relative;
+
+    &:before,
+    &:after {
+      content: "";
+      display: block;
+      width: 32px;
+      height: 32px;
+      position: absolute;
+    }
+
+    &:before {
+      background-color: var(--color-9);;
+      @include respond(md){
+        background: var(--color-10);
+      }
+    }
+    &:after {
+      background-color: #fff;
+    }
+
+    @include respond(md){
+      background: var(--color-10);
+    }
+  }
+  &__header-item--left {
+    border-radius: 0 32px 0 0;
+
+    &:before,
+    &:after {
+      left: 100%;
+      bottom: 0;
+    }
+    &:after {
+      border-bottom-left-radius: 32px;
+    }
+
+  }
+  &__header-item--right {
+    border-radius: 32px 0 0 0;
+
+    &:before,
+    &:after {
+      right: 100%;
+      bottom: 0;
+    }
+
+    &:after {
+      border-bottom-right-radius: 32px;
+    }
 
   }
 }
 
 .evolution-cards {
-  overflow: hidden;
-  @include respond(md){
-    background: linear-gradient(360deg, #e2e6f5 0%, #fff 100%), #fff;
-  }
-  @include respond(2xl){
-    border-radius: 44px;
-  }
-  @include respond(3xl){
 
-  }
   &__items {
+
     @include respond(md){
       display: grid;
+      padding: 1rem 1rem 0 1rem;
       grid-template-columns: 1fr 1fr 1fr 1fr;
     }
     @include respond(2xl){
       padding: 2rem 2rem 0 2rem;
-      gap: 8px;
+      //gap: 8px;
     }
     @include respond(3xl){
 
@@ -53,19 +158,39 @@
   text-align: center;
   display: flex;
   flex-direction: column;
-  min-height: 440px;
-  background: #e2e6f5;
+  min-height: 340px;
+
 
   @include respond(md){
     background: none;
     min-height: auto;
   }
 
+  &::before {
+    content: "";
+    position: absolute;
+    /* Размещаем линию ровно посередине зоны отступа (2-й ряд грида) */
+    top: calc(1.5em + var(--tl-gap-year-line));
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: var(--tl-color-line);
+    z-index: -1; /* Уводим назад */
+  }
+
+
+
   &__year {
     font-size: toRem(38,16);
     font-weight: 500;
     color: var(--font-color-accent);
+    position: relative;
+    line-height: 1;
+    padding-top: 24px;
+    padding-bottom: .5rem;
+    margin-bottom: 1rem;
     @include respond(md){
+      padding-top: 0;
       font-size: toRem(32,20);
     }
     @include respond(2xl){
@@ -74,10 +199,30 @@
     @include respond(3xl){
       font-size: toRem(72,24);
     }
+    &:before,
+    &:after {
+      content: '';
+      display: block;
+      width: 48%;
+      height: 6px;
+      border-style: solid;
+      border-color: #c4c8e9;
+      position: absolute;
+      bottom: 0;
+    }
+    &:before {
+      border-width: 0 2px 2px 0;
+      left: 0;
+    }
+    &:after {
+      border-width: 0 0 2px 2px;
+      right: 0;
+    }
   }
   &__text {
     color: var(--font-color-text);
     margin-bottom: 12px;
+    padding: 0 12px;
     @include respond(2xl){
       margin-bottom: 24px;
 
@@ -92,6 +237,9 @@
     height: auto;
   }
   &:nth-child(1){
+    .evolution-card__year:before {
+      content: none;
+    }
     .evolution-card__img {
       width: 164px;
       @include respond(md){
