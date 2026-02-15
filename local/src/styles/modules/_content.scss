@@ -1,0 +1,61 @@
+@use '../mixins/breakpoints' as *;
+@include respond(md){}
+@include respond(2xl){}
+@include respond(3xl){}
+
+.content-editor {
+  color: var(--font-color-text);
+  h1,h2,h3,h4 {
+    color: var(--font-color);
+    margin: 32px 0 16px 0;
+    @include respond(md){
+      margin: 24px 0;
+    }
+    @include respond(2xl){
+      margin: 40px 0 24px 0;
+    }
+    @include respond(3xl){
+
+    }
+  }
+  p {
+    margin: 1rem 0;
+  }
+  a {
+    color: inherit;
+    &:hover {
+      color: var(--font-color-accent);
+      text-decoration: none;
+    }
+  }
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    li {
+      margin: .5rem 0;
+      position: relative;
+      padding-left: 16px;
+      @include respond(md){
+        padding-left: 24px;
+      }
+      &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 8px;
+        width: 8px;
+        height: 2px;
+        background-color: var(--font-color-text);
+        @include respond(md){
+          top: 12px;
+          width: 14px;
+        }
+      }
+    }
+  }
+  p:has(+ ul) {
+    margin-bottom: 0;
+  }
+}
