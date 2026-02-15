@@ -1,0 +1,39 @@
+---
+import {Image} from "astro:assets";
+import monkeyImg from "../../assets/images/404/monkey.png";
+---
+<section class="section error-404 section--v3">
+    <div class="container">
+        <div class="error-404__inner">
+            <div class="error-404__media">
+                <Image
+                    src={monkeyImg}
+                    alt=""
+                    format="webp"
+                    quality={90}
+                    class="img error-404__img"
+                />
+                <svg width="1288" height="509" viewBox="0 0 1288 509" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="226.183" width="75.3926" height="508.9"/>
+                    <rect x="1130.89" width="75.3926" height="508.9"/>
+                    <rect x="452.354" y="75.3944" width="75.3926" height="358.115"/>
+                    <rect x="527.749" y="508.906" width="75.3926" height="226.178" transform="rotate(-90 527.749 508.906)"/>
+                    <rect x="527.749" y="75.3944" width="75.3926" height="226.178" transform="rotate(-90 527.749 75.3944)"/>
+                    <rect x="753.92" y="75.3944" width="75.3926" height="358.115"/>
+                    <rect y="226.183" width="75.3926" height="150.785"/>
+                    <rect x="904.709" y="226.183" width="75.3926" height="150.785"/>
+                    <rect x="75.3944" y="150.789" width="75.3926" height="75.3926"/>
+                    <rect x="980.115" y="150.789" width="75.3926" height="75.3926"/>
+                    <rect x="150.777" y="75.3944" width="75.3926" height="75.3926"/>
+                    <rect x="1055.5" y="75.3944" width="75.3926" height="75.3926"/>
+                    <rect y="376.972" width="75.3926" height="383.246" transform="rotate(-90 0 376.972)"/>
+                    <rect x="904.709" y="376.972" width="75.3926" height="383.246" transform="rotate(-90 904.709 376.972)"/>
+                </svg>
+            </div>
+            <div class="error-404__content">
+                <h1 class="error-404__title section__title">oh no, страница не найдена</h1>
+                <a href="/" class="link link--underline">вернуться на главную</a>
+            </div>
+        </div>
+    </div>
+</section>

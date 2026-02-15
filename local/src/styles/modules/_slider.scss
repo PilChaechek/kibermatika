@@ -95,8 +95,9 @@
       height: auto;
       min-height: 640px;
       max-width: 90vw;
+      display: flex;
       @include respond(md){
-        display: flex;
+
         //max-width: 644px;
         min-height: 350px;
         margin: 0;
@@ -222,6 +223,15 @@
     background-size: 50%, 100%;
   }
 
+  .slide__title {
+    br {
+      display: none;
+      @include respond(md){
+        display: block;
+      }
+    }
+  }
+
   .slide__icon svg {
     width: 79px;
     height: 66px;
@@ -268,7 +278,7 @@
   }
   .slide__text {
     @include respond(md){
-      max-width: 330px;
+      //max-width: 330px;
     }
   }
 }
@@ -297,7 +307,7 @@
   }
   .slide__text {
     @include respond(md){
-      max-width: 340px;
+      //max-width: 340px;
     }
   }
   .slide__icon svg {
