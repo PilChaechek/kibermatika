@@ -1,33 +1,49 @@
 ---
-import Badge from "../../assets/images/badges/cart.png";
+import {Image} from "astro:assets";
+
 import img1 from "../../assets/images/tickets/1.webp";
 import img2 from "../../assets/images/tickets/3.webp";
 import img3 from "../../assets/images/tickets/2.webp";
 
+import imgF1 from "../../assets/images/tickets/i1.png";
+import imgF2 from "../../assets/images/tickets/i2.png";
+import imgF3 from "../../assets/images/tickets/i3.png";
+
+import telegram from "../../assets/icons/telegram.svg?raw";
+import wa from "../../assets/icons/wa.svg?raw";
+
+
 const items = [
     {
-        title: 'Малый бизнес',
-        text: 'Простые инструменты планирования, продвижение бизнеса в сети без найма специалистов. ',
-        link_text: 'Начнем прямо сейчас?',
+        title: "Малый бизнес",
+        text: "Простые инструменты планирования, продвижение бизнеса в сети без найма специалистов. ",
+        link_text: "Начнем прямо сейчас?",
         img: img1,
+        imgModal: imgF1,
+        classImg: 'v1',
         key: 1,
     },
     {
-        title: 'Enterprise',
-        text: 'Повышение результативности отделов и сотрудников, автоматизация процессов, технологии выхода в ТОП.',
-        link_text: 'Сделаем тест',
+        title: "Enterprise",
+        text: "Повышение результативности отделов и сотрудников, автоматизация процессов, технологии выхода в ТОП.",
+        link_text: "Сделаем тест",
         img: img2,
+        imgModal: imgF2,
+        classImg: 'v2',
         key: 2,
     },
     {
-        title: 'Специалисты',
-        text: 'Организация собственных ресурсов, расширение инструментов, партнерство в смежных отраслях.',
-        link_text: 'Расширим <br> партнерскую сеть?',
+        title: "Специалисты",
+        text: "Организация собственных ресурсов, расширение инструментов, партнерство в смежных отраслях.",
+        link_text: "Расширим <br> партнерскую сеть?",
         img: img3,
+        imgModal: imgF3,
+        classImg: 'v3',
         key: 3,
-    }
+    },
 ];
 ---
+
 <section class="tickets section section--v1">
     <div class="container">
         <div class="tickets__inner">
@@ -36,37 +52,209 @@ const items = [
             </div>
 
             <div class="tickets__items">
-                {items.map(item => (
-                    <div class={`tickets__item ticket ticket--${item.key}`}>
-                        <div class="ticket__inner">
-                            <div class="ticket__left">
-                                <div class="ticket__content">
-                                    <h3 class="ticket__title">{item.title}</h3>
-                                    <p class="ticket__text">{item.text}</p>
+                {
+                    items.map((item) => (
+                        <div class={`tickets__item ticket ticket--${item.key}`}
+                             data-micromodal-trigger="modal-order"
+                             data-image={item.imgModal.src}
+                             data-image-class={item.classImg}
+                        >
+                            <div class="ticket__inner">
+                                <div class="ticket__left">
+                                    <div class="ticket__content">
+                                        <h3 class="ticket__title">
+                                            {item.title}
+                                        </h3>
+                                        <p class="ticket__text">{item.text}</p>
+                                    </div>
+                                    <div class="ticket__image">
+                                        <img
+                                            src={item.img.src}
+                                            class="img ticket__image-src"
+                                            alt=""
+                                        />
+                                    </div>
                                 </div>
-                                <div class="ticket__image">
-                                    <img src={item.img.src} class="img ticket__image-src" alt="">
-                                </div>
-                            </div>
 
-                            <div class="ticket__right">
-                                <div class="ticket__link">
-                                    <div class="ticket__link-text" set:html={item.link_text}></div>
-                                    <svg width="15" height="27" viewBox="0 0 15 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M15 11.75H11V15.75H15V11.75Z" fill="#101651" />
-                                        <path d="M11 14.75H7V18.75H11V14.75Z" fill="#101651" />
-                                        <path d="M8 18.75H4V22.75H8V18.75Z" fill="#101651" />
-                                        <path d="M4 22.75H0V26.75H4V22.75Z" fill="#101651" />
-                                        <path d="M4 0L0 0V4H4V0Z" fill="#101651" />
-                                        <path d="M8 3.875H4V7.875H8V3.875Z" fill="#101651" />
-                                        <path d="M11 7.875H7V11.875H11V7.875Z" fill="#101651" />
-                                    </svg>
+                                <div class="ticket__right">
+                                    <div class="ticket__link">
+                                        <div
+                                            class="ticket__link-text"
+                                            set:html={item.link_text}
+                                        />
+                                        <svg
+                                            width="15"
+                                            height="27"
+                                            viewBox="0 0 15 27"
+                                            fill="none"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                        >
+                                            <path d="M15 11.75H11V15.75H15V11.75Z"
+                                                fill="#101651"
+                                            />
+                                            <path d="M11 14.75H7V18.75H11V14.75Z"
+                                                fill="#101651"
+                                            />
+                                            <path d="M8 18.75H4V22.75H8V18.75Z"
+                                                fill="#101651"
+                                            />
+                                            <path d="M4 22.75H0V26.75H4V22.75Z"
+                                                fill="#101651"
+                                            />
+                                            <path d="M4 0L0 0V4H4V0Z"
+                                                fill="#101651"
+                                            />
+                                            <path d="M8 3.875H4V7.875H8V3.875Z"
+                                                fill="#101651"
+                                            />
+                                            <path d="M11 7.875H7V11.875H11V7.875Z"
+                                                fill="#101651"
+                                            />
+                                        </svg>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                    ))
+                }
+            </div>
+        </div>
+    </div>
+    <div class="modal micromodal-slide" id="modal-order" aria-hidden="true">
+        <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+            <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-order-title">
+                <div class="order">
+                    <div class="order__inner">
+                        <button class="modal__close icon-close" type="button" aria-label="Закрыть" data-micromodal-close></button>
+
+                        <div class="order__media">
+                            <Image
+                                src={imgF1}
+                                alt=""
+                                format="webp"
+                                quality={90}
+                                class="img order__img"
+                            />
+                        </div>
+
+                        <div class="order__content">
+                            <div class="order__header">
+                                <h2 class="order__title" id="modal-order-title">Мы готовы к старту!</h2>
+                                <p class="order__text">
+                                    По телефону и в мессенджерах — всегда на связи. <br>
+                                    От вас — только имя и номер.
+                                </p>
+                            </div>
+
+                            <form class="order__form">
+                                <div class="order__fields">
+                                    <div class="order__field form-row">
+                                        <input
+                                                type="text"
+                                                class="order__input input input-v1"
+                                                placeholder="Имя"
+                                                required
+                                        />
+                                    </div>
+                                    <div class="order__field form-row form-row--error">
+                                        <input
+                                                type="tel"
+                                                class="order__input input input-v1"
+                                                placeholder="Телефон"
+                                                required
+                                        />
+                                        <span class="form-row__error">Неправильно введён номер</span>
+                                    </div>
+                                </div>
+
+                                <div class="order__messengers input-messengers">
+                                    <label class="input-radio input-radio--wa">
+                                        <input type="radio" name="howto" value="WhatsApp" class="input-radio__input" checked>
+                                        <span class="input-radio__text">
+                                        <span set:html={wa}></span>
+                                        WhatsApp
+                                    </span>
+                                    </label>
+                                    <label class="input-radio input-radio--tg">
+                                        <input type="radio" name="howto" value="Telegram" class="input-radio__input">
+                                        <span class="input-radio__text">
+                                        <span set:html={telegram}></span>
+                                        Telegram
+                                    </span>
+                                    </label>
+                                </div>
+
+                                <button type="submit" class="order__submit-btn btn btn--main btn--v3">Отправить</button>
+
+                                <p class="order__privacy">
+                                    Нажимая на кнопку, вы даете согласие <br />
+                                    на обработку <a href="#" class="order__privacy-link link link--color-2">персональных данных</a>
+                                </p>
+                            </form>
+                        </div>
                     </div>
-                ))}
+                </div>
             </div>
         </div>
     </div>
 </section>
+
+<script>
+    import MicroModal from 'micromodal';
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const triggers = document.querySelectorAll('[data-micromodal-trigger="modal-order"]');
+        const modal = document.getElementById('modal-order');
+
+        if (modal && triggers.length > 0) {
+            // Вешаем обработчики на каждый триггер для сохранения данных в модальное окно
+            triggers.forEach(trigger => {
+                trigger.addEventListener('click', () => {
+                    const imageSrc = trigger.dataset.image;
+                    const imageClass = trigger.dataset.imageClass;
+
+                    if (imageSrc) {
+                        modal.dataset.activeImage = imageSrc;
+                    }
+                    if (imageClass) {
+                        modal.dataset.activeClass = `modal--${imageClass}`;
+                    }
+                });
+            });
+
+            // Инициализируем Micromodal
+            MicroModal.init({
+                onShow: (modal) => {
+                    // Обновляем изображение
+                    const imageSrc = modal.dataset.activeImage;
+                    const orderImage = modal.querySelector('.order__img');
+                    if (orderImage && imageSrc) {
+                        orderImage.src = imageSrc;
+                    }
+
+                    // Обновляем класс
+                    const activeClass = modal.dataset.activeClass;
+                    if (activeClass) {
+                         // Сначала удаляем все классы, которые могли быть добавлены ранее
+                        const currentClasses = Array.from(modal.classList).filter(cls => cls.startsWith('modal--'));
+                        currentClasses.forEach(cls => modal.classList.remove(cls));
+                        // Добавляем новый
+                        modal.classList.add(activeClass);
+                    }
+                },
+                onClose: (modal) => {
+                    // При закрытии удаляем добавленный класс
+                    const activeClass = modal.dataset.activeClass;
+                     if (activeClass) {
+                        modal.classList.remove(activeClass);
+                    }
+                },
+                disableScroll: true,
+                awaitCloseAnimation: true,
+                disableFocus: true
+            });
+        }
+    });
+</script>
+
+

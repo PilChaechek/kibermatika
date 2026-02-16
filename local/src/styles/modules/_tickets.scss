@@ -324,3 +324,234 @@
     }
   }
 }
+
+.order {
+  &__inner {
+    background-color: #fff;
+    padding: 30px 12px;
+    border-radius: 32px;
+    position: relative;
+    overflow: hidden;
+    @include respond(md){
+      padding: 24px;
+    }
+    @include respond(2xl){
+      padding: 32px 40px;
+      border-radius: 42px;
+    }
+    @include respond(3xl){
+      padding: 50px;
+      border-radius: 44px;
+    }
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: 16px;
+    @include respond(xs){
+      margin-bottom: 24px;
+    }
+  }
+
+  &__img {
+    max-width: 180px;
+    height: auto;
+    position: relative;
+    z-index: 1;
+    @include respond(md){
+      max-width: 220px;
+    }
+  }
+
+  &__media {
+    display: flex;
+    justify-content: center;
+    &:after {
+      content: '';
+      display: block;
+      border-radius: 100%;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+
+      width: 320px;
+      height: 270px;
+      filter: blur(120px);
+
+      @include respond(2xl){
+        width: 500px;
+        height: 400px;
+        filter: blur(145px);
+      }
+    }
+  }
+
+  &__media-wrapper {
+
+  }
+
+  &__title {
+    line-height: 1.1;
+    font-size: toRem(22,16);
+    font-weight: 500;
+    margin-bottom: 12px;
+    @include respond(xs){
+      margin-bottom: 16px;
+    }
+    @include respond(md){
+      font-size: toRem(32,20);
+    }
+    @include respond(2xl){
+      font-size: toRem(40,20);
+    }
+  }
+
+  &__text {
+    color: var(--font-color-text);
+    br {
+      display: none;
+      @include respond(md){
+        display: block;
+      }
+    }
+  }
+  
+  &__content {
+    position: relative;
+  }
+
+  &__fields {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  &__submit-btn {
+    width: 100%;
+  }
+
+  &__messengers {
+    margin-bottom: 24px;
+  }
+
+  &__privacy {
+    margin-top: 12px;
+    text-align: center;
+    color: var(--font-color-text);
+  }
+
+}
+
+.input-v1 {
+  display: flex;
+  align-items: center;
+  height: 52px;
+  border-radius: 12px;
+  padding: 0 24px;
+  border: 1px solid transparent;
+  background-color: var(--color-12);
+  outline: none;
+  font-size: 1rem;
+  @include respond(xs){
+    border-radius: 20px;
+    height: 64px;
+  }
+  @include respond(md){
+    height: 72px;
+  }
+  @include respond(2xl){
+    padding: 0 30px;
+  }
+  @include respond(3xl){
+    height: 80px;
+    border-radius: 20px;
+  }
+}
+
+.form-row {
+  &__error {
+    display: inline-block;
+    margin-top: 6px;
+    color: var(--color-11);
+  }
+}
+
+.form-row--error {
+  .input {
+    border-color: var(--color-11);
+  }
+}
+
+.input-radio {
+  cursor: pointer;
+  &__input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+    line-height: 1;
+  }
+  &__text {
+    user-select: none;
+    display: flex;
+    align-items: center;
+    line-height: 1;
+  }
+}
+
+.input-messengers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: var(--color-12);
+  border-radius: 16px;
+  padding: 4px;
+  .input-radio {
+    height: 52px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--font-color-text);
+    @include respond(xs){
+      height: 62px;
+      border-radius: 16px;
+    }
+  }
+  .input-radio:has(.input-radio__input:checked) {
+    background-color: #fff;
+    color: var(--font-color);
+  }
+  .input-radio__text {
+    gap: 4px;
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+}
+
+.modal--v1 {
+  .order__media:after {
+    background: linear-gradient(90deg, #bcffc7 0%, #f0ffa5 100%);;
+  }
+}
+
+.modal--v2 {
+  .order__media:after {
+    background: radial-gradient(468.76% 67.94% at 14.51% 71.85%, rgb(186, 245, 255) 0%, rgb(209, 180, 255) 100%);
+  }
+}
+
+.modal--v3 {
+  .order__media:after {
+    background: linear-gradient(140deg, #cdf3fd 0%, rgba(255, 147, 246, 0.5) 100%);
+  }
+}

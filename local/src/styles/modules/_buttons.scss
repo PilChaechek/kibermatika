@@ -80,6 +80,25 @@
   }
 }
 
+.btn--v3 {
+  font-size: 1rem;
+  height: 52px;
+  border-radius: 12px;
+  @include respond(xs){
+    border-radius: 20px;
+    height: 64px;
+  }
+  @include respond(md){
+    height: 72px;
+  }
+  @include respond(2xl){
+
+  }
+  @include respond(3xl){
+    height: 80px;
+  }
+}
+
 .btn-block {
   display: flex;
   justify-content: center;
