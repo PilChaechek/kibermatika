@@ -1,5 +1,5 @@
 ---
-import Badge from "../../../assets/images/badges/cart.png";
+import Badge from "../../../assets/images/badges/hands2.png";
 import img1 from "../../../assets/images/events/1.webp";
 import img2 from "../../../assets/images/events/2.webp";
 import img3 from "../../../assets/images/events/3.webp";
@@ -11,28 +11,28 @@ const items = [
         text: 'Первый drum\'n\'bass фестиваль <br> с симфоническим оркестром в России',
         category: 'Музыка',
         img: img1,
-        video: ''
+        video: 'https://www.youtube.com/watch?v=7j4WQ5qOBZY'
     },
     {
         title: 'Киберматика трофи',
         text: 'Гонки на внедорожниках по Подмосковью',
         category: 'Экстрим',
         img: img2,
-        video: ''
+        video: 'https://www.youtube.com/watch?v=RrWzRykkjHY'
     },
     {
         title: 'Героическая стратсессия',
         text: 'Планирование бизнеса по методике режиссера «Рик и Морти»',
         category: 'Обучение',
         img: img3,
-        video: ''
+        video: 'https://www.youtube.com/watch?v=zVmYhm1yVtw'
     },
     {
         title: 'ИГРИСТАЯ',
         text: 'Музыкальная и перформанс-площадка на фестивале SYSTO',
         category: 'Музыка',
         img: img4,
-        video: ''
+        video: 'https://www.youtube.com/watch?v=Zy_JR9_Y8dE'
     },
 ];
 ---
@@ -44,7 +44,7 @@ const items = [
                     <div class="slider__badge">
                         <div class="icon-badge icon-badge--v3">
                             <div class="icon-badge__icon">
-                                <img src={Badge.src} class="img icon-badge__icon-src" alt="" width="88" height="88">
+                                <img src={Badge.src} class="img icon-badge__icon-src icon-badge__icon-src--w" alt="" width="88" height="88">
                             </div>
                             <div class="icon-badge__text">не только<br> про работу</div>
                         </div>
@@ -56,7 +56,7 @@ const items = [
             </div>
             <div class="events__items">
                 {items.map(item => (
-                    <div class="event-card event-card" style={{ backgroundImage: `url(${item.img.src})` }}>
+                    <div class="event-card" style={{ backgroundImage: `url(${item.img.src})` }} data-video={item.video}>
                         <div class="event-card__inner">
                             <div class="event-card__category">{item.category}</div>
                             <button type="button" class="event-card__btn-play btn-reset btn-play">
@@ -73,3 +73,61 @@ const items = [
         </div>
     </div>
 </section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const eventCards = document.querySelectorAll('.event-card');
+
+        eventCards.forEach(card => {
+            card.addEventListener('click', function(e) {
+                // // Не запускать видео, если клик был не по кнопке play
+                // if (!e.target.closest('.event-card__btn-play')) {
+                //     return;
+                // }
+
+                const videoUrl = this.dataset.video;
+                if (!videoUrl) return;
+
+                let videoId;
+                try {
+                    const url = new URL(videoUrl);
+                    videoId = url.searchParams.get('v');
+                } catch (err) {
+                    console.error('Invalid video URL:', videoUrl, err);
+                    return;
+                }
+
+                if (!videoId) return;
+
+                // Находим и сбрасываем предыдущее активное видео
+                const currentActiveCard = document.querySelector('.event-card.event-card--play');
+                if (currentActiveCard && currentActiveCard !== this) {
+                    const oldIframe = currentActiveCard.querySelector('iframe');
+                    if (oldIframe) {
+                        oldIframe.remove();
+                    }
+                    currentActiveCard.classList.remove('event-card--play');
+                }
+
+                // Если текущая карточка уже играет, просто возвращаемся (для предотвращения перезагрузки)
+                if (this.classList.contains('event-card--play')) {
+                    return;
+                }
+
+                const iframe = document.createElement('iframe');
+                iframe.setAttribute('src', `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`);
+                iframe.setAttribute('frameborder', '0');
+                iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+                iframe.setAttribute('allowfullscreen', 'true');
+                iframe.style.width = '100%';
+                iframe.style.height = '100%';
+                iframe.style.position = 'absolute';
+                iframe.style.top = '0';
+                iframe.style.left = '0';
+
+                this.appendChild(iframe);
+                this.classList.add('event-card--play');
+            });
+        });
+    });
+</script>

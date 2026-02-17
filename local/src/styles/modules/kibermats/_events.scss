@@ -6,6 +6,9 @@
     flex-direction: column;
     gap: 24px;
   }
+  .icon-badge {
+    background: #fff;
+  }
 }
 
 .event-card {
@@ -213,6 +216,19 @@
   }
 }
 
-.btn-play {
+.event-card--play {
+  mask-image: none;
+  &:after {
+    display: none;
+  }
 
+  @include respond(md){
+    height: 260px;
+  }
+  @include respond(2xl){
+    height: 450px;
+  }
+  @include respond(3xl){
+    height: 600px;
+  }
 }
