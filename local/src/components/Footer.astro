@@ -1,7 +1,14 @@
 ---
-
+const navItems = [
+    { title: "продукты", href: "/#products" },
+    { title: "команда", href: "/about/#commands" },
+    { title: "вакансии", href: "https://spb.hh.ru/employer/5471863?hhtmFrom=vacancy" },
+    { title: "люди", href: "/#peoples" },
+    { title: "музыка", href: "#" },
+    { title: "фестивали", href: "#" },
+];
 ---
-<footer class="page-footer section--v5">
+<footer class="page-footer section--v5" id="contacts">
     <div class="container">
         <div class="page-footer__inner">
             <div class="page-footer__top">
@@ -40,24 +47,13 @@
             </div>
 
             <nav class="page-footer__nav footer-nav">
-                <div class="footer-nav__item">
-                    <a href="#" class="footer-nav__link link--color">продукты</a>
-                </div>
-                <div class="footer-nav__item">
-                    <a href="#" class="footer-nav__link link--color">команды</a>
-                </div>
-                <div class="footer-nav__item">
-                    <a href="#" class="footer-nav__link link--color">вакансии</a>
-                </div>
-                <div class="footer-nav__item">
-                    <a href="#" class="footer-nav__link link--color">люди</a>
-                </div>
-                <div class="footer-nav__item">
-                    <a href="#" class="footer-nav__link link--color">музыка</a>
-                </div>
-                <div class="footer-nav__item">
-                    <a href="#" class="footer-nav__link link--color">фестивали</a>
-                </div>
+                {
+                    navItems.map((item) => (
+                        <div class="footer-nav__item">
+                            <a href={item.href} class="footer-nav__link link--color">{item.title}</a>
+                        </div>
+                    ))
+                }
             </nav>
 
             <div class="page-footer__bottom">

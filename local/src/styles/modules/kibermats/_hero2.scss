@@ -2,7 +2,6 @@
 
 .hero-2 {
   &:before {
-
     @include respond(md){
       width: 400px;
 
@@ -16,6 +15,7 @@
       aspect-ratio: 866/997;
     }
     @include respond(2xl){
+      top: 0;
       width: 700px;
 
     }

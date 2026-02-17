@@ -25,18 +25,17 @@ import Logo from '../../assets/images/logo.svg';
             </button>
         </div>
         <nav class="mobile-menu__nav">
-            <a class="mobile-menu__link">Продукты</a>
-            <a class="mobile-menu__link">Принципы</a>
-            <a href="/about/" class="mobile-menu__link mobile-menu__link--active">О нас</a>
-            <a class="mobile-menu__link">Контакты</a>
+            <a href="/#products" class="mobile-menu__link">Продукты</a>
+            <a href="#principles" class="mobile-menu__link">Принципы</a>
+            <a href="/about/" href="/about/" class="mobile-menu__link mobile-menu__link--active">О нас</a>
+            <a href="#contacts" class="mobile-menu__link">Контакты</a>
         </nav>
         <nav class="mobile-menu__sub-nav">
-            <a class="mobile-menu__link">люди</a>
-            <a class="mobile-menu__link">команда</a>
-            <a class="mobile-menu__link">музыка</a>
-            <a class="mobile-menu__link">контакты</a>
-            <a class="mobile-menu__link">вакансии</a>
-            <a class="mobile-menu__link">фестивали</a>
+            <a href="/#peoples" class="mobile-menu__link">люди</a>
+            <a href="/about/#commands" class="mobile-menu__link">команда</a>
+            <a href="" class="mobile-menu__link">музыка</a>
+            <a href="https://spb.hh.ru/employer/5471863?hhtmFrom=vacancy" class="mobile-menu__link">вакансии</a>
+            <a href="" class="mobile-menu__link">фестивали</a>
         </nav>
         <div class="mobile-menu__contacts">
             <a class="link link--color-2" href="mailto:hey@cybermatica.com">hey@cybermatica.com</a>
@@ -44,3 +43,14 @@ import Logo from '../../assets/images/logo.svg';
         </div>
     </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const mobileMenuLinks = document.querySelectorAll('.mobile-menu a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                document.body.classList.remove('show-mobile-nav');
+            });
+        });
+    });
+</script>

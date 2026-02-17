@@ -6,6 +6,12 @@ import icon2 from "../../assets/icons/hammer.svg?raw";
 import icon3 from "../../assets/icons/heart.svg?raw";
 import icon4 from "../../assets/icons/star.svg?raw";
 
+interface Props {
+    sectionClass?: string;
+}
+
+const { sectionClass } = Astro.props;
+
 const items = [
     {
         slide: 1,
@@ -38,7 +44,7 @@ const items = [
 ];
 
 ---
-<section class="section slider section--v2" id="slider-1">
+<section class={`section slider ${sectionClass ? sectionClass : ''}`} id="principles">
     <div class="container">
         <div class="slider__header">
 

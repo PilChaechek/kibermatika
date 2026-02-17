@@ -16,6 +16,7 @@
   justify-content: center;
   transition: height .2s ease;
   background-size: cover;
+  border-radius: 32px;
   @include respond(md){
     height: 124px;
     border-radius: 18px;
@@ -29,7 +30,52 @@
     height: 254px;
     border-radius: 44px;
   }
+  
+  &:after {
+    content: '';
+    display: block;
+    background: url("/images/slides/arrow-right-white.svg") no-repeat center;
+    background-size: cover;
+    width: 16px;
+    height: 28px;
+    position: absolute;
+    left: 50%;
+    bottom: 36px;
+    transform: translateX(-50%);
+    visibility: visible;
+    opacity: 1;
+    transition: opacity .2s;
+
+    @include respond(md){
+      width: 18px;
+      height: 32px;
+      right: 40px;
+      top: 50%;
+      bottom: initial;
+      left: initial;
+      transform: translateY(-50%) translateX(0);
+    }
+    @include respond(2xl){
+      width: 36px;
+      height: 63px;
+      right: 76px;
+    }
+    @include respond(3xl){
+      width: 48px;
+      height: 84px;
+      right: 102px;
+    }
+  }
+
   &:hover {
+    &:after {
+      visibility: hidden;
+      opacity: 0;
+    }
+    .event-card__btn-play {
+      opacity: 1;
+      visibility: visible;
+    }
     @include respond(md){
       height: 260px;
     }
@@ -40,6 +86,7 @@
       height: 600px;
     }
   }
+
   &__inner {
     display: flex;
     flex-direction: column;
@@ -56,9 +103,8 @@
       padding: 22px 44px;
     }
     @include respond(3xl){
-      padding: 0 60px;
+      padding: 22px 60px;
     }
-
   }
 
   &__category {
@@ -73,37 +119,57 @@
       border-radius: 8px;
     }
     @include respond(2xl){
-      padding: 4px 12px;
+      padding: 9px 12px;
       border-radius: 12px;
     }
     @include respond(3xl){
-      padding: 8px 16px;
+      padding: 10px 16px;
       border-radius: 16px;
     }
   }
+
   &__title {
     color: #fff;
-    margin-top: auto;
+    margin-top: 26px;
+    margin-bottom: 12px;
     font-weight: 500;
     @include respond(md){
+      margin-top: 0;
       margin-bottom: 4px;
     }
     @include respond(2xl){
       font-size: toRem(36,20);
     }
   }
+
   &__text {
     color: #fff;
+  }
+
+  &__btn-play {
+    margin: auto;
+    @include respond(md){
+      height: 0;
+      opacity: 0;
+      visibility: hidden;
+    }
+    svg {
+      height: auto;
+      @include respond(2xl){
+        width: 76px;
+      }
+      @include respond(3xl){
+        width: 112px;
+      }
+    }
   }
 }
 
 .event-card {
-
   position: relative;
   background-size: cover;
   background-position: center;
-  border-radius: 24px;
-  overflow: hidden;
+
 
   /* --- НАСТРОЙКИ --- */
   --cut-w: 24px;      /* Ширина твоего SVG */
@@ -145,4 +211,8 @@
   @include respond(md){
     mask: none;
   }
+}
+
+.btn-play {
+
 }

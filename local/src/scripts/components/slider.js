@@ -2,7 +2,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export default function slider() {
-	const section = document.getElementById("slider-1");
+	const section = document.getElementById("principles");
 	if (!section) return;
 
 	const mm = gsap.matchMedia();
