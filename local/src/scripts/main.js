@@ -44,3 +44,70 @@
 //
 //   ScrollTrigger.addEventListener("refreshInit", refresh);
 // }
+
+// Liquid Glass эффект по кнопке "Дропнуть басс"
+import LiquidBackground from "https://cdn.jsdelivr.net/npm/threejs-components@0.0.27/build/backgrounds/liquid1.min.js";
+
+const dropBassBtn = document.getElementById("drop-bass-btn");
+const liquidCanvas = document.getElementById("liquid-canvas");
+
+let liquidApp = null;
+let isActive = false;
+let isFading = false;
+
+const closeOverlay = document.createElement("div");
+closeOverlay.id = "liquid-close-overlay";
+document.body.appendChild(closeOverlay);
+
+function activateLiquid() {
+  if (isFading) return;
+
+  liquidCanvas.classList.add("liquid-canvas--active");
+  closeOverlay.classList.add("liquid-close-overlay--active");
+  isActive = true;
+
+  if (!liquidApp) {
+    liquidApp = LiquidBackground(liquidCanvas);
+    liquidApp.liquidPlane.material.metalness = 0.75;
+    liquidApp.liquidPlane.material.roughness = 0.25;
+    liquidApp.liquidPlane.uniforms.displacementScale.value = 5;
+    liquidApp.setRain(false);
+  }
+}
+
+function deactivateLiquid() {
+  if (isFading) return;
+
+  closeOverlay.classList.remove("liquid-close-overlay--active");
+  liquidCanvas.classList.remove("liquid-canvas--active");
+  isActive = false;
+  isFading = true;
+
+  liquidCanvas.addEventListener(
+    "transitionend",
+    () => {
+      isFading = false;
+      if (!isActive && liquidApp && liquidApp.dispose) {
+        liquidApp.dispose();
+        liquidApp = null;
+      }
+    },
+    { once: true },
+  );
+}
+
+if (dropBassBtn) {
+  dropBassBtn.addEventListener("click", () => {
+    if (isActive) {
+      deactivateLiquid();
+    } else {
+      activateLiquid();
+    }
+  });
+}
+
+closeOverlay.addEventListener("click", () => {
+  if (isActive) {
+    deactivateLiquid();
+  }
+});

@@ -154,7 +154,7 @@
 }
 
 .sphere {
-  aspect-ratio: 2/2;
+  aspect-ratio: 1;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -163,6 +163,10 @@
   color: #fcfef3;
   text-align: center;
   line-height: 1;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
   @include respond(md){
     width: 204px;
     height: 204px;
