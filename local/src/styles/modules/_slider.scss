@@ -168,6 +168,12 @@
     color: var(--font-color-text);
     line-height: 1.2;
     margin-bottom: 40px;
+    br {
+      display: none;
+      @include respond(3xl){
+        display: block;
+      }
+    }
     @include respond(md){
       margin-bottom: 0;
       max-width: 390px;

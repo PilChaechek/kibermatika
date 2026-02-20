@@ -12,12 +12,10 @@ import MobileMenu from "../components/sections/MobileMenu.astro";
 		<title>Kibermatika</title>
 	</head>
 	<body>
-		<div id="smooth-wrapper">
-			<div id="smooth-content">
-				<slot />
-			</div>
+		<div class="wrapper">
+			<slot />
+			<MobileMenu />
 		</div>
 		<script src="../scripts/main.js"></script>
-		<MobileMenu />
 	</body>
 </html>

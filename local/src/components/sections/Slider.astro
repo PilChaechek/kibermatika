@@ -30,7 +30,7 @@ const items = [
     {
         slide: 3,
         title: 'Общее дело —<br> общий вайб',
-        text: 'Хорошее настроение — очень важно. Ценим то настроение, которое получаем от взаимодействия и сами дарим классные эмоции.',
+        text: 'Хорошее настроение — очень важно. <br> Ценим  то настроение, которое получаем <br> от взаимодействия и сами дарим классные эмоции.',
         link_text: '',
         icon: icon3
     },
@@ -58,7 +58,7 @@ const items = [
             </div>
 
             <h2 class="slider__title section__title">От принципов <br>к делу</h2>
-            <p class="slider__text">Для нас важно не только выпускать <br> продукты, но и передавать через<br> них наши принципы и подход: к<br> бизнесу, работе и взаимодействию. </p>
+            <p class="slider__text">Для нас важно не только выпускать <br> продукты, но и передавать через<br> них наши принципы и подход: <br>к бизнесу, работе и взаимодействию. </p>
         </div>
     </div>
         <div class="swiper">
@@ -68,8 +68,8 @@ const items = [
                             class={`slider__item swiper-slide slide slide-v2--${item.slide}`}
                     >
                         <h3 class="slide__title" set:html={item.title} />
-                        <div class="slide__icon" set:html={item.icon}></div>
-                        <p class="slide__text">{item.text}</p>
+                        <div class="slide__icon"/>
+                        <p class="slide__text" set:html={item.text}/>
                     </div>
                 ))}
             </div>

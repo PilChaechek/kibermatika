@@ -16,7 +16,7 @@
 }
 
 .logo-company {
-
+  display: flex;
   &__link {
     display: inline-flex;
     gap: .5rem;
@@ -106,19 +106,19 @@
     @include respond(md) {
       padding: 12px 32px 0 32px;
       gap: 12px;
-      grid-template-columns: repeat(4, minmax(100px, 1fr));
+      grid-template-columns: repeat(3, minmax(100px, 1fr));
       border-radius: 0 0 12px 12px;
     }
     @include respond(2xl) {
       padding: 12px 46px 0 46px;
       gap: 20px;
-      grid-template-columns: repeat(4, minmax(120px, 1fr));
+      grid-template-columns: repeat(3, minmax(120px, 1fr));
     }
     @include respond(3xl) {
       border-radius: 0 0 20px 20px;
       padding: 12px 54px 0 54px;
       gap: 24px;
-      grid-template-columns: repeat(4, minmax(150px, 1fr));
+      grid-template-columns: repeat(3, minmax(150px, 1fr));
     }
   }
   &__item {

@@ -23,7 +23,6 @@
 }
 
 .company-model {
-
   @include respond(xs){
     //overflow: visible;
   }
@@ -46,6 +45,14 @@
     margin-bottom: 1rem;
     .icon-badge {
       background: linear-gradient(179deg, #f4f5fb 0%, #ebedf8 100%);
+    }
+  }
+  &__header-text {
+    br {
+      display: none;
+      @include respond(xs){
+        display: block;
+      }
     }
   }
   &__orbit {
@@ -95,13 +102,11 @@
   position: relative;
   margin: auto;
   width: 100%;
-
   aspect-ratio: 1 / 1;
-
   max-width: 100%;
-  //overflow: hidden;
   height: 546px;
   border-radius: 50%;
+  filter: blur(3px);
 
   @include respond(md){
     height: 100%;

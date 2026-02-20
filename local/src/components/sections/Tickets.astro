@@ -156,32 +156,23 @@ const items = [
                                                 required
                                         />
                                     </div>
-                                    <div class="order__field form-row form-row--error">
+                                    <div class="order__field form-row">
                                         <input
                                                 type="tel"
                                                 class="order__input input input-v1"
                                                 placeholder="Телефон"
                                                 required
                                         />
-                                        <span class="form-row__error">Неправильно введён номер</span>
                                     </div>
-                                </div>
-
-                                <div class="order__messengers input-messengers">
-                                    <label class="input-radio input-radio--wa">
-                                        <input type="radio" name="howto" value="WhatsApp" class="input-radio__input" checked>
-                                        <span class="input-radio__text">
-                                        <span set:html={wa}></span>
-                                        WhatsApp
-                                    </span>
-                                    </label>
-                                    <label class="input-radio input-radio--tg">
-                                        <input type="radio" name="howto" value="Telegram" class="input-radio__input">
-                                        <span class="input-radio__text">
-                                        <span set:html={telegram}></span>
-                                        Telegram
-                                    </span>
-                                    </label>
+                                    <!--<div class="order__field form-row form-row&#45;&#45;error">-->
+                                    <!--    <input-->
+                                    <!--            type="tel"-->
+                                    <!--            class="order__input input input-v1"-->
+                                    <!--            placeholder="Телефон"-->
+                                    <!--            required-->
+                                    <!--    />-->
+                                    <!--    <span class="form-row__error">Неправильно введён номер</span>-->
+                                    <!--</div>-->
                                 </div>
 
                                 <button type="submit" class="order__submit-btn btn btn--main btn--v3">Отправить</button>

@@ -238,3 +238,23 @@
     //height: 100%;
   }
 }
+
+.icon-badge--v5 {
+  background: linear-gradient(179deg, #f4f5fb 0%, #ebedf8 100%);
+  transform: rotate(-4deg);
+  @include respond(2xl) {
+    padding: 16px 24px;
+  }
+  .icon-badge__icon-src {
+    position: static;
+    margin-left: 4px;
+    @include respond(2xl) {
+      width: 50px;
+      height: 50px;
+    }
+    @include respond(3xl) {
+      width: 88px;
+      height: 88px;
+    }
+  }
+}
