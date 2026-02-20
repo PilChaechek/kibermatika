@@ -96,6 +96,15 @@ const navItems = [
         if (sphereContainer && btn) {
             btn.addEventListener('click', () => {
                 createRipple(sphereContainer);
+                
+                // Dispatch custom event for global effects
+                const rect = btn.getBoundingClientRect();
+                const centerX = rect.left + rect.width / 2;
+                const centerY = rect.top + rect.height / 2;
+                
+                window.dispatchEvent(new CustomEvent('bass-drop', {
+                    detail: { x: centerX, y: centerY }
+                }));
             });
         }
 

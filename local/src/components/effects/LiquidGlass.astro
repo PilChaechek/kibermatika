@@ -1,0 +1,265 @@
+---
+---
+<div id="liquid-glass-container">
+    <canvas id="liquid-glass-canvas"></canvas>
+</div>
+
+<style>
+    #liquid-glass-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        pointer-events: none;
+    }
+    #liquid-glass-canvas {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+</style>
+
+<script>
+    import { gsap } from "gsap";
+
+    class LiquidGlassRipple {
+        canvas;
+        gl;
+        program;
+        isPlaying = false;
+        startTime = 0;
+        strength = 0;
+        centerX = 0.5;
+        centerY = 0.5;
+        animationId = null;
+        tween = null;
+
+        // Uniform locations
+        uResolution; uCenter; uTime; uStrength;
+
+        constructor() {
+            this.canvas = document.getElementById('liquid-glass-canvas');
+            if (!this.canvas) return;
+
+            this.gl = this.canvas.getContext('webgl', {
+                alpha: true,
+                premultipliedAlpha: false,
+                antialias: true
+            });
+            if (!this.gl) return;
+
+            this.init();
+            this.resize();
+            window.addEventListener('resize', () => this.resize());
+
+            window.addEventListener('bass-drop', (e) => {
+                const { x, y } = e.detail || {
+                    x: window.innerWidth / 2,
+                    y: window.innerHeight / 2
+                };
+                this.trigger(x, y);
+            });
+        }
+
+        init() {
+            const gl = this.gl;
+
+            // ── Vertex shader (fullscreen quad) ──
+            const vsSource = `
+                attribute vec2 position;
+                void main() {
+                    gl_Position = vec4(position, 0.0, 1.0);
+                }
+            `;
+
+            // ── Fragment shader: liquid glass water ripples ──
+            const fsSource = `
+                precision highp float;
+
+                uniform vec2  uResolution;
+                uniform vec2  uCenter;   // normalized click position (Y flipped for GL)
+                uniform float uTime;     // seconds since trigger
+                uniform float uStrength; // 0-1 master fade
+
+                void main() {
+                    vec2 uv = gl_FragCoord.xy / uResolution;
+                    float aspect = uResolution.x / uResolution.y;
+
+                    // Aspect-corrected coordinates
+                    vec2 pos    = vec2(uv.x * aspect, uv.y);
+                    vec2 center = vec2(uCenter.x * aspect, uCenter.y);
+                    float dist  = distance(pos, center);
+
+                    // ── Expansion envelope ──
+                    float maxR = uTime * 0.45;                            // wavefront radius
+                    float wavefront  = smoothstep(maxR + 0.06, maxR - 0.03, dist); // sharp front
+                    float centerHole = smoothstep(0.0, 0.04, dist);       // avoid center singularity
+                    float distDamp   = 1.0 / (1.0 + dist * 3.0);         // 1/r circular spreading
+                    float timeDamp   = exp(-uTime * 0.22);                // slow overall decay
+                    float env = wavefront * centerHole * distDamp * timeDamp;
+
+                    // ── Wave layers (stone-in-water concentric rings) ──
+                    // Phase velocity ≈ expansion speed so rings travel with the front
+
+                    // Layer 1 — fat primary rings
+                    float k1 = 18.0;  float w1 = 8.0;
+                    float h1 = sin(dist * k1 - uTime * w1) * env;
+                    float d1 = cos(dist * k1 - uTime * w1) * k1 * env;
+
+                    // Layer 2 — medium detail
+                    float k2 = 32.0;  float w2 = 14.0;
+                    float h2 = sin(dist * k2 - uTime * w2) * env * 0.3;
+                    float d2 = cos(dist * k2 - uTime * w2) * k2 * env * 0.3;
+
+                    // Layer 3 — fine texture
+                    float k3 = 52.0;  float w3 = 23.0;
+                    float h3 = sin(dist * k3 - uTime * w3) * env * 0.1;
+                    float d3 = cos(dist * k3 - uTime * w3) * k3 * env * 0.1;
+
+                    float h  = h1 + h2 + h3;       // total height
+                    float dh = d1 + d2 + d3;        // total slope (derivative)
+
+                    // ── Liquid glass rendering ──
+
+                    // Specular highlight — sharp bright line where slope is steep
+                    float spec = pow(clamp(abs(dh) * 0.055, 0.0, 1.0), 2.5);
+
+                    // Ridge glow — soft brightness on wave crests
+                    float ridge = smoothstep(0.15, 0.55, h) * 0.4;
+
+                    // Fresnel rim — extra brightness at steep edges
+                    float fresnel = pow(clamp(abs(dh) * 0.04, 0.0, 1.0), 5.0) * 0.25;
+
+                    float brightness = spec + ridge + fresnel;
+
+                    // Color: cool white → pure white at specular peak
+                    vec3 glassBase = vec3(0.90, 0.94, 1.0);
+                    vec3 color = mix(glassBase, vec3(1.0), clamp(spec * 2.0, 0.0, 1.0));
+
+                    // Alpha: visible only where highlights exist
+                    float alpha = clamp(brightness * 0.8 * uStrength, 0.0, 0.85);
+
+                    gl_FragColor = vec4(color, alpha);
+                }
+            `;
+
+            const vertexShader   = this.createShader(gl.VERTEX_SHADER, vsSource);
+            const fragmentShader = this.createShader(gl.FRAGMENT_SHADER, fsSource);
+            if (!vertexShader || !fragmentShader) return;
+
+            this.program = this.createProgram(vertexShader, fragmentShader);
+            if (!this.program) return;
+
+            // Fullscreen quad
+            const buf = gl.createBuffer();
+            gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+            gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([
+                -1,-1,  1,-1,  -1,1,
+                -1, 1,  1,-1,   1,1,
+            ]), gl.STATIC_DRAW);
+
+            const posLoc = gl.getAttribLocation(this.program, "position");
+            gl.enableVertexAttribArray(posLoc);
+            gl.vertexAttribPointer(posLoc, 2, gl.FLOAT, false, 0, 0);
+
+            // Cache uniform locations
+            gl.useProgram(this.program);
+            this.uResolution = gl.getUniformLocation(this.program, "uResolution");
+            this.uCenter     = gl.getUniformLocation(this.program, "uCenter");
+            this.uTime       = gl.getUniformLocation(this.program, "uTime");
+            this.uStrength   = gl.getUniformLocation(this.program, "uStrength");
+
+            // Blending
+            gl.enable(gl.BLEND);
+            gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+        }
+
+        createShader(type, source) {
+            const s = this.gl.createShader(type);
+            this.gl.shaderSource(s, source);
+            this.gl.compileShader(s);
+            if (!this.gl.getShaderParameter(s, this.gl.COMPILE_STATUS)) {
+                console.error('Shader error:', this.gl.getShaderInfoLog(s));
+                this.gl.deleteShader(s);
+                return null;
+            }
+            return s;
+        }
+
+        createProgram(vs, fs) {
+            const p = this.gl.createProgram();
+            this.gl.attachShader(p, vs);
+            this.gl.attachShader(p, fs);
+            this.gl.linkProgram(p);
+            if (!this.gl.getProgramParameter(p, this.gl.LINK_STATUS)) {
+                console.error('Link error:', this.gl.getProgramInfoLog(p));
+                return null;
+            }
+            return p;
+        }
+
+        resize() {
+            const dpr = Math.min(window.devicePixelRatio || 1, 2);
+            this.canvas.width  = window.innerWidth  * dpr;
+            this.canvas.height = window.innerHeight * dpr;
+            this.gl.viewport(0, 0, this.canvas.width, this.canvas.height);
+        }
+
+        trigger(x, y) {
+            this.centerX = x / window.innerWidth;
+            this.centerY = 1.0 - (y / window.innerHeight); // flip Y for GL
+
+            if (this.tween) this.tween.kill();
+            if (this.animationId) cancelAnimationFrame(this.animationId);
+
+            this.startTime = performance.now();
+            this.isPlaying = true;
+            this.strength  = 1.0;
+
+            // Fade out: hold 2.5s, then fade over 2s
+            this.tween = gsap.to(this, {
+                strength: 0,
+                duration: 2.0,
+                delay: 2.5,
+                ease: "power2.in",
+                onComplete: () => {
+                    this.isPlaying = false;
+                    this.gl.clear(this.gl.COLOR_BUFFER_BIT);
+                }
+            });
+
+            // Haptic feedback on mobile
+            if (navigator.vibrate) navigator.vibrate(50);
+
+            this.renderLoop();
+        }
+
+        renderLoop() {
+            if (!this.isPlaying || !this.program) return;
+
+            const elapsed = (performance.now() - this.startTime) / 1000;
+            const gl = this.gl;
+
+            gl.clear(gl.COLOR_BUFFER_BIT);
+            gl.useProgram(this.program);
+
+            gl.uniform2f(this.uResolution, this.canvas.width, this.canvas.height);
+            gl.uniform2f(this.uCenter, this.centerX, this.centerY);
+            gl.uniform1f(this.uTime, elapsed);
+            gl.uniform1f(this.uStrength, this.strength);
+
+            gl.drawArrays(gl.TRIANGLES, 0, 6);
+
+            this.animationId = requestAnimationFrame(() => this.renderLoop());
+        }
+    }
+
+    // Init on page load
+    if (typeof window !== 'undefined') {
+        window.addEventListener('load', () => {
+            new LiquidGlassRipple();
+        });
+    }
+</script>

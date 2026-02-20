@@ -1,0 +1,218 @@
+---
+---
+<div id="shockwave-container">
+    <canvas id="shockwave-canvas"></canvas>
+</div>
+
+<style>
+    #shockwave-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        pointer-events: none;
+        overflow: hidden;
+    }
+    #shockwave-canvas {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+</style>
+
+<script>
+    import { gsap } from "gsap";
+
+    // Простой и надежный WebGL шейдер
+    class ShockwaveEffect {
+        constructor() {
+            this.canvas = document.getElementById('shockwave-canvas');
+            if (!this.canvas) return;
+            
+            this.gl = this.canvas.getContext('webgl', { alpha: true, premultipliedAlpha: false });
+            if (!this.gl) return;
+
+            this.program = null;
+            this.startTime = 0;
+            this.isPlaying = false;
+            
+            this.uniforms = {
+                uTime: { value: 0 },
+                uResolution: { value: [window.innerWidth, window.innerHeight] },
+                uCenter: { value: [0.5, 0.5] },
+                uStrength: { value: 0 }
+            };
+
+            this.init();
+            this.resize();
+            window.addEventListener('resize', () => this.resize());
+            
+            window.addEventListener('bass-drop', (e) => {
+                const { x, y } = e.detail || { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+                this.trigger(x, y);
+            });
+        }
+
+        init() {
+            const vsSource = `
+                attribute vec2 position;
+                void main() {
+                    gl_Position = vec4(position, 0.0, 1.0);
+                }
+            `;
+
+            const fsSource = `
+                precision highp float;
+                uniform vec2 uResolution;
+                uniform vec2 uCenter;
+                uniform float uTime;
+                uniform float uStrength;
+
+                void main() {
+                    vec2 uv = gl_FragCoord.xy / uResolution;
+                    float aspect = uResolution.x / uResolution.y;
+                    
+                    vec2 center = uCenter;
+                    center.x *= aspect;
+                    
+                    vec2 pos = uv;
+                    pos.x *= aspect;
+                    
+                    float dist = distance(pos, center);
+                    
+                    // --- WAVE PARAMETERS ---
+                    // Медленная, жирная волна
+                    float radius = uTime * 0.4; // Очень медленно
+                    float width = 0.5; // Очень широко
+                    
+                    // Профиль волны
+                    float mask = smoothstep(radius - width, radius, dist) * 
+                                 smoothstep(radius + width, radius, dist);
+                    mask = pow(mask, 0.7); // Пухлая
+                    
+                    // --- GLASS LOOK ---
+                    
+                    // 1. Блик (Highlight)
+                    // Белая полоса по центру
+                    float highlight = mask * (1.0 - abs(dist - radius) / (width * 0.8));
+                    highlight = smoothstep(0.5, 1.0, highlight);
+                    highlight = pow(highlight, 2.0);
+                    
+                    // 2. Хроматика (Радуга на краях) - чисто для объема
+                    float r = smoothstep(radius - width*0.5, radius, dist) * mask;
+                    float b = smoothstep(radius, radius + width*0.5, dist) * mask;
+                    
+                    // --- COLOR ---
+                    vec3 color = vec3(1.0); // Белый блик
+                    
+                    // --- ALPHA ---
+                    // Прозрачность только там, где блик или радуга
+                    float alpha = highlight * 0.5 + (r+b) * 0.2;
+                    
+                    // Затухание
+                    float fade = 1.0 - smoothstep(1.5, 3.0, uTime);
+                    alpha *= uStrength * fade;
+                    
+                    gl_FragColor = vec4(color, alpha);
+                }
+            `;
+
+            const vertexShader = this.createShader(this.gl.VERTEX_SHADER, vsSource);
+            const fragmentShader = this.createShader(this.gl.FRAGMENT_SHADER, fsSource);
+            this.program = this.createProgram(vertexShader, fragmentShader);
+
+            const positionBuffer = this.gl.createBuffer();
+            this.gl.bindBuffer(this.gl.ARRAY_BUFFER, positionBuffer);
+            this.gl.bufferData(this.gl.ARRAY_BUFFER, new Float32Array([
+                -1, -1, 1, -1, -1, 1,
+                -1, 1, 1, -1, 1, 1,
+            ]), this.gl.STATIC_DRAW);
+
+            const positionAttributeLocation = this.gl.getAttribLocation(this.program, "position");
+            this.gl.enableVertexAttribArray(positionAttributeLocation);
+            this.gl.vertexAttribPointer(positionAttributeLocation, 2, this.gl.FLOAT, false, 0, 0);
+        }
+
+        createShader(type, source) {
+            const shader = this.gl.createShader(type);
+            this.gl.shaderSource(shader, source);
+            this.gl.compileShader(shader);
+            if (!this.gl.getShaderParameter(shader, this.gl.COMPILE_STATUS)) {
+                console.error(this.gl.getShaderInfoLog(shader));
+                this.gl.deleteShader(shader);
+                return null;
+            }
+            return shader;
+        }
+
+        createProgram(vertexShader, fragmentShader) {
+            const program = this.gl.createProgram();
+            this.gl.attachShader(program, vertexShader);
+            this.gl.attachShader(program, fragmentShader);
+            this.gl.linkProgram(program);
+            if (!this.gl.getProgramParameter(program, this.gl.LINK_STATUS)) {
+                console.error(this.gl.getProgramInfoLog(program));
+                this.gl.deleteProgram(program);
+                return null;
+            }
+            return program;
+        }
+
+        resize() {
+            this.canvas.width = window.innerWidth;
+            this.canvas.height = window.innerHeight;
+            this.gl.viewport(0, 0, this.canvas.width, this.canvas.height);
+            this.uniforms.uResolution.value = [this.canvas.width, this.canvas.height];
+        }
+
+        trigger(x, y) {
+            const aspect = window.innerWidth / window.innerHeight;
+            this.uniforms.uCenter.value = [x / window.innerWidth, 1.0 - (y / window.innerHeight)];
+            this.uniforms.uStrength.value = 1.0;
+            this.uniforms.uTime.value = 0.0;
+            
+            if (this.tween) this.tween.kill();
+            
+            this.isPlaying = true;
+            this.startTime = performance.now();
+            
+            this.tween = gsap.to(this.uniforms.uTime, {
+                value: 3.0,
+                duration: 6.0, // 6 секунд
+                ease: "power2.out",
+                onUpdate: () => {
+                    this.render();
+                },
+                onComplete: () => {
+                    this.isPlaying = false;
+                    this.gl.clear(this.gl.COLOR_BUFFER_BIT);
+                }
+            });
+        }
+
+        render() {
+            if (!this.program) return;
+            this.gl.useProgram(this.program);
+            
+            const uResolutionLoc = this.gl.getUniformLocation(this.program, "uResolution");
+            const uCenterLoc = this.gl.getUniformLocation(this.program, "uCenter");
+            const uTimeLoc = this.gl.getUniformLocation(this.program, "uTime");
+            const uStrengthLoc = this.gl.getUniformLocation(this.program, "uStrength");
+            
+            this.gl.uniform2fv(uResolutionLoc, this.uniforms.uResolution.value);
+            this.gl.uniform2fv(uCenterLoc, this.uniforms.uCenter.value);
+            this.gl.uniform1f(uTimeLoc, this.uniforms.uTime.value);
+            this.gl.uniform1f(uStrengthLoc, this.uniforms.uStrength.value);
+            
+            this.gl.drawArrays(this.gl.TRIANGLES, 0, 6);
+        }
+    }
+
+    if (typeof window !== 'undefined') {
+        window.addEventListener('load', () => {
+             new ShockwaveEffect();
+        });
+    }
+</script>

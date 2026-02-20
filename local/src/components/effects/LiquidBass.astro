@@ -1,0 +1,104 @@
+<div id="liquid-bass-container">
+    <canvas id="liquid-bass-canvas"></canvas>
+</div>
+
+<style>
+    #liquid-bass-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.2s;
+    }
+    #liquid-bass-container.active {
+        opacity: 1;
+        pointer-events: auto;
+    }
+    canvas {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+</style>
+
+<script type="module">
+    import LiquidBackground from 'https://cdn.jsdelivr.net/npm/threejs-components@0.0.27/build/backgrounds/liquid1.min.js';
+    import { gsap } from "gsap";
+
+    const container = document.getElementById('liquid-bass-container');
+    const canvas = document.getElementById('liquid-bass-canvas');
+
+    if (container && canvas) {
+        // Инициализация
+        const app = LiquidBackground(canvas);
+        
+        // ВАЖНО: Грузим текстуру "воды" или "нормалей", чтобы было чему искажаться
+        // Но делаем её прозрачной или используем как карту высот
+        // CodePen пример использует liquid.webp. Мы возьмем её же, но настроим материал хитро.
+        app.loadImage('https://assets.codepen.io/33787/liquid.webp');
+        
+        // Настройка "Жидкого Стекла"
+        // Чтобы было прозрачно, но объемно:
+        // ThreeJS components создает MeshPhysicalMaterial или похожий.
+        // Мы можем хакнуть его.
+        
+        // Ждем пока загрузится (внутри либы нет колбека, но свойства доступны сразу)
+        
+        // Настройки для "Стекла/Воды"
+        app.liquidPlane.material.metalness = 0.2; 
+        app.liquidPlane.material.roughness = 0.1;
+        app.liquidPlane.material.transparent = true; // Включаем прозрачность
+        app.liquidPlane.material.opacity = 0.6; // Полупрозрачность (чтобы видеть сайт)
+        
+        // Цвет: Белый/Голубоватый
+        app.liquidPlane.material.color = { r: 0.9, g: 0.95, b: 1.0 }; 
+        
+        app.liquidPlane.uniforms.displacementScale.value = 0;
+        app.setRain(false);
+
+        let isAnimating = false;
+
+        window.addEventListener('bass-drop', () => {
+            if (isAnimating) return;
+            isAnimating = true;
+            
+            // Показываем контейнер
+            container.classList.add('active');
+            
+            // 1. Анимация "Надувания пузыря" (Displacement)
+            // Медленно и жирно
+            gsap.fromTo(app.liquidPlane.uniforms.displacementScale, 
+                { value: 0 },
+                {
+                    value: 8.0, // ОЧЕНЬ СИЛЬНОЕ ИСКАЖЕНИЕ
+                    duration: 4.0, // Медленно (4 сек)
+                    ease: "power2.out",
+                    yoyo: true,
+                    repeat: 1,
+                    onComplete: () => {
+                        container.classList.remove('active');
+                        isAnimating = false;
+                    }
+                }
+            );
+            
+            // 2. Анимация "Течения" (Time)
+            // Чтобы волны двигались
+            const timeObj = { val: 0 };
+            gsap.to(timeObj, {
+                val: 1,
+                duration: 8.0,
+                onUpdate: () => {
+                    app.liquidPlane.uniforms.uTime.value += 0.02; // Медленное течение
+                }
+            });
+            
+            // 3. Вибрация
+            if (navigator.vibrate) navigator.vibrate(50);
+        });
+    }
+</script>
