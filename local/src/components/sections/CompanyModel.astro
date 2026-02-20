@@ -108,7 +108,7 @@ import Badge from "../../assets/images/badges/hands1.png";
         mm.add("(max-width: 745px)", (context) => {
             const streamHeight = stream.scrollHeight;
             const windowHeight = window.innerHeight;
-            const trackHeight = (streamHeight * 1.2) + (windowHeight * 1.4);
+            const trackHeight = (streamHeight * 0.8) + (windowHeight * 1.0);
 
             gsap.set(section, { height: trackHeight, position: 'relative' });
             gsap.set(inner, { position: "sticky", top: 0, overflow: "hidden", zIndex: 2 });

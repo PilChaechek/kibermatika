@@ -1,6 +1,5 @@
 @use '../mixins/breakpoints' as *;
 
-
 .carousel {
   overflow: hidden;
   padding: 40px 0;
@@ -13,18 +12,21 @@
     background: linear-gradient(179deg, #f4f5fb 0%, #ebedf8 100%);
   }
 
-  .section__header {
-    padding-top: 12px;
+  .section-header {
+    @include respond(md){
+      margin-bottom: 12px;
+    }
   }
 
   .section__title {
     margin-bottom: 24px;
     @include respond(2xl){
-      margin-bottom: 48px;
+      margin-bottom: 0;
     }
   }
 
   .section__text {
+    color: var(--font-color-text);
     br {
       display: none;
       @include respond(md){
@@ -37,13 +39,13 @@
     width: 100%;
     position: relative;
 
-    @include respond(md){
+    @include respond(2xl){
       mask-image: linear-gradient(
-                      to right,
-                      transparent 0%,
-                      black 10%,
-                      black 90%,
-                      transparent 100%
+          to right,
+          transparent 0%,
+          black 10%,
+          black 90%,
+          transparent 100%
       );
     }
   }
@@ -271,4 +273,36 @@
 
 .no-link {
   cursor: default;
+}
+
+.section-header {
+  text-align: center;
+  @include respond(md){
+    text-align: left;
+    display: grid;
+    align-items: center;
+    grid-template-columns: 280px auto;
+    gap: 0 32px;
+    margin-bottom: 48px;
+  }
+  @include respond(2xl) {
+    grid-template-columns: auto auto 1fr;
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+  }
+  @include respond(3xl){
+    gap: 2.5rem;
+  }
+
+  &__badge {
+    margin-bottom: 24px;
+    @include respond(md){
+      display: block;
+      grid-column: 1 / -1;
+    }
+    @include respond(2xl){
+      grid-column: initial;
+      margin-bottom: 0;
+    }
+  }
 }

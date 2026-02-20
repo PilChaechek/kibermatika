@@ -109,6 +109,7 @@
   filter: blur(3px);
 
   @include respond(md){
+    filter: none;
     height: 100%;
     max-width: 680px;
     max-height: 680px;

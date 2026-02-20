@@ -1,0 +1,8 @@
+@use '../mixins/breakpoints' as *;
+@include respond(md){}
+@include respond(2xl){}
+@include respond(3xl){}
+
+.contacts {
+  min-height: calc(100vh - 48px);
+}
