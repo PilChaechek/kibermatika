@@ -1,9 +1,10 @@
 ---
-import {Image} from "astro:assets";
+import { Image } from "astro:assets";
 import Astronaut from "../../assets/images/orbit/astronaut.png";
 import Station from "../../assets/images/orbit/s2.png";
 import Badge from "../../assets/images/badges/hands1.png";
 ---
+
 <section class="section company-model">
     <div class="company-model__inner">
         <div class="container">
@@ -21,22 +22,39 @@ import Badge from "../../assets/images/badges/hands1.png";
                                 />
                             </div>
                         </div>
-                        <div class="icon-badge__text">строим всё <br> вокруг продаж</div>
+                        <div class="icon-badge__text">
+                            строим всё <br /> вокруг продаж
+                        </div>
                     </div>
                 </div>
                 <h2 class="section__title">Сейлзово-центричная компания</h2>
-                <p class="company-model__header-text">Мы вывернули систему управления наизнанку. Менеджер по продажам <br> становится первым человеком в компании после клиента. Энергия <br> активных продаж — наш драйвер, и каждый отдел построен вокруг нее.</p>
+                <p class="company-model__header-text">
+                    Мы вывернули систему управления наизнанку. Менеджер по
+                    продажам <br /> становится первым человеком в компании после клиента.
+                    Энергия <br /> активных продаж — наш драйвер, и каждый отдел построен
+                    вокруг нее.
+                </p>
             </div>
         </div>
 
         <div class="company-model__orbit">
             <div class="orbit">
                 <div class="js-circle orbit-s3" data-index="3"></div>
-                <div class="orbit-badge orbit-badge--1">Менеджеры <br>по продажам</div>
-                <div class="orbit__item orbit__item--1 js-circle" data-index="1">
-                    <div class="orbit__item orbit__item--2 js-circle" data-index="2">
+                <div class="orbit-badge orbit-badge--1">
+                    Менеджеры <br />по продажам
+                </div>
+                <div
+                    class="orbit__item orbit__item--1 js-circle"
+                    data-index="1"
+                >
+                    <div
+                        class="orbit__item orbit__item--2 js-circle"
+                        data-index="2"
+                    >
                         <div class="orbit__item orbit__item--3">
-                            <div class="orbit-badge orbit-badge--2">Клиент и продажи</div>
+                            <div class="orbit-badge orbit-badge--2">
+                                Клиент и продажи
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -44,7 +62,9 @@ import Badge from "../../assets/images/badges/hands1.png";
             <div class="orbit-stream">
                 <div class="orbit-box orbit-box--1">
                     <div class="orbit-box__header">
-                        <div class="orbit-box__title">Поддержка <br> и система</div>
+                        <div class="orbit-box__title">
+                            Поддержка <br /> и система
+                        </div>
                     </div>
                     <div class="orbit-box__content">
                         <ul class="orbit-box__list list list-marker">
@@ -57,7 +77,9 @@ import Badge from "../../assets/images/badges/hands1.png";
 
                 <div class="orbit-box orbit-box--2">
                     <div class="orbit-box__header">
-                        <div class="orbit-box__title">Среда <br> и ресурсы</div>
+                        <div class="orbit-box__title">
+                            Среда <br /> и ресурсы
+                        </div>
                     </div>
                     <div class="orbit-box__content">
                         <ul class="orbit-box__list list list-marker">
@@ -77,14 +99,21 @@ import Badge from "../../assets/images/badges/hands1.png";
                     </div>
                     <div class="orbit-box__content">
                         <ul class="orbit-box__list list list-marker">
-                            <li>Открытая связь, готовность к новым идеям и изменениям</li>
+                            <li>
+                                Открытая связь, готовность к новым идеям и
+                                изменениям
+                            </li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
         <div class="company-model__footer">
-            <a href="https://spb.hh.ru/employer/5471863?hhtmFrom=vacancy" target="_blank" class="btn btn--main">Присоединиться к команде</a>
+            <a
+                href="https://spb.hh.ru/employer/5471863?hhtmFrom=vacancy"
+                target="_blank"
+                class="btn btn--main">Присоединиться к команде</a
+            >
         </div>
     </div>
 </section>
@@ -97,9 +126,9 @@ import Badge from "../../assets/images/badges/hands1.png";
 
     // --- Логика Скролла ---
     function initStreamScroll() {
-        const section = document.querySelector('.company-model');
-        const inner = document.querySelector('.company-model__inner');
-        const stream = document.querySelector('.orbit-stream');
+        const section = document.querySelector(".company-model");
+        const inner = document.querySelector(".company-model__inner");
+        const stream = document.querySelector(".orbit-stream");
 
         if (!section || !stream || !inner) return;
 
@@ -108,13 +137,19 @@ import Badge from "../../assets/images/badges/hands1.png";
         mm.add("(max-width: 745px)", (context) => {
             const streamHeight = stream.scrollHeight;
             const windowHeight = window.innerHeight;
-            const trackHeight = (streamHeight * 0.8) + (windowHeight * 1.0);
+            const trackHeight = streamHeight * 0.8 + windowHeight * 1.0;
 
-            gsap.set(section, { height: trackHeight, position: 'relative' });
-            gsap.set(inner, { position: "sticky", top: 0, overflow: "hidden", zIndex: 2 });
+            gsap.set(section, { height: trackHeight, position: "relative" });
+            gsap.set(inner, {
+                position: "sticky",
+                top: 0,
+                overflow: "hidden",
+                zIndex: 2,
+            });
             gsap.set(stream, { force3D: false, willChange: "transform" });
 
-            gsap.fromTo(stream,
+            gsap.fromTo(
+                stream,
                 { y: windowHeight },
                 {
                     y: -streamHeight,
@@ -125,29 +160,50 @@ import Badge from "../../assets/images/badges/hands1.png";
                         end: "bottom bottom",
                         scrub: 1.1,
                         pin: false,
-                        invalidateOnRefresh: true
-                    }
-                }
+                        invalidateOnRefresh: true,
+                        onUpdate: (self) => {
+                            const header =
+                                section.querySelector(".section__header");
+                            const orbit = section.querySelector(".orbit");
+                            const isBlur =
+                                self.progress > 0.1 && self.progress < 0.95;
+
+                            if (header) {
+                                header.classList.toggle(
+                                    "section__header--blur",
+                                    isBlur,
+                                );
+                            }
+                            if (orbit) {
+                                orbit.classList.toggle("orbit--blur", isBlur);
+                            }
+                        },
+                    },
+                },
             );
         });
     }
 
     // --- Логика Ховера ---
     function initOrbitHover() {
-        const container = document.querySelector('.company-model');
-        const circles = document.querySelectorAll('.js-circle');
+        const container = document.querySelector(".company-model");
+        const circles = document.querySelectorAll(".js-circle");
 
         if (!container || circles.length === 0) return;
 
-        circles.forEach(circle => {
-            circle.addEventListener('mouseover', (e) => {
+        circles.forEach((circle) => {
+            circle.addEventListener("mouseover", (e) => {
                 e.stopPropagation(); // Важно для вложенных кругов
                 const index = circle.dataset.index;
-                container.classList.remove('company-model--1', 'company-model--2', 'company-model--3');
+                container.classList.remove(
+                    "company-model--1",
+                    "company-model--2",
+                    "company-model--3",
+                );
                 container.classList.add(`company-model--${index}`);
             });
 
-            circle.addEventListener('mouseout', (e) => {
+            circle.addEventListener("mouseout", (e) => {
                 e.stopPropagation();
                 const index = circle.dataset.index;
                 container.classList.remove(`company-model--${index}`);
@@ -156,7 +212,7 @@ import Badge from "../../assets/images/badges/hands1.png";
     }
 
     // Запуск всего
-    document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener("DOMContentLoaded", () => {
         initStreamScroll();
         initOrbitHover();
     });

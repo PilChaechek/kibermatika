@@ -133,7 +133,16 @@ body {
   &__header {
     text-align: center;
     margin-bottom: 40px;
+    transition: filter 0.4s ease, opacity 0.4s ease;
+
+    &--blur {
+      filter: blur(3px);
+      opacity: 0.5; // Можно добавить для пущего эффекта
+      pointer-events: none; // Чтобы не ловить ховеры пока заблюрено
+    }
   }
+
+
   &__title {
     font-weight: 500;
     margin: 0;
