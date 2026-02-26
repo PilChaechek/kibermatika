@@ -1,5 +1,5 @@
 ---
-import {Image} from "astro:assets";
+import { Image } from "astro:assets";
 
 import img1 from "../../assets/images/tickets/1.webp";
 import img2 from "../../assets/images/tickets/3.webp";
@@ -8,10 +8,7 @@ import img3 from "../../assets/images/tickets/2.webp";
 import imgF1 from "../../assets/images/tickets/i1.png";
 import imgF2 from "../../assets/images/tickets/i2.png";
 import imgF3 from "../../assets/images/tickets/i3.png";
-
-import telegram from "../../assets/icons/telegram.svg?raw";
-import wa from "../../assets/icons/wa.svg?raw";
-
+import imgF4 from "../../assets/images/tickets/success.jpg";
 
 const items = [
     {
@@ -20,7 +17,7 @@ const items = [
         link_text: "Начнем прямо сейчас?",
         img: img1,
         imgModal: imgF1,
-        classImg: 'v1',
+        classImg: "v1",
         key: 1,
     },
     {
@@ -29,7 +26,7 @@ const items = [
         link_text: "Сделаем тест",
         img: img2,
         imgModal: imgF2,
-        classImg: 'v2',
+        classImg: "v2",
         key: 2,
     },
     {
@@ -38,7 +35,7 @@ const items = [
         link_text: "Расширим <br> партнерскую сеть?",
         img: img3,
         imgModal: imgF3,
-        classImg: 'v3',
+        classImg: "v3",
         key: 3,
     },
 ];
@@ -54,10 +51,11 @@ const items = [
             <div class="tickets__items">
                 {
                     items.map((item) => (
-                        <div class={`tickets__item ticket ticket--${item.key}`}
-                             data-micromodal-trigger="modal-order"
-                             data-image={item.imgModal.src}
-                             data-image-class={item.classImg}
+                        <div
+                            class={`tickets__item ticket ticket--${item.key}`}
+                            data-micromodal-trigger="modal-order"
+                            data-image={item.imgModal.src}
+                            data-image-class={item.classImg}
                         >
                             <div class="ticket__inner">
                                 <div class="ticket__left">
@@ -89,25 +87,32 @@ const items = [
                                             fill="none"
                                             xmlns="http://www.w3.org/2000/svg"
                                         >
-                                            <path d="M15 11.75H11V15.75H15V11.75Z"
+                                            <path
+                                                d="M15 11.75H11V15.75H15V11.75Z"
                                                 fill="#101651"
                                             />
-                                            <path d="M11 14.75H7V18.75H11V14.75Z"
+                                            <path
+                                                d="M11 14.75H7V18.75H11V14.75Z"
                                                 fill="#101651"
                                             />
-                                            <path d="M8 18.75H4V22.75H8V18.75Z"
+                                            <path
+                                                d="M8 18.75H4V22.75H8V18.75Z"
                                                 fill="#101651"
                                             />
-                                            <path d="M4 22.75H0V26.75H4V22.75Z"
+                                            <path
+                                                d="M4 22.75H0V26.75H4V22.75Z"
                                                 fill="#101651"
                                             />
-                                            <path d="M4 0L0 0V4H4V0Z"
+                                            <path
+                                                d="M4 0L0 0V4H4V0Z"
                                                 fill="#101651"
                                             />
-                                            <path d="M8 3.875H4V7.875H8V3.875Z"
+                                            <path
+                                                d="M8 3.875H4V7.875H8V3.875Z"
                                                 fill="#101651"
                                             />
-                                            <path d="M11 7.875H7V11.875H11V7.875Z"
+                                            <path
+                                                d="M11 7.875H7V11.875H11V7.875Z"
                                                 fill="#101651"
                                             />
                                         </svg>
@@ -122,10 +127,19 @@ const items = [
     </div>
     <div class="modal micromodal-slide" id="modal-order" aria-hidden="true">
         <div class="modal__overlay" tabindex="-1" data-micromodal-close>
-            <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-order-title">
+            <div
+                class="modal__container"
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="modal-order-title"
+            >
                 <div class="order">
                     <div class="order__inner">
-                        <button class="modal__close icon-close" type="button" aria-label="Закрыть" data-micromodal-close></button>
+                        <button
+                            class="modal__close icon-close"
+                            type="button"
+                            aria-label="Закрыть"
+                            data-micromodal-close></button>
 
                         <div class="order__media">
                             <Image
@@ -138,39 +152,78 @@ const items = [
                         </div>
 
                         <div class="order__content">
-                            <div class="order__header">
-                                <h2 class="order__title" id="modal-order-title">Мы готовы к старту!</h2>
-                                <p class="order__text">
-                                    По телефону и в мессенджерах — всегда на связи. <br>
-                                    От вас — только имя и номер.
-                                </p>
-                            </div>
-                            <form class="order__form">
-                                <div class="order__fields">
-                                    <div class="order__field form-row">
-                                        <input
+                            <div class="order__init">
+                                <div class="order__header">
+                                    <h2
+                                        class="order__title"
+                                        id="modal-order-title"
+                                    >
+                                        Мы готовы к старту!
+                                    </h2>
+                                    <p class="order__text">
+                                        По телефону и в мессенджерах — всегда на
+                                        связи. <br />
+                                        От вас — только имя и номер.
+                                    </p>
+                                </div>
+                                <form class="order__form">
+                                    <div class="order__fields">
+                                        <div class="order__field form-row">
+                                            <input
                                                 type="text"
                                                 class="order__input input input-v1"
                                                 placeholder="Имя"
                                                 required
-                                        />
-                                    </div>
-                                    <div class="order__field form-row">
-                                        <input
+                                            />
+                                        </div>
+                                        <div class="order__field form-row">
+                                            <input
                                                 type="tel"
                                                 class="order__input input input-v1"
                                                 placeholder="Телефон"
                                                 required
-                                        />
+                                            />
+                                        </div>
                                     </div>
-                                </div>
 
-                                <button type="submit" class="order__submit-btn btn btn--main btn--v3">Отправить</button>
-                                <p class="order__privacy">
-                                    Нажимая на кнопку, вы даете согласие <br />
-                                    на обработку <a href="#" class="order__privacy-link link link--color-2">персональных данных</a>
-                                </p>
-                            </form>
+                                    <button
+                                        type="submit"
+                                        class="order__submit-btn btn btn--main btn--v3"
+                                        >Отправить</button
+                                    >
+                                    <p class="order__privacy">
+                                        Нажимая на кнопку, вы даете согласие <br
+                                        />
+                                        на обработку <a
+                                            href="#"
+                                            class="order__privacy-link link link--color-2"
+                                            >персональных данных</a
+                                        >
+                                    </p>
+                                </form>
+                            </div>
+
+                            <div class="order__success" style="display: none;">
+                                <div class="order__success-media">
+                                    <Image
+                                        src={imgF4}
+                                        alt=""
+                                        format="webp"
+                                        quality={90}
+                                        class="img order__success-img"
+                                    />
+                                </div>
+                                <div class="order__success-content">
+                                    <h2 class="order__title order__success-title">
+                                        Поймали, скоро вернёмся! 👌
+                                    </h2>
+                                    <a
+                                        href="/"
+                                        class="order__submit-btn btn btn--main btn--v3"
+                                        >Перейти на главную</a
+                                    >
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -180,61 +233,77 @@ const items = [
 </section>
 
 <script>
-    import MicroModal from 'micromodal';
+    import MicroModal from "micromodal";
 
-    document.addEventListener('DOMContentLoaded', () => {
-        const triggers = document.querySelectorAll('[data-micromodal-trigger="modal-order"]');
-        const modal = document.getElementById('modal-order');
+    document.addEventListener("DOMContentLoaded", () => {
+        const triggers = document.querySelectorAll(
+            '[data-micromodal-trigger="modal-order"]',
+        );
+        const modal = document.getElementById("modal-order");
 
         if (modal && triggers.length > 0) {
-            // Вешаем обработчики на каждый триггер для сохранения данных в модальное окно
-            triggers.forEach(trigger => {
-                trigger.addEventListener('click', () => {
-                    const imageSrc = trigger.dataset.image;
-                    const imageClass = trigger.dataset.imageClass;
+            const orderForm = modal.querySelector(
+                ".order__form",
+            ) as HTMLFormElement;
+            const orderInit = modal.querySelector(
+                ".order__init",
+            ) as HTMLElement;
+            const orderSuccess = modal.querySelector(
+                ".order__success",
+            ) as HTMLElement;
 
-                    if (imageSrc) {
-                        modal.dataset.activeImage = imageSrc;
+            if (orderForm) {
+                orderForm.addEventListener("submit", (e) => {
+                    e.preventDefault();
+                    if (orderForm.checkValidity()) {
+                        if (orderInit) orderInit.style.display = "none";
+                        if (orderSuccess) orderSuccess.style.display = "block";
+                        modal.classList.add("modal--success");
                     }
-                    if (imageClass) {
+                });
+            }
+
+            triggers.forEach((trigger) => {
+                trigger.addEventListener("click", () => {
+                    const { image, imageClass } = (trigger as HTMLElement)
+                        .dataset;
+                    if (image) modal.dataset.activeImage = image;
+                    if (imageClass)
                         modal.dataset.activeClass = `modal--${imageClass}`;
-                    }
                 });
             });
 
-            // Инициализируем Micromodal
             MicroModal.init({
-                onShow: (modal) => {
-                    // Обновляем изображение
-                    const imageSrc = modal.dataset.activeImage;
-                    const orderImage = modal.querySelector('.order__img');
-                    if (orderImage && imageSrc) {
-                        orderImage.src = imageSrc;
-                    }
+                onShow: (modalItem) => {
+                    if (orderInit) orderInit.style.display = "block";
+                    if (orderSuccess) orderSuccess.style.display = "none";
+                    modalItem.classList.remove("modal--success");
+                    orderForm?.reset();
 
-                    // Обновляем класс
-                    const activeClass = modal.dataset.activeClass;
+                    const imageSrc = modalItem.dataset.activeImage;
+                    const orderImage = modalItem.querySelector(
+                        ".order__img",
+                    ) as HTMLImageElement;
+                    if (orderImage && imageSrc) orderImage.src = imageSrc;
+
+                    const activeClass = modalItem.dataset.activeClass;
                     if (activeClass) {
-                         // Сначала удаляем все классы, которые могли быть добавлены ранее
-                        const currentClasses = Array.from(modal.classList).filter(cls => cls.startsWith('modal--'));
-                        currentClasses.forEach(cls => modal.classList.remove(cls));
-                        // Добавляем новый
-                        modal.classList.add(activeClass);
+                        modalItem.classList.forEach(
+                            (cls) =>
+                                cls.startsWith("modal--") &&
+                                modalItem.classList.remove(cls),
+                        );
+                        modalItem.classList.add(activeClass);
                     }
                 },
-                onClose: (modal) => {
-                    // При закрытии удаляем добавленный класс
-                    const activeClass = modal.dataset.activeClass;
-                     if (activeClass) {
-                        modal.classList.remove(activeClass);
-                    }
+                onClose: (modalItem) => {
+                    const activeClass = modalItem.dataset.activeClass;
+                    if (activeClass) modalItem.classList.remove(activeClass);
                 },
                 disableScroll: true,
                 awaitCloseAnimation: true,
-                disableFocus: true
+                disableFocus: true,
             });
         }
     });
 </script>
-
-

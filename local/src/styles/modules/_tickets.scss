@@ -442,6 +442,21 @@
     color: var(--font-color-text);
   }
 
+  &__success {
+    text-align: center;
+  }
+
+  &__success-title {
+    margin: 1.4rem 0;
+  }
+
+  &__success-img {
+    border-radius: 50%;
+    margin: auto;
+    height: auto;
+    max-width: 80%;
+  }
+
 }
 
 .input-v1 {
