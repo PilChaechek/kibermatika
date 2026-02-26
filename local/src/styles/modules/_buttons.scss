@@ -144,6 +144,35 @@
   }
 }
 
+.btn-arrow {
+  background: var(--font-color-accent);
+  color: #fff;
+  border-radius: 32px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0;
+  @include respond(md){
+    gap: 24px;
+  }
+  @include respond(3xl){
+    border-radius: 44px;
+  }
+  svg {
+    height: auto;
+    width: 28px;
+    @include respond(md){
+      width: 46px;
+    }
+    @include respond(2xl){
+      width: 54px;
+    }
+    @include respond(3xl){
+      width: 60px;
+    }
+  }
+}
+
 //    @include respond(md){}
 //    @include respond(2xl){}
 //    @include respond(3xl){}

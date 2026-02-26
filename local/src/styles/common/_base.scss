@@ -30,6 +30,11 @@ body {
   font-family: 'Cygre', ui-sans-serif, -apple-system,"Segoe UI", Helvetica, sans-serif;
   color: var(--font-color);
   line-height: 1.2;
+  height: 100%;
+}
+
+.wrapper {
+  height: 100%;
 }
 
 .container {

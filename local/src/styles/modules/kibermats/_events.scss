@@ -133,15 +133,16 @@
 
   &__title {
     color: #fff;
-    margin-top: 26px;
     margin-bottom: 12px;
     font-weight: 500;
+    margin-top: auto;
     @include respond(md){
-      margin-top: 0;
+      margin-top: 12px;
       margin-bottom: 4px;
     }
     @include respond(2xl){
       font-size: toRem(36,20);
+      margin-top: 16px;
     }
   }
 
@@ -152,7 +153,15 @@
   &__btn-play {
     margin: auto;
     @include respond(md){
-      height: 0;
+
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%,-50%);
+
+
+      margin: 0;
+      //height: 0;
       opacity: 0;
       visibility: hidden;
     }
@@ -218,6 +227,7 @@
 
 .event-card--play {
   mask-image: none;
+  overflow: hidden;
   &:after {
     display: none;
   }
@@ -230,5 +240,16 @@
   }
   @include respond(3xl){
     height: 600px;
+  }
+
+  .event-card__category,
+  .btn-play {
+    display: none;
+  }
+  .event-card__title {
+    display: none;
+  }
+  .event-card__text {
+    display: none;
   }
 }

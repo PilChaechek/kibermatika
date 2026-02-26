@@ -1,4 +1,10 @@
 ---
+export interface Props {
+    variant?: string;
+}
+
+const { variant = "1" } = Astro.props;
+
 const navItems = [
     { title: "продукты", href: "/#products" },
     { title: "команда", href: "/about/#commands" },
@@ -62,7 +68,7 @@ const navItems = [
                 </div>
 
                 <div class="page-footer__bottom-item page-footer__sphere">
-                    <div class="sphere">
+                    <div class="sphere" data-variant={variant}>
                         <button class="sphere__btn btn-reset" type="button" aria-label="Дропнуть басс">
                             <video
                                     class="sphere-video"
@@ -72,7 +78,7 @@ const navItems = [
                                     loop
                                     playsinline
                             ></video>
-                            <span class="sphere__text">дропнуть <br> басс</span>
+                            <span class="sphere__text">дропнуть <br> бас</span>
                         </button>
                     </div>
                 </div>
@@ -88,29 +94,64 @@ const navItems = [
     </div>
 </footer>
 <script>
-    // Ждем загрузки DOM
-    document.addEventListener('DOMContentLoaded', () => {
-        const sphereContainer = document.querySelector('.sphere');
-        const btn = document.querySelector('.sphere__btn');
+    import { gsap } from 'gsap';
 
-        if (sphereContainer && btn) {
+    const initRipples = () => {
+        const spheres = document.querySelectorAll('.sphere');
+
+        spheres.forEach((sphereContainer) => {
+            const btn = sphereContainer.querySelector('.sphere__btn');
+            if (!btn) return;
+
+            // Получаем вариант из data-атрибута, по умолчанию "1"
+            const variant = sphereContainer.dataset.variant || "1";
+
+            // Настройки эффекта общие для всех вариантов
+            const CONFIG = {
+                waveCount: 2,        // Сколько волн за 1 клик
+                staggerDelay: 0.2,   // Задержка между волнами
+                baseDuration: 1.2,   // Базовое время жизни волны
+                maxScale: 2.5        // Во сколько раз увеличивается (относительно кнопки)
+            };
+
             btn.addEventListener('click', () => {
-                createRipple(sphereContainer);
+                for (let i = 0; i < CONFIG.waveCount; i++) {
+                    createRipple(sphereContainer, i, variant, CONFIG);
+                }
             });
-        }
+        });
 
-        function createRipple(container) {
-            const ripple = document.createElement('span');
+        function createRipple(container, index, variant, config) {
+            const ripple = document.createElement('div');
             ripple.classList.add('ripple-wave');
-
-            // Добавляем волну в контейнер
+            // Добавляем класс, специфичный для варианта
+            ripple.classList.add(`ripple-wave--v${variant}`);
             container.appendChild(ripple);
 
-            // Удаляем элемент из DOM после завершения анимации (1.5 сек)
-            // Время должно совпадать с animation-duration в CSS
-            setTimeout(() => {
-                ripple.remove();
-            }, 1500);
+            // Анимация GSAP
+            gsap.fromTo(ripple,
+                {
+                    scale: 1,
+                    opacity: 0.8,
+                },
+                {
+                    scale: config.maxScale + (index * 0.3),
+                    opacity: 0,
+                    duration: config.baseDuration + (index * 0.2),
+                    delay: index * config.staggerDelay,
+                    ease: "power2.out", // Естественное затухание
+                    onComplete: () => {
+                        // Чистим DOM после завершения
+                        ripple.remove();
+                    }
+                }
+            );
         }
-    });
+    };
+
+    // Запускаем
+    initRipples();
+
+    // Если в Astro используется View Transitions (router), нужно переинициализировать скрипт
+    document.addEventListener('astro:page-load', initRipples);
 </script>

@@ -1,3 +1,79 @@
 ---
+import {Image} from "astro:assets";
+import imgContacts from "../../assets/images/contacts/img1.jpg";
+import iconArrow from "../../assets/icons/arrow3.svg?raw";
 ---
-<div class="contacts section section--v3"></div>
+<div class="contacts section section--v7">
+    <div class="container">
+        <div class="contacts__inner">
+            <div class="contacts__items">
+                <div class="contacts__col">
+                    <address class="contacts__item">
+                        <div class="contacts__email">
+                            <a href="mailto:hey@cybermatica.com" class="link link--color-2">hey@cybermatica.com</a>
+                        </div>
+                        <div class="contacts__phone">
+                            <a href="tel:79992345678" class="link link--color-2">+7 999 2345678</a>
+                        </div>
+                    </address>
+                    <div class="contacts__item contacts__form order">
+                        <div class="order__content">
+                            <div class="order__header">
+                                <h2 class="order__title">Открыты новому!</h2>
+                                <p class="order__text">
+                                    По телефону и в мессенджерах — всегда на связи. <br>
+                                    От вас — только имя и номер.
+                                </p>
+                            </div>
+                            <form class="order__form">
+                                <div class="order__fields">
+                                    <div class="order__field form-row">
+                                        <input
+                                            type="text"
+                                            class="order__input input input-v1"
+                                            placeholder="Имя"
+                                            required
+                                        />
+                                    </div>
+                                    <div class="order__field form-row">
+                                        <input
+                                            type="tel"
+                                            class="order__input input input-v1"
+                                            placeholder="Телефон"
+                                            required
+                                        />
+                                    </div>
+                                </div>
+                                <button type="submit" class="order__submit-btn btn btn--main btn--v3">Отправить</button>
+                                <p class="order__privacy">
+                                    Нажимая на кнопку, вы даете согласие <br />
+                                    на обработку <a href="#" class="order__privacy-link link link--color-2">персональных данных</a>
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="contacts__col">
+                    <Image
+                        src={imgContacts}
+                        alt=""
+                        format="webp"
+                        quality={90}
+                        class="contacts__img img"
+                    />
+                    <a href="https://spb.hh.ru/employer/5471863?hhtmFrom=vacancy" class="btn btn-arrow">
+                        Хочешь к нам? Вакансии
+                        <span class="btn--icon__" set:html={iconArrow} />
+                    </a>
+                </div>
+            </div>
+
+            <div class="contacts__footer">
+                <div class="contacts__footer-item">© ООО «Киберматика» 2025</div>
+                <div class="contacts__footer-item">108825,город Москва,п Щапово,д. 73 стр.2</div>
+                <div class="contacts__footer-item">ИНН/КПП 7751372855/775101001</div>
+                <div class="contacts__footer-item"><a href="#" class="link link--color">Политика обработки персональных данных</a></div>
+            </div>
+        </div>
+    </div>
+</div>
