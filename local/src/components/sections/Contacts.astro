@@ -1,8 +1,10 @@
 ---
-import {Image} from "astro:assets";
+import { Image } from "astro:assets";
 import imgContacts from "../../assets/images/contacts/img1.jpg";
 import iconArrow from "../../assets/icons/arrow3.svg?raw";
+import ModalSuccess from "../ModalSuccess.astro";
 ---
+
 <div class="contacts section section--v7">
     <div class="container">
         <div class="contacts__inner">
@@ -10,10 +12,16 @@ import iconArrow from "../../assets/icons/arrow3.svg?raw";
                 <div class="contacts__col">
                     <address class="contacts__item">
                         <div class="contacts__email">
-                            <a href="mailto:hey@cybermatica.com" class="link link--color-2">hey@cybermatica.com</a>
+                            <a
+                                href="mailto:hey@cybermatica.com"
+                                class="link link--color-2"
+                                >hey@cybermatica.com</a
+                            >
                         </div>
                         <div class="contacts__phone">
-                            <a href="tel:79992345678" class="link link--color-2">+7 999 2345678</a>
+                            <a href="tel:79992345678" class="link link--color-2"
+                                >+7 999 2345678</a
+                            >
                         </div>
                     </address>
                     <div class="contacts__item contacts__form order">
@@ -21,7 +29,8 @@ import iconArrow from "../../assets/icons/arrow3.svg?raw";
                             <div class="order__header">
                                 <h2 class="order__title">Открыты новому!</h2>
                                 <p class="order__text">
-                                    По телефону и в мессенджерах — всегда на связи. <br>
+                                    По телефону и в мессенджерах — всегда на
+                                    связи. <br />
                                     От вас — только имя и номер.
                                 </p>
                             </div>
@@ -44,10 +53,18 @@ import iconArrow from "../../assets/icons/arrow3.svg?raw";
                                         />
                                     </div>
                                 </div>
-                                <button type="submit" class="order__submit-btn btn btn--main btn--v3">Отправить</button>
+                                <button
+                                    type="submit"
+                                    class="order__submit-btn btn btn--main btn--v3"
+                                    >Отправить</button
+                                >
                                 <p class="order__privacy">
                                     Нажимая на кнопку, вы даете согласие <br />
-                                    на обработку <a href="/agreement/" class="order__privacy-link link link--color-2">персональных данных</a>
+                                    на обработку <a
+                                        href="/agreement/"
+                                        class="order__privacy-link link link--color-2"
+                                        >персональных данных</a
+                                    >
                                 </p>
                             </form>
                         </div>
@@ -61,7 +78,10 @@ import iconArrow from "../../assets/icons/arrow3.svg?raw";
                         quality={90}
                         class="contacts__img img"
                     />
-                    <a href="https://spb.hh.ru/employer/5471863?hhtmFrom=vacancy" class="btn btn-arrow">
+                    <a
+                        href="https://spb.hh.ru/employer/5471863?hhtmFrom=vacancy"
+                        class="btn btn-arrow"
+                    >
                         Хочешь к нам? Вакансии
                         <span class="btn--icon__" set:html={iconArrow} />
                     </a>
@@ -69,11 +89,44 @@ import iconArrow from "../../assets/icons/arrow3.svg?raw";
             </div>
 
             <div class="contacts__footer">
-                <div class="contacts__footer-item">© ООО «Киберматика» 2025</div>
-                <div class="contacts__footer-item">108825, город Москва, п Щапово, д. 73 стр.2</div>
-                <div class="contacts__footer-item">ИНН/КПП 7751372855/775101001</div>
-                <div class="contacts__footer-item"><a href="/agreement/" class="link link--color">Политика обработки персональных данных</a></div>
+                <div class="contacts__footer-item">
+                    © ООО «Киберматика» 2025
+                </div>
+                <div class="contacts__footer-item">
+                    108825, город Москва, п Щапово, д. 73 стр.2
+                </div>
+                <div class="contacts__footer-item">
+                    ИНН/КПП 7751372855/775101001
+                </div>
+                <div class="contacts__footer-item">
+                    <a href="/agreement/" class="link link--color"
+                        >Политика обработки персональных данных</a>
+                </div>
             </div>
         </div>
     </div>
+    <ModalSuccess />
 </div>
+
+<script>
+    import MicroModal from "micromodal";
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const contactSection = document.querySelector(".contacts");
+        if (!contactSection) return;
+
+        const orderForm = contactSection.querySelector(
+            ".order__form",
+        ) as HTMLFormElement;
+
+        if (orderForm) {
+            orderForm.addEventListener("submit", (e) => {
+                e.preventDefault();
+                if (orderForm.checkValidity()) {
+                    MicroModal.show("modal-success");
+                    orderForm.reset();
+                }
+            });
+        }
+    });
+</script>

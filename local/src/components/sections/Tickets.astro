@@ -8,7 +8,7 @@ import img3 from "../../assets/images/tickets/2.webp";
 import imgF1 from "../../assets/images/tickets/i1.png";
 import imgF2 from "../../assets/images/tickets/i2.png";
 import imgF3 from "../../assets/images/tickets/i3.png";
-import imgF4 from "../../assets/images/tickets/success.jpg";
+import ModalSuccess from "../ModalSuccess.astro";
 
 const items = [
     {
@@ -202,34 +202,13 @@ const items = [
                                     </p>
                                 </form>
                             </div>
-
-                            <div class="order__success" style="display: none;">
-                                <div class="order__success-media">
-                                    <Image
-                                        src={imgF4}
-                                        alt=""
-                                        format="webp"
-                                        quality={90}
-                                        class="img order__success-img"
-                                    />
-                                </div>
-                                <div class="order__success-content">
-                                    <h2 class="order__title order__success-title">
-                                        Поймали, скоро вернёмся! 👌
-                                    </h2>
-                                    <a
-                                        href="/"
-                                        class="order__submit-btn btn btn--main btn--v3"
-                                        >Перейти на главную</a
-                                    >
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <ModalSuccess />
 </section>
 
 <script>
@@ -248,17 +227,13 @@ const items = [
             const orderInit = modal.querySelector(
                 ".order__init",
             ) as HTMLElement;
-            const orderSuccess = modal.querySelector(
-                ".order__success",
-            ) as HTMLElement;
 
             if (orderForm) {
                 orderForm.addEventListener("submit", (e) => {
                     e.preventDefault();
                     if (orderForm.checkValidity()) {
-                        if (orderInit) orderInit.style.display = "none";
-                        if (orderSuccess) orderSuccess.style.display = "block";
-                        modal.classList.add("modal--success");
+                        MicroModal.close("modal-order");
+                        MicroModal.show("modal-success");
                     }
                 });
             }
@@ -276,7 +251,6 @@ const items = [
             MicroModal.init({
                 onShow: (modalItem) => {
                     if (orderInit) orderInit.style.display = "block";
-                    if (orderSuccess) orderSuccess.style.display = "none";
                     modalItem.classList.remove("modal--success");
                     orderForm?.reset();
 
