@@ -1,5 +1,8 @@
 ---
 import icon from "../../../assets/icons/arrow-bottom.svg?raw";
+
+import videoCover from "../../../assets/images/video/cover.jpg";
+import {Image} from "astro:assets";
 ---
 <section class="section video-company" id="video-company">
     <div class="container">
@@ -11,14 +14,51 @@ import icon from "../../../assets/icons/arrow-bottom.svg?raw";
             <div class="video-company__video">
                 <div class="video-card">
                     <iframe
-                            src="https://kinescope.io/embed/rszp5JFpNdY5pTWd2dPE3u"
+                            src="about:blank"
+                            data-src="https://kinescope.io/embed/rszp5JFpNdY5pTWd2dPE3u"
                             frameborder="0"
                             allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
                             title="Video Player"
                             loading="lazy"
                     ></iframe>
+                    <button class="video-card__cover" type="button" aria-label="Смотреть видео">
+                        <Image
+                                src={videoCover}
+                                alt=""
+                                format="webp"
+                                quality={90}
+                                class="video-card__image img"
+                        />
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+<script is:inline>
+  (function () {
+    const cards = document.querySelectorAll(".video-card");
+
+    cards.forEach((card) => {
+      const cover = card.querySelector(".video-card__cover");
+      const frame = card.querySelector("iframe");
+      if (!cover || !frame) return;
+
+      const start = () => {
+        if (cover.classList.contains("hidden")) return;
+        const dataSrc = frame.getAttribute("data-src");
+        if (dataSrc) {
+          const joiner = dataSrc.includes("?") ? "&" : "?";
+          frame.setAttribute("src", `${dataSrc}${joiner}autoplay=1`);
+        }
+        cover.classList.add("hidden");
+      };
+
+      cover.addEventListener("click", start);
+      cover.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") start();
+      });
+    });
+  })();
+</script>
