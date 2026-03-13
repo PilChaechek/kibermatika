@@ -20,8 +20,8 @@ const navItems = [
         target: "_blank",
     },
     {
-        title: "фестивали",
-        href: "https://kinescope.io/embed/qnoqDS9mQnvyPtF8LvwgFB",
+        title: "игристая",
+        href: "https://kinescope.io/embed/5Xo6JpQ7GdNCbR3ge44grU",
         target: "_blank",
     },
 ];
@@ -52,7 +52,7 @@ import ModalSuccess from "./ModalSuccess.astro";
                         <a
                             class="link link--color-2"
                             href="mailto:hey@cybermatika.ru"
-                            >hhey@cybermatika.ru</a
+                            >hey@cybermatika.ru</a
                         >
                     </div>
                     <div class="page-footer__contacts-link">
@@ -156,6 +156,12 @@ import ModalSuccess from "./ModalSuccess.astro";
         const spheres = document.querySelectorAll(".sphere");
 
         spheres.forEach((sphereContainer) => {
+            // предотвращаем повторную инициализацию при astro:page-load
+            if (sphereContainer instanceof HTMLElement) {
+                if (sphereContainer.dataset.ripplesInit === "1") return;
+                sphereContainer.dataset.ripplesInit = "1";
+            }
+
             const btn = sphereContainer.querySelector(".sphere__btn");
             if (!btn) return;
 
@@ -164,43 +170,97 @@ import ModalSuccess from "./ModalSuccess.astro";
 
             // Настройки эффекта общие для всех вариантов
             const CONFIG = {
-                waveCount: 2, // Сколько волн за 1 клик
-                staggerDelay: 0.2, // Задержка между волнами
-                baseDuration: 1.2, // Базовое время жизни волны
-                maxScale: 2.5, // Во сколько раз увеличивается (относительно кнопки)
+                waveCount: 3, // Сколько волн за 1 клик
+                staggerDelay: 0.13, // Задержка между волнами
+                baseDuration: 1.05, // Базовое время жизни волны
+                maxScale: 3.2, // Во сколько раз увеличивается (относительно размера волны)
             };
 
-            btn.addEventListener("click", () => {
+            const spawn = (e?: PointerEvent | MouseEvent | KeyboardEvent) => {
+                // микро-"удар" по кнопке — добавляет ощущение физики
+                gsap.fromTo(
+                    btn,
+                    { scale: 1 },
+                    {
+                        scale: 0.97,
+                        duration: 0.11,
+                        yoyo: true,
+                        repeat: 1,
+                        ease: "power2.inOut",
+                        overwrite: true,
+                    },
+                );
+
+                const rect = sphereContainer.getBoundingClientRect();
+                const isPointEvent =
+                    !!e &&
+                    ("clientX" in e || (e instanceof MouseEvent) || (e instanceof PointerEvent));
+
+                const origin = isPointEvent
+                    ? {
+                          x: (e as MouseEvent).clientX - rect.left,
+                          y: (e as MouseEvent).clientY - rect.top,
+                      }
+                    : { x: rect.width / 2, y: rect.height / 2 };
+
                 for (let i = 0; i < CONFIG.waveCount; i++) {
-                    createRipple(sphereContainer, i, variant, CONFIG);
+                    // рисуем волны в контейнере, чтобы их не обрезал overflow кнопки
+                    createRipple(sphereContainer, i, variant, CONFIG, origin);
                 }
+            };
+
+            // pointerdown ощущается "живее", чем click
+            btn.addEventListener("pointerdown", (e) => spawn(e), { passive: true });
+            // доступность: клавиатура (Enter/Space)
+            btn.addEventListener("keydown", (e) => {
+                if (e.key === "Enter" || e.key === " ") spawn(e);
             });
         });
 
-        function createRipple(container, index, variant, config) {
+        function createRipple(
+            container: Element,
+            index: number,
+            variant: string,
+            config: {
+                waveCount: number;
+                staggerDelay: number;
+                baseDuration: number;
+                maxScale: number;
+            },
+            origin: { x: number; y: number },
+        ) {
             const ripple = document.createElement("div");
             ripple.classList.add("ripple-wave");
             // Добавляем класс, специфичный для варианта
             ripple.classList.add(`ripple-wave--v${variant}`);
+
+            // геометрия: волна рождается в точке клика, а не из центра
+            const rect = container.getBoundingClientRect();
+            const maxSide = Math.max(rect.width, rect.height);
+            const baseSize = maxSide * (0.42 + index * 0.04);
+            ripple.style.setProperty("--ripple-x", `${origin.x}px`);
+            ripple.style.setProperty("--ripple-y", `${origin.y}px`);
+            ripple.style.setProperty("--ripple-size", `${baseSize}px`);
             container.appendChild(ripple);
 
-            // Анимация GSAP
+            const endScale = config.maxScale + index * 0.25 + gsap.utils.random(-0.08, 0.14);
+            const dur = config.baseDuration + index * 0.14;
+
             gsap.fromTo(
                 ripple,
+                { scale: 0.35, opacity: 0 },
                 {
-                    scale: 1,
-                    opacity: 0.8,
-                },
-                {
-                    scale: config.maxScale + index * 0.3,
+                    scale: endScale,
                     opacity: 0,
-                    duration: config.baseDuration + index * 0.2,
+                    duration: dur,
                     delay: index * config.staggerDelay,
-                    ease: "power2.out", // Естественное затухание
-                    onComplete: () => {
-                        // Чистим DOM после завершения
-                        ripple.remove();
-                    },
+                    ease: "power3.out",
+                    keyframes: [
+                        { opacity: 1, duration: dur * 0.14, ease: "power2.out" },
+                        { opacity: 0.55, duration: dur * 0.28, ease: "none" },
+                        { opacity: 0, duration: dur * 0.5, ease: "power2.in" },
+                    ],
+                    onComplete: () => ripple.remove(),
                 },
             );
         }

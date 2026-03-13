@@ -191,6 +191,7 @@
   text-align: center;
   line-height: 1;
   position: relative;
+  overflow: visible;
   @include respond(md){
     width: 204px;
     height: 204px;
@@ -222,12 +223,12 @@
     padding: 0;
     background: #000;
     cursor: pointer;
-    transition: transform 0.2s ease;
+    transition: transform 0.1s ease;
     mask-image: radial-gradient(white, black);
     position: relative;
     z-index: 2;
     &:active {
-      transform: scale(0.95) translateZ(0);
+      transform: scale(0.85) translateZ(0);
     }
   }
   &__text {
@@ -244,10 +245,14 @@
 /* БАЗОВЫЙ КЛАСС (только геометрия и физика) */
 .ripple-wave {
   position: absolute;
-  z-index: 1; /* Под кнопкой, но внутри контейнера .sphere */
-  inset: 0; /* Растягиваем на размер контейнера .sphere */
+  z-index: 3; /* Над видео внутри .sphere__btn */
+  left: var(--ripple-x, 50%);
+  top: var(--ripple-y, 50%);
+  width: var(--ripple-size, 60%);
+  height: var(--ripple-size, 60%);
   border-radius: 50%;
   pointer-events: none;
+  transform: translate(-50%, -50%) scale(1);
 
   /* Оптимизация композитинга браузера */
   will-change: transform, opacity;
@@ -263,9 +268,9 @@
 .ripple-wave--v1 {
   background: transparent;
   box-shadow:
-          0 0 0 1px rgba(255, 255, 255, 0.4),       /* Тонкая резкая граница */
-          0 0 20px rgba(255, 255, 255, 0.5),        /* Внешнее мягкое свечение */
-          inset 0 0 20px rgba(255, 255, 255, 0.2);  /* Внутреннее легкое свечение */
+          0 0 0 2px rgba(255, 255, 255, 0.8),       /* Резкая граница */
+          0 0 26px rgba(255, 255, 255, 0.75),       /* Внешнее свечение */
+          inset 0 0 18px rgba(255, 255, 255, 0.35); /* Внутреннее свечение */
   mix-blend-mode: plus-lighter;
 }
 
@@ -288,8 +293,8 @@
   background: radial-gradient(
                   circle,
                   transparent 55%,
-                  rgba(255, 255, 255, 0.1) 65%,
-                  rgba(255, 255, 255, 0.6) 75%,
+                  rgba(255, 255, 255, 0.18) 64%,
+                  rgba(255, 255, 255, 0.85) 74%,
                   transparent 85%
   );
   mix-blend-mode: screen;
