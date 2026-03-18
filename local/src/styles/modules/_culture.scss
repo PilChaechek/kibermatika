@@ -124,6 +124,7 @@
   &__image {
     border-radius: 16px;
     width: 100%;
+    height: auto;
     @include respond(md){
       border-radius: var(--border-radius-md);
     }

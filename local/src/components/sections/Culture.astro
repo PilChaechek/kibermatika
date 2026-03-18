@@ -1,6 +1,11 @@
 ---
 import Badge from "../../assets/images/badges/hand2.png";
 import {Image} from "astro:assets";
+
+import slide1Img from "../../assets/images/culture/3.jpg";
+import slide2Img from "../../assets/images/culture/2.jpg";
+import slide3Img from "../../assets/images/culture/1.jpg";
+
 const stats = [
     {
         title: '200+',
@@ -17,15 +22,15 @@ const stats = [
 ];
 const items = [
     {
-        img: '/images/slides/culture/1.webp',
+        img: slide2Img,
         title: 'Релиз Бустера'
     },
     {
-        img: '/images/slides/culture/2.webp',
+        img: slide3Img,
         title: 'Наш коммерческий <br> директор при заключении <br> сделки с Enterprise'
     },
     {
-        img: '/images/slides/culture/3.webp',
+        img: slide1Img,
         title: 'Зажигали на съемках <br> ролика о команде'
     }
 ];
@@ -33,22 +38,20 @@ const items = [
 <section class="section culture">
     <div class="container">
         <div class="section__header culture__header">
-
             <div class="icon-badge icon-badge--v5">
                 <div class="icon-badge__icon">
                     <div class="icon-badge__icon-wrp">
                         <Image
-                                src={Badge}
-                                alt=""
-                                format="webp"
-                                quality={90}
-                                class="img icon-badge__icon-src pulse"
+                            src={Badge}
+                            alt=""
+                            format="webp"
+                            quality={90}
+                            class="img icon-badge__icon-src pulse"
                         />
                     </div>
                 </div>
                 <div class="icon-badge__text">команда, <br> штаб, сквот</div>
             </div>
-
             <h2 class="section__title">Нам не нужен галстук, <br> чтобы быть профессионалами</h2>
             <p class="culture__description">Изобретательные разработчики, улетные продажники, неутомимые руководители. <br> Сотня киберматов и ни одного нормального человека.</p>
         </div>
@@ -69,15 +72,19 @@ const items = [
             {items.map(item => (
                 <div class="culture__item story-card swiper-slide">
                     <div class="story-card__media">
-                        <img src={item.img} class="img story-card__image" alt="">
+                        <Image
+                            src={item.img}
+                            alt=""
+                            format="webp"
+                            quality={90}
+                            class="img story-card__image"
+                        />
                     </div>
                     <div class="story-card__title" set:html={item.title}></div>
                 </div>
             ))}
         </div>
-
     </div>
-
 
     <div class="container">
         <div class="culture__footer">
