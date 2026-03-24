@@ -1,0 +1,198 @@
+---
+import {Image} from "astro:assets";
+
+import Badge from "../../../assets/images/badges/hands2.png";
+
+import img1 from "../../../assets/images/team/1.png";
+import img2 from "../../../assets/images/team/2.png";
+import img3 from "../../../assets/images/team/3.png";
+import img4 from "../../../assets/images/team/4.png";
+import img5 from "../../../assets/images/team/5.png";
+import img6 from "../../../assets/images/team/6.png";
+import img7 from "../../../assets/images/team/7.png";
+import img8 from "../../../assets/images/team/8.png";
+import img9 from "../../../assets/images/team/9.png";
+import img10 from "../../../assets/images/team/10.png";
+import img11 from "../../../assets/images/team/11.png";
+import img12 from "../../../assets/images/team/12.png";
+import img13 from "../../../assets/images/team/13.png";
+import img14 from "../../../assets/images/team/14.png";
+import img15 from "../../../assets/images/team/15.png";
+import img16 from "../../../assets/images/team/16.png";
+import img17 from "../../../assets/images/team/17.png";
+import img18 from "../../../assets/images/team/18.png";
+
+const allItems = [
+    {
+        number: 1,
+        name: 'Кирилл Лисиченко',
+        position: 'Руководитель команды продаж S-Booster',
+        img: img1,
+        classes: 'br'
+    },
+    {
+        number: 2,
+        name: 'Галанцева Екатерина',
+        position: 'Руководитель команды продаж S-Booster',
+        img: img2,
+        classes: 'bl'
+    },
+    {
+        number: 3,
+        name: 'Кудинов Степан',
+        position: 'Руководитель команды продаж S-Booster',
+        img: img3,
+        classes: 'br'
+    },
+    {
+        number: 4,
+        name: 'Петр Морякин',
+        position: 'Коммерческий директор Magic SEO',
+        img: img4,
+        classes: 'bl'
+    },
+    {
+        number: 5,
+        name: 'Дарья Федорова',
+        position: 'Руководитель команды продаж Magic SEO',
+        img: img7,
+        classes: 'bl'
+    },
+    {
+        number: 6,
+        name: 'Евгений Першин',
+        position: 'Руководитель агентского направления Magic SEO',
+        img: img5,
+        classes: 'br'
+    },
+    {
+        number: 7,
+        name: 'Евгений Сурвилло',
+        position: 'Руководитель команды присейла Magic SEO',
+        img: img6,
+        classes: 'br'
+    },
+    {
+        number: 8,
+        name: 'Софья Гаврилова',
+        position: 'HR BP',
+        img: img8,
+        classes: 'br'
+    },
+    {
+        number: 9,
+        name: 'Бочаров Андрей',
+        position: 'Руководитель команды продаж Magic SEO',
+        img: img9,
+        classes: 'bl'
+    },
+    {
+        number: 10,
+        name: 'Швецова Ирина',
+        position: 'Руководитель команды развития Magic SEO',
+        img: img10,
+        classes: 'tl'
+    },
+    {
+        number: 11,
+        name: 'Владимир Ефанов',
+        position: 'Head of Project Manager',
+        img: img11,
+        classes: 'br'
+    },
+    {
+        number: 12,
+        name: 'Седых Константин',
+        position: 'Руководитель центра Дата-Аналитики',
+        img: img12,
+        classes: 'tr'
+    },
+    {
+        number: 13,
+        name: 'Диев Руслан',
+        position: 'Руководить команды SEO',
+        img: img13,
+        classes: 'tl'
+    },
+    {
+        number: 14,
+        name: 'Даниэль Шерман',
+        position: 'Коммерческий директор',
+        img: img14,
+        classes: 'ml'
+    },
+    {
+        number: 15,
+        name: 'Войтулевич Кирилл',
+        position: 'Head of Product Manger',
+        img: img15,
+        classes: 'bl'
+    },
+
+    {
+        number: 16,
+        name: 'Николаенко Виталий',
+        position: 'Руководитель команды развития',
+        img: img16,
+        classes: 'bl'
+    },
+
+    {
+        number: 17,
+        name: 'Захаров Антон',
+        position: 'Head of DevOps',
+        img: img17,
+        classes: 'br'
+    },
+    {
+        number: 18,
+        name: 'Чернавин Роман',
+        position: 'Руководитель команды продаж',
+        img: img18,
+        classes: 'bl'
+    },
+
+
+];
+
+---
+<section class="section team">
+    <div class="container">
+        <div class="team__inner">
+            <div class="slider__header">
+                <div class="slider__badge">
+                    <div class="icon-badge icon-badge--v3">
+                        <div class="icon-badge__icon">
+                            <img src={Badge.src} class="img icon-badge__icon-src icon-badge__icon-src--w" alt="" width="88" height="88">
+                        </div>
+                        <div class="icon-badge__text">В главных ролях</div>
+                    </div>
+                </div>
+                <h2 class="slider__title section__title">Объединяя <br> не-нормальных <br> людей</h2>
+                <p class="slider__text">Мы называем себя панками, фриками и пиратами — из-за неутомимого желания что-то менять, делать еще круче и брать на себя эту ответственность. Всеми силами боремся со «средними» и «нормальными». Уровень кибермата — гораздо выше.</p>
+            </div>
+
+            <div class="team-grid">
+                {allItems.map((item) => {
+                    return (
+                    <div class={`team-grid-card team-grid__item team-grid__item--p${item.number ?? ''}`}>
+                        <div class="team-grid-card__media">
+                            <Image
+                                src={item.img}
+                                alt={`${item.name} — ${item.position}`}
+                                format="webp"
+                                quality={95}
+                                class="img team-grid-card__image"
+                            />
+                        </div>
+                        <div class={`team-grid-card__title radius-block radius-block--${item.classes ?? ''}`}>
+                            <div class="team-grid-card__name">{item.name}</div>
+                            <div class="team-grid-card__position">{item.position}</div>
+                        </div>
+                    </div>
+                )})}
+            </div>
+
+        </div>
+    </div>
+</section>
