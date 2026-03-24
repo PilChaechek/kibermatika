@@ -301,17 +301,24 @@
 }
 
 .radius-block {
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
 
+    @include respond(2xl){
+      width: 24px;
+      height: 24px;
+    }
+  }
 }
 
 .radius-block--br {
   border-radius: var(--radius) 0 0 0;
 
   &:before {
-    content: '';
-    position: absolute;
-    width: 16px;
-    height: 16px;
     left: -16px;
     bottom: 0;
     background-image: radial-gradient(
@@ -333,10 +340,6 @@
 
   }
   &:after {
-    content: '';
-    position: absolute;
-    width: 24px;
-    height: 24px;
     right: 0;
     top: -23px;
     background-image: radial-gradient(
@@ -360,16 +363,184 @@
 
 .radius-block--bl {
   border-radius: 0 var(--radius) 0 0;
+
+  &:before {
+    right: -16px;
+    bottom: 0;
+    background-image: radial-gradient(
+        circle at 100% 0,
+        transparent 16px,
+        #fff 16.5px
+    );
+
+    @include respond(2xl){
+      width: 24px;
+      height: 24px;
+      right: -23px;
+      background-image: radial-gradient(
+          circle at 24px 0,
+          transparent 24px,
+          #fff 24.5px
+      );
+    }
+  }
+
+  &:after {
+    left: 0;
+    top: -23px;
+    background-image: radial-gradient(
+        circle at 24px -1px,
+        transparent 24px,
+        #fff 24.5px
+    );
+
+    @include respond(2xl){
+      width: 24px;
+      height: 24px;
+      top: -23px;
+      background-image: radial-gradient(
+          circle at 24px 0,
+          transparent 24px,
+          #fff 24.5px
+      );
+    }
+  }
 }
 
 .radius-block--tl {
   border-radius: 0 0 var(--radius) 0;
+
+  &:before {
+    left: 0;
+    bottom: 0;
+    background-image: radial-gradient(
+        circle at 0 0,
+        transparent 16px,
+        #fff 16.5px
+    );
+
+    @include respond(2xl){
+      left: 0;
+      bottom: -23px;
+      background-image: radial-gradient(
+          circle at 24px 24px,
+          transparent 24px,
+          #fff 24.5px
+      );
+
+    }
+  }
+
+  &:after {
+    right: 0;
+    top: -23px;
+    background-image: radial-gradient(
+        circle at -1px -1px,
+        transparent 24px,
+        #fff 24.5px
+    );
+
+    @include respond(2xl){
+      top: 0;
+      right: -23px;
+      background-image: radial-gradient(
+          circle at 24px 24px,
+          transparent 24px,
+          #fff 24.5px
+      );
+    }
+  }
 }
 
 .radius-block--tr {
   border-radius: 0 0 0 var(--radius);
+
+  &:before {
+    left: 0;
+    bottom: 0;
+    background-image: radial-gradient(
+                    circle at 0 0,
+                    transparent 16px,
+                    #fff 16.5px
+    );
+
+    @include respond(2xl){
+      left: -23px;
+      top: 0;
+      background-image: radial-gradient(
+              circle at 0 24px,
+              transparent 24px,
+              #fff 24.5px
+      );
+
+    }
+  }
+
+  &:after {
+    right: 0;
+    bottom: -23px;
+    background-image: radial-gradient(
+                    circle at -1px -1px,
+                    transparent 24px,
+                    #fff 24.5px
+    );
+
+    @include respond(2xl){
+      bottom: -23px;
+      right: 0;
+      background-image: radial-gradient(
+            circle at 0 24px,
+            transparent 24px,
+            #fff 24.5px
+      );
+    }
+  }
 }
 
 .radius-block--ml {
   border-radius: 0 var(--radius) var(--radius) 0;
+
+  &:before {
+    left: 0;
+    top: 0;
+    background-image: radial-gradient(
+        circle at 0 100%,
+        transparent 16px,
+        #fff 16.5px
+    );
+
+    @include respond(2xl){
+      width: 24px;
+      height: 24px;
+      left: 0;
+      top: -23px;
+      background-image: radial-gradient(
+          circle at 24px 0,
+          transparent 24px,
+          #fff 24.5px
+      );
+    }
+  }
+
+  &:after {
+    left: -16px;
+    bottom: 0;
+    background-image: radial-gradient(
+        circle at 0 0,
+        transparent 16px,
+        #fff 16.5px
+    );
+
+    @include respond(2xl){
+      width: 24px;
+      height: 24px;
+      left: 0;
+      bottom: -23px;
+      background-image: radial-gradient(
+          circle at 24px 24px,
+          transparent 24px,
+          #fff 24.5px
+      );
+    }
+  }
 }
