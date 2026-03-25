@@ -19,6 +19,9 @@
       grid-auto-rows: 60px;
       gap: 24px;
     }
+    @include respond(3xl) {
+      grid-auto-rows: 88px;
+    }
   }
 }
 
@@ -82,7 +85,7 @@
   grid-row: span 4;
   background-color: #cdd6ff;
   .team-grid-card__image {
-    max-width: 90%;
+    //max-width: 90%;
     left: 50%;
     transform: translateX(-50%);
   }
@@ -96,8 +99,9 @@
   grid-row: span 4;
   background-color: #f3dbdc;
   .team-grid-card__image {
-    max-width: 80%;
+    max-width: 74%;
     right: 0;
+    top: -54px;
   }
 }
 
@@ -159,8 +163,8 @@
 .team-grid__item--p9 {
   grid-row: span 4;
   background-color: #d0f6ec;
+  overflow: hidden;
   .team-grid-card__image {
-    max-width:94%;
     left: 50%;
     transform: translateX(-50%);
   }
@@ -240,7 +244,7 @@
   grid-row: span 4;
   background-color: #f9e5d8;
   .team-grid-card__image {
-    max-width: 82%;
+    max-width: 78%;
     left: 50%;
     transform: translateX(-50%);
   }
@@ -265,7 +269,6 @@
   grid-row: span 4;
   background-color: #e6f5ff;
   .team-grid-card__image {
-    max-width: 86%;
     left: 50%;
     transform: translateX(-50%);
   }
