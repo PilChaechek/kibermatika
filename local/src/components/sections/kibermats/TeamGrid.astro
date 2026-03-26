@@ -174,59 +174,133 @@ const allItems = [
 
 ---
 <section class="section team">
-    <div class="container">
+
         <div class="team__inner">
-            <div class="slider__header">
-                <div class="slider__badge">
-                    <div class="icon-badge icon-badge--v3">
-                        <div class="icon-badge__icon">
-                            <img src={Badge.src} class="img icon-badge__icon-src icon-badge__icon-src--w" alt="" width="88" height="88">
-                        </div>
-                        <div class="icon-badge__text">В главных ролях</div>
-                    </div>
-                </div>
-                <h2 class="slider__title section__title">Объединяя <br> не-нормальных <br> людей</h2>
-                <p class="slider__text">Мы называем себя панками, фриками и пиратами — из-за неутомимого желания что-то менять, делать еще круче и брать на себя эту ответственность. Всеми силами боремся со «средними» и «нормальными». Уровень кибермата — гораздо выше.</p>
-            </div>
-
-            <div class="team-grid">
-                {allItems.map((item) => {
-                    return (
-                    <div class={`team-grid-card team-grid__item team-grid__item--p${item.number ?? ''}`}>
-                        <div class="team-grid-card__inner">
-                            <div class="team-grid-card__media">
-                                <Image
-                                        src={item.img}
-                                        alt={`${item.name} — ${item.position}`}
-                                        format="webp"
-                                        quality={95}
-                                        class="img team-grid-card__image"
-                                />
+            <div class="container">
+                <div class="slider__header">
+                    <div class="slider__badge">
+                        <div class="icon-badge icon-badge--v3">
+                            <div class="icon-badge__icon">
+                                <img src={Badge.src} class="img icon-badge__icon-src icon-badge__icon-src--w" alt="" width="88" height="88">
                             </div>
+                            <div class="icon-badge__text">В главных ролях</div>
+                        </div>
+                    </div>
+                    <h2 class="slider__title section__title">Объединяя <br> не-нормальных <br> людей</h2>
+                    <p class="slider__text">Мы называем себя панками, фриками и пиратами — из-за неутомимого желания что-то менять, делать еще круче и брать на себя эту ответственность. Всеми силами боремся со «средними» и «нормальными». Уровень кибермата — гораздо выше.</p>
+                </div>
+            </div>
+            <div class="">
+            <div class="team-grid">
+                <div class="team-grid__inner">
+                    {allItems.map((item) => {
+                        return (
+                                <div class={`team-grid-card team-grid__item team-grid__item--p${item.number ?? ''}`}>
+                                    <div class="team-grid-card__inner">
+                                        <div class="team-grid-card__media">
+                                            <Image
+                                                    src={item.img}
+                                                    alt={`${item.name} — ${item.position}`}
+                                                    format="webp"
+                                                    quality={95}
+                                                    class="img team-grid-card__image"
+                                            />
+                                        </div>
 
-                            <div class="team-grid-card__quote">
-                                <div class="team-grid-card__quote-inner">
-                                    <svg width="48" height="41" viewBox="0 0 48 41" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M21.3848 5.34668H16.0391V10.6924H10.6924V18.7119H21.3848V40.0967H0V8.01953H5.34668V2.67285H10.6924V0H21.3848V5.34668ZM48 0V5.34668H42.6543V10.6924H37.3076V18.7119H48V40.0967H26.6152V8.01953H31.9619V2.67285H37.3076V0H48Z"/>
-                                        <path d="M21.3848 5.34668H16.0391V10.6924H10.6924V18.7119H21.3848V40.0967H0V8.01953H5.34668V2.67285H10.6924V0H21.3848V5.34668ZM48 0V5.34668H42.6543V10.6924H37.3076V18.7119H48V40.0967H26.6152V8.01953H31.9619V2.67285H37.3076V0H48Z" />
-                                    </svg>
+                                        <div class="team-grid-card__quote">
+                                            <div class="team-grid-card__quote-inner">
+                                                <svg width="48" height="41" viewBox="0 0 48 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M21.3848 5.34668H16.0391V10.6924H10.6924V18.7119H21.3848V40.0967H0V8.01953H5.34668V2.67285H10.6924V0H21.3848V5.34668ZM48 0V5.34668H42.6543V10.6924H37.3076V18.7119H48V40.0967H26.6152V8.01953H31.9619V2.67285H37.3076V0H48Z"/>
+                                                    <path d="M21.3848 5.34668H16.0391V10.6924H10.6924V18.7119H21.3848V40.0967H0V8.01953H5.34668V2.67285H10.6924V0H21.3848V5.34668ZM48 0V5.34668H42.6543V10.6924H37.3076V18.7119H48V40.0967H26.6152V8.01953H31.9619V2.67285H37.3076V0H48Z" />
+                                                </svg>
 
-                                    <div class="team-grid-card__quote-text">
-                                        {item.quote ? (
-                                                <span set:html={item.quote}></span>
-                                        ) : null}
+                                                <div class="team-grid-card__quote-text">
+                                                    {item.quote ? (
+                                                            <span set:html={item.quote}></span>
+                                                    ) : null}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class={`team-grid-card__title radius-block radius-block--${item.classes ?? ''}`}>
+                                            <div class="team-grid-card__name">{item.name}</div>
+                                            <div class="team-grid-card__position">{item.position}</div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class={`team-grid-card__title radius-block radius-block--${item.classes ?? ''}`}>
-                                <div class="team-grid-card__name">{item.name}</div>
-                                <div class="team-grid-card__position">{item.position}</div>
-                            </div>
-                        </div>
-                    </div>
-                )})}
+                        )})}
+                </div>
+            </div>
             </div>
 
         </div>
-    </div>
+
 </section>
+<script>
+    import Swiper from 'swiper';
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const container = document.querySelector('.team-grid');
+        if (!(container instanceof HTMLElement)) return;
+
+        const wrapper = container.querySelector('.team-grid__inner');
+        const slides = container.querySelectorAll('.team-grid__item');
+        if (!(wrapper instanceof HTMLElement) || !slides.length) return;
+
+        let slider: Swiper | null = null;
+        const breakpoint = window.matchMedia('(max-width: 1440px)');
+
+        const setSwiperClasses = (enabled: boolean) => {
+            container.classList.toggle('swiper', enabled);
+            wrapper.classList.toggle('swiper-wrapper', enabled);
+            slides.forEach((slide) => {
+                slide.classList.toggle('swiper-slide', enabled);
+            });
+        };
+
+        const initSlider = () => {
+            if (slider) return;
+
+            setSwiperClasses(true);
+            slider = new Swiper(container, {
+                slidesPerView: 1.1,
+                spaceBetween: 12,
+                grabCursor: true,
+                slidesOffsetBefore: 12,
+                slidesOffsetAfter: 12,
+                breakpoints: {
+                    400: {
+                        slidesPerView: 1.2,
+                        spaceBetween: 8,
+                        slidesOffsetBefore: 16,
+                        slidesOffsetAfter: 16,
+                    },
+                    744: {
+                        slidesPerView: 2.2,
+                        spaceBetween: 16,
+                        slidesOffsetBefore: 16,
+                        slidesOffsetAfter: 16,
+                    },
+                },
+            });
+        };
+
+        const destroySlider = () => {
+            if (!slider) return;
+
+            slider.destroy(true, true);
+            slider = null;
+            setSwiperClasses(false);
+        };
+
+        const handleResize = () => {
+            if (breakpoint.matches) {
+                initSlider();
+            } else {
+                destroySlider();
+            }
+        };
+
+        breakpoint.addEventListener('change', handleResize);
+        handleResize();
+    });
+</script>
