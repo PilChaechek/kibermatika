@@ -59,7 +59,7 @@ const allItems = [
         number: 5,
         name: 'Дарья Федорова',
         position: 'Руководитель команды продаж Magic SEO',
-        quote: '',
+        quote: 'Энергия + стратегия = результат. <br>Заряжаю целями команду и превращаю их в сделки!',
         img: img7,
         classes: 'bl'
     },
@@ -67,7 +67,7 @@ const allItems = [
         number: 6,
         name: 'Евгений Першин',
         position: 'Руководитель агентского направления Magic SEO',
-        quote: 'Энергия + стратегия = результат.<br>Заряжаю целями команду и превращаю их в сделки!',
+        quote: 'Дисциплина. Безжалостность. Результат.',
         img: img5,
         classes: 'br'
     },
@@ -83,7 +83,7 @@ const allItems = [
         number: 8,
         name: 'Софья Гаврилова',
         position: 'HR BP',
-        quote: 'Киберматика - место, где к людям относятся по‑настоящему.<br>Сопокойное море не воспитает настоящего моряка',
+        quote: 'Сопокойное море не воспитает настоящего моряка',
         img: img8,
         classes: 'br'
     },
@@ -121,17 +121,17 @@ const allItems = [
     },
     {
         number: 13,
-        name: 'Диев Руслан',
-        position: 'Руководить команды SEO',
-        quote: 'Мне нравится, что в Киберматике ценят здравый смысл и факты: здесь можно быстро принимать решения и доводить их до результата',
+        name: 'Даниэль Шерман',
+        position: 'Коммерческий директор S-Booster',
+        quote: 'Киберматика — это бизнес, который обладает лучшими продуктами на рынке в своей области. И моя задача превратить лучший продукт в масштабируемую выручку через сильных людей и систему.',
         img: img13,
         classes: 'tl'
     },
     {
         number: 14,
-        name: 'Даниэль Шерман',
-        position: 'Коммерческий директор',
-        quote: 'Киберматика это бизнес, который обладает лучшими продуктами на рынке в своей области. И моя задача превратить лучший продукт в масштабируемую выручку через сильных людей и систему. <br>В моём подходе коммерческий блок это один конвейер: лидген → продажи → аккаунтинг, где каждый этап измерим метриками, конверсиями и планами. Продажи для меня это математика воронок + регулярные тренировки для достижения целевых конверсий (обучение как повторяемый системный процесс). И базовый принцип мотивации простой: моя задача сделать так, чтобы люди зарабатывали максимум, поэтому я постоянно докручиваю систему так, чтобы рост дохода был прямым следствием роста результата.',
+        name: 'Виталий Николаенко',
+        position: 'Руководитель команды развития S-Booster',
+        quote: '«ЕBASHIM – кто сдох, тот лох»',
         img: img14,
         classes: 'ml'
     },
@@ -145,9 +145,9 @@ const allItems = [
     },
     {
         number: 16,
-        name: 'Николаенко Виталий',
-        position: 'Руководитель команды развития',
-        quote: 'Управление – это не контроль, а ясность.<br> Когда команда понимает цель, видит логику решений и чувствует личную ответственность за результат, работа начинает двигаться быстрее любой директивы. <br>Нельзя приказать огню в глазах быть, его можно только разжечь.',
+        name: 'Диев Руслан',
+        position: 'Руководитель команды SEO',
+        quote: 'Здесь ценят здравый смысл и факты: можно быстро принимать решения и доводить их до результата',
         img: img16,
         classes: 'bl'
     },
@@ -193,18 +193,35 @@ const allItems = [
                 {allItems.map((item) => {
                     return (
                     <div class={`team-grid-card team-grid__item team-grid__item--p${item.number ?? ''}`}>
-                        <div class="team-grid-card__media">
-                            <Image
-                                src={item.img}
-                                alt={`${item.name} — ${item.position}`}
-                                format="webp"
-                                quality={95}
-                                class="img team-grid-card__image"
-                            />
-                        </div>
-                        <div class={`team-grid-card__title radius-block radius-block--${item.classes ?? ''}`}>
-                            <div class="team-grid-card__name">{item.name}</div>
-                            <div class="team-grid-card__position">{item.position}</div>
+                        <div class="team-grid-card__inner">
+                            <div class="team-grid-card__media">
+                                <Image
+                                        src={item.img}
+                                        alt={`${item.name} — ${item.position}`}
+                                        format="webp"
+                                        quality={95}
+                                        class="img team-grid-card__image"
+                                />
+                            </div>
+
+                            <div class="team-grid-card__quote">
+                                <div class="team-grid-card__quote-inner">
+                                    <svg width="48" height="41" viewBox="0 0 48 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M21.3848 5.34668H16.0391V10.6924H10.6924V18.7119H21.3848V40.0967H0V8.01953H5.34668V2.67285H10.6924V0H21.3848V5.34668ZM48 0V5.34668H42.6543V10.6924H37.3076V18.7119H48V40.0967H26.6152V8.01953H31.9619V2.67285H37.3076V0H48Z"/>
+                                        <path d="M21.3848 5.34668H16.0391V10.6924H10.6924V18.7119H21.3848V40.0967H0V8.01953H5.34668V2.67285H10.6924V0H21.3848V5.34668ZM48 0V5.34668H42.6543V10.6924H37.3076V18.7119H48V40.0967H26.6152V8.01953H31.9619V2.67285H37.3076V0H48Z" />
+                                    </svg>
+
+                                    <div class="team-grid-card__quote-text">
+                                        {item.quote ? (
+                                                <span set:html={item.quote}></span>
+                                        ) : null}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class={`team-grid-card__title radius-block radius-block--${item.classes ?? ''}`}>
+                                <div class="team-grid-card__name">{item.name}</div>
+                                <div class="team-grid-card__position">{item.position}</div>
+                            </div>
                         </div>
                     </div>
                 )})}
