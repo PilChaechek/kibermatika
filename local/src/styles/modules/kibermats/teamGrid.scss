@@ -188,6 +188,7 @@
 
   .team-grid-card__image {
     max-width: 300px;
+    bottom: 60px;
     @include respond(2xl) {
       position: absolute;
       width: calc(100% + 24px);
@@ -227,10 +228,9 @@
     max-width: 74%;
     bottom: 100px;
     @include respond(2xl){
-      max-width: 74%;
+      max-width: 86%;
       right: 0;
-      top: -54px;
-      bottom: initial;
+      bottom: 0;
     }
   }
 }
@@ -264,12 +264,13 @@
     }
   }
   .team-grid-card__image {
-    max-width: 90%;
+    //max-width: 90%;
     @include respond(2xl){
-      width: calc(100% + 24px);
-      max-width: calc(100% + 24px);
+      //width: calc(100% + 24px);
+      max-width: 99%;
       left: 50%;
       transform: translateX(-50%);
+      border-radius: 0 0 0 24px;
     }
   }
 }
@@ -321,16 +322,33 @@
 }
 
 .team-grid__item--p9 {
-  background-color: #d0f6ec;
+  background-color: #FFD9C1;
   @include respond(2xl){
     grid-row: span 4;
-    overflow: hidden;
-    .team-grid-card__image {
-      left: 50%;
-      transform: translateX(-50%);
+  }
+
+  .team-grid-card__image {
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 70%;
+    bottom: 54px;
+    @include respond(xs){
+      bottom: 24px;
     }
-    .team-grid-card__quote {
+    @include respond(2xl){
+      top: -20px;
+    }
+  }
+  .team-grid-card__quote {
+    @include respond(2xl){
       align-items: start;
+    }
+  }
+  .team-grid-card__inner {
+    @include respond(2xl){
+      position: relative;
+      clip-path: inset(-100vmax 0 0 0);
+      will-change: clip-path;
     }
   }
 }

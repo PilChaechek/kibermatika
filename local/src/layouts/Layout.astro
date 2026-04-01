@@ -1,10 +1,14 @@
 ---
 import '../styles/main.scss'
 import MobileMenu from "../components/sections/MobileMenu.astro";
+import { siteContacts } from "../config/site";
 
 const baseTitle = "Cybermatica";
 const { title } = Astro.props;
 const fullTitle = title ? `${baseTitle} - ${title}` : baseTitle;
+const siteName = siteContacts.domain;
+const baseUrl = `https://${siteContacts.domain}/`;
+const ogImageUrl = `${baseUrl}assets/img/og.jpg`;
 ---
 <!doctype html>
 <html lang="en">
@@ -18,8 +22,18 @@ const fullTitle = title ? `${baseTitle} - ${title}` : baseTitle;
 		<link rel="icon" type="image/svg+xml" href="/favicons/favicon.svg">
 		<link rel="shortcut icon" href="/favicons/favicon.ico">
 		<link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
-		<meta name="apple-mobile-web-app-title" content="kibermatika.ru">
+		<meta name="apple-mobile-web-app-title" content={siteName}>
 		<link rel="manifest" href="/favicons/site.webmanifest">
+
+		<meta property="og:type" content="website">
+		<meta property="og:url" content={baseUrl}>
+		<meta property="og:title" content={fullTitle}>
+		<meta property="og:description" content="Киберматика — не компания, а образ мышления. Продуктовая команда, которая вдохновляет бизнес и рынок на большие достижения.">
+		<meta property="og:image" content={ogImageUrl}>
+		<meta property="og:image:width" content="1200">
+		<meta property="og:image:height" content="630">
+		<meta property="og:site_name" content={siteName}>
+		<meta property="og:locale" content="ru_RU">
 	</head>
 	<body>
 		<div class="wrapper">

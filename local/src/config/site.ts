@@ -4,4 +4,5 @@ export const siteContacts = {
         href: "79607820323",
         text: "+7 960 7820323",
     },
+    domain: "cybermatika.ru",
 };
