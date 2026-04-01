@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import imgContacts from "../../assets/images/contacts/img1.jpg";
 import iconArrow from "../../assets/icons/arrow3.svg?raw";
+import { siteContacts } from "../../config/site";
 import ModalSuccess from "../ModalSuccess.astro";
 ---
 
@@ -13,14 +14,16 @@ import ModalSuccess from "../ModalSuccess.astro";
                     <address class="contacts__item">
                         <div class="contacts__email">
                             <a
-                                href="mailto:hey@cybermatica.com"
+                                href={`mailto:${siteContacts.email}`}
                                 class="link link--color-2"
-                                >hey@cybermatica.com</a
+                                >{siteContacts.email}</a
                             >
                         </div>
                         <div class="contacts__phone">
-                            <a href="tel:79992345678" class="link link--color-2"
-                                >+7 999 2345678</a
+                            <a
+                                href={`tel:${siteContacts.phone.href}`}
+                                class="link link--color-2"
+                                >{siteContacts.phone.text}</a
                             >
                         </div>
                     </address>
@@ -61,7 +64,7 @@ import ModalSuccess from "../ModalSuccess.astro";
                                 <p class="order__privacy">
                                     Нажимая на кнопку, вы даете согласие <br />
                                     на обработку <a
-                                        href="/agreement/"
+                                        href="/privacy_policy/"
                                         class="order__privacy-link link link--color-2"
                                         >персональных данных</a
                                     >
@@ -99,7 +102,7 @@ import ModalSuccess from "../ModalSuccess.astro";
                     ИНН/КПП 7751372855/775101001
                 </div>
                 <div class="contacts__footer-item">
-                    <a href="/agreement/" class="link link--color"
+                    <a href="/privacy_policy/" class="link link--color"
                         >Политика обработки персональных данных</a>
                 </div>
             </div>

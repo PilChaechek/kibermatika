@@ -26,6 +26,7 @@ const navItems = [
     },
 ];
 
+import { siteContacts } from "../config/site";
 import ModalSuccess from "./ModalSuccess.astro";
 ---
 
@@ -49,15 +50,13 @@ import ModalSuccess from "./ModalSuccess.astro";
                         </svg>
                     </div>
                     <div class="page-footer__contacts-link">
-                        <a
-                            class="link link--color-2"
-                            href="mailto:hey@cybermatika.ru"
-                            >hey@cybermatika.ru</a
-                        >
+                        <a class="link link--color-2" href={`mailto:${siteContacts.email}`}>
+                            {siteContacts.email}
+                        </a>
                     </div>
                     <div class="page-footer__contacts-link">
-                        <a class="link link--color-2" href="tel:79992345678"
-                            >+7 999 2345678</a
+                        <a class="link link--color-2" href={`tel:${siteContacts.phone.href}`}
+                            >{siteContacts.phone.text}</a
                         >
                     </div>
                 </div>
@@ -141,7 +140,7 @@ import ModalSuccess from "./ModalSuccess.astro";
                 </div>
             </div>
             <div class="page-footer__copyright">
-                <a class="link link--color" href="/agreement/"
+                <a class="link link--color" href="/privacy_policy/"
                     >Политика обработки персональных данных</a
                 >
             </div>
