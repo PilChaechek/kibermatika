@@ -1,0 +1,108 @@
+---
+
+import { Image } from 'astro:assets';
+
+import Badge from "../../../assets/images/badges/hands1.png";
+
+import img1 from "../../../assets/images/path/1-1.png";
+import img2 from "../../../assets/images/path/2-2.png";
+import img3 from "../../../assets/images/path/3-3.png";
+
+import iconRight from "../../../assets/icons/arrow-right.svg?raw";
+import iconMage from "../../../assets/icons/mage.svg?raw";
+import iconInfo from "../../assets/icons/info.svg?raw";
+
+const items = [
+    {
+        title: 'Ангелы, акселераторы и фонды. Как все работает?',
+        category: 'Ищем инвестора',
+        img: img1,
+        key: 1,
+        link: 'javascript.void(0);'
+    },
+    {
+        title: '100 и 1 ошибка финмоделей для новых продуктов',
+        category: 'Внедряем финмодель',
+        img: img2,
+        key: 2,
+        link: 'javascript.void(0);'
+    },
+    {
+        title: 'Как протестривовать гипотезу на реальном рынке без больших вложений?',
+        category: 'Тестируем гипотезы',
+        img: img3,
+        key: 3,
+        link: 'javascript.void(0);'
+    }
+];
+---
+<section class="section section--v8 path path--v2" id="blog">
+    <div class="container">
+        <div class="path__header">
+            <div class="path__header-top">
+                <div class="path__header-badge">
+                    <div class="icon-badge icon-badge--v2">
+                        <div class="icon-badge__icon">
+                            <div class="icon-badge__icon-wrp">
+                                <Image
+                                        src={Badge}
+                                        alt=""
+                                        format="webp"
+                                        quality={90}
+                                        class="img icon-badge__icon-src pulse"
+                                />
+                            </div>
+                        </div>
+                        <div class="icon-badge__text">едем на опыте <br> и харизме</div>
+                    </div>
+                </div>
+                <div class="path__header-top-box"></div>
+            </div>
+            <div class="path__header-bottom">
+                <h2 class="path__title section__title text-center">
+                    Не ошибается тот,<br>кто не делает
+                </h2>
+                <p class="path__description">95% из всех наших продуктовых гипотез провалилось. Зато оставшиеся  5% перевернули рынок. Делимся удачами и ошибками на собственным опыте</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="path__container container">
+        <div class="path__inner">
+            <div class="swiper swiper-v1" id="path-cards">
+                <div class="swiper-wrapper path__items">
+                    {items.map(item => (
+                            <div class="card-v2 swiper-v1 swiper-slide">
+                                <a href={item.link} target="_blank" class="card-v2__link link">
+                                    <div class="card-v2__image">
+                                        <Image
+                                                src={item.img}
+                                                alt=""
+                                                format="webp"
+                                                quality={90}
+                                                class="img card-v2__img"
+                                        />
+                                        <div class="card-v2__category">{item.category}</div>
+                                    </div>
+                                    <div class="card-v2__content">
+                                        <h3 class="card-v2__title">{item.title}</h3>
+                                    </div>
+                                </a>
+                            </div>
+                    ))}
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="container">
+        <div class="path__footer">
+            <a href="https://vc.ru/id5729326" class="link btn-block">
+                <span class="btn-block__inner">
+                    <span>Читать всё</span>
+                    <span class="" set:html={iconRight}></span>
+                </span>
+            </a>
+        </div>
+    </div>
+</section>
