@@ -428,6 +428,15 @@
     margin-bottom: 12px;
   }
 
+  &__field-label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 12px;
+    @include respond(sm){
+      margin-bottom: 16px;
+    }
+  }
+
   &__submit-btn {
     width: 100%;
   }

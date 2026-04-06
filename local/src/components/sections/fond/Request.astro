@@ -1,7 +1,69 @@
 ---
+import img from "../../../assets/images/request/1.png";
+import { Image } from "astro:assets";
 ---
-<section class="request section">
+<section class="request section section--v4">
     <div class="container">
-        <h2>Request</h2>
+        <div class="request__inner">
+            <div class="request__media">
+                <Image
+                        src={img}
+                        alt=""
+                        format="webp"
+                        quality={90}
+                        class="img request__media-img"
+                />
+            </div>
+            <div class="request__content">
+                <div class="request__header order__header">
+                    <h3 class="request__title order__title">Мечтай об единороге</h3>
+                    <p class="order__text">Готов подать заявку? Опиши три пункта, чтобы мы начали знакомство</p>
+                </div>
+                <form class="order__form">
+                    <div class="order__fields">
+                        <div class="order__field form-row">
+                            <label class="order__field-label">Идея</label>
+                            <input
+                                    type="text"
+                                    class="order__input input input-v1"
+                                    placeholder="Продуктовое видение, на чем базируется?"
+                                    required
+                            />
+                        </div>
+                        <div class="order__field form-row">
+                            <label class="order__field-label">Твой опыт</label>
+                            <input
+                                    type="text"
+                                    class="order__input input input-v1"
+                                    placeholder="Чем ты занимался ранее, в чем эксперт?"
+                                    required
+                            />
+                        </div>
+                        <div class="order__field form-row">
+                            <label class="order__field-label">Финмодель</label>
+                            <input
+                                    type="text"
+                                    class="order__input input input-v1"
+                                    placeholder="На чем будем зарабатывать? Какие риски видишь?"
+                                    required
+                            />
+                        </div>
+                    </div>
+                    <button
+                            type="submit"
+                            class="order__submit-btn btn btn--main btn--v3"
+                    >Подать заявку</button
+                    >
+                    <p class="order__privacy">
+                        Нажимая на кнопку, вы даете согласие <br />
+                        на обработку <a
+                            href="/privacy_policy/"
+                            class="order__privacy-link link link--color-2"
+                    >персональных данных</a
+                    >
+                    </p>
+                </form>
+            </div>
+        </div>
     </div>
 </section>
