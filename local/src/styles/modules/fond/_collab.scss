@@ -1,4 +1,60 @@
 @use '../../mixins/breakpoints' as *;
 
 .collab {
+  .section__text {
+    @include respond(2xl){
+      max-width: 560px;
+    }
+  }
+  &__items {
+    display: grid;
+    gap: 18px;
+    margin-bottom: 50px;
+    @include respond(sm){
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+    }
+    @include respond(md){
+      grid-template-columns: repeat(4,1fr);
+      margin-bottom: 40px;
+      gap: 10px;
+    }
+    @include respond(2xl){
+      gap: 20px;
+    }
+    @include respond(3xl){
+      gap: 28px;
+      margin-bottom: 58px;
+    }
+  }
+  .icon-badge {
+    background: linear-gradient(179deg, #f4f5fb 0%, #ebedf8 100%);
+  }
+
+}
+
+.collab-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url("/images/slides/collab/bg.webp") no-repeat;
+  background-size: cover;
+  overflow: hidden;
+  font-size: toRem(36,16);
+  min-height: 160px;
+  border-radius: 32px;
+  @include respond(md){
+    min-height: 114px;
+    font-size: toRem(20,16);
+    border-radius: 24px;
+  }
+  @include respond(2xl){
+    font-size: toRem(36,20);
+    min-height: 156px;
+    border-radius: 32px;
+  }
+  @include respond(3xl){
+    min-height: 192px;
+    font-size: toRem(48,24);
+  }
 }

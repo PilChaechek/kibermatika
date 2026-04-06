@@ -1,7 +1,57 @@
 ---
+import Badge from "../../../assets/images/badges/hand4.png";
+import iconRight from "../../../assets/icons/arrow-right.svg?raw";
+const items = [
+    {
+        title: 'Tech',
+    },
+    {
+        title: 'SaaS',
+    },
+    {
+        title: 'Automation',
+    },
+    {
+        title: 'AI',
+    },
+];
 ---
-<section class="collab section">
-    <div class="container">
-        <h2>Collab</h2>
+<section class="collab section section--v6">
+    <div class="container container--full">
+        <div class="carousel__inner">
+            <div class="container">
+                <div class="section__header">
+                    <div class="section__badge">
+                        <div class="icon-badge icon-badge--v2">
+                            <div class="icon-badge__icon">
+                                <img src={Badge.src} class="img icon-badge__icon-src pulse" alt="" width="88" height="88">
+                            </div>
+                            <div class="icon-badge__text">без ложных ожиданий</div>
+                        </div>
+                    </div>
+
+                    <h2 class="section__title">Это коллаб</h2>
+                    <p class="section__text">Вечный стартап и жизнь от одного раунда инвестиций до другого — это не про нас. Мы за результативность, партнерство, возможность создавать крутые продукты на смежных рынках. Наша экспертиза — b2b SaaS </p>
+                </div>
+
+                <div class="collab__items">
+                    {items.map(item => (
+                        <div class="collab-item">
+                            <div class="collab-item__title">{item.title}</div>
+                        </div>
+                    ))}
+                </div>
+
+                <div class="collab__footer">
+                    <a href="https://vc.ru/id5729326" class="link btn-block">
+                        <span class="btn-block__inner">
+                            <span>Читать всё</span>
+                            <span class="" set:html={iconRight}></span>
+                        </span>
+                    </a>
+                </div>
+
+            </div>
+        </div>
     </div>
 </section>
