@@ -5,4 +5,5 @@ export const siteContacts = {
         text: "+7 960 7820323",
     },
     domain: "cybermatica.ru",
+    hh: "https://hh.ru/employer/12705075",
 };

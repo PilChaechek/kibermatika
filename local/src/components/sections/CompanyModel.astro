@@ -3,6 +3,7 @@ import { Image } from "astro:assets";
 import Astronaut from "../../assets/images/orbit/astronaut.png";
 import Station from "../../assets/images/orbit/s2.png";
 import Badge from "../../assets/images/badges/hands1.png";
+import {siteContacts} from "../../config/site.ts";
 ---
 
 <section class="section company-model">
@@ -110,7 +111,7 @@ import Badge from "../../assets/images/badges/hands1.png";
         </div>
         <div class="company-model__footer">
             <a
-                href="https://spb.hh.ru/employer/5471863?hhtmFrom=vacancy"
+                href={siteContacts.hh}
                 target="_blank"
                 class="btn btn--main">Присоединиться к команде</a
             >
