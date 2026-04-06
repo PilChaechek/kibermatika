@@ -35,6 +35,11 @@
 @use 'modules/kibermats/process';
 
 @use 'modules/fond/hero3';
+@use 'modules/fond/ticket';
+@use 'modules/fond/collab';
+@use 'modules/fond/expertise';
+@use 'modules/fond/founders';
+@use 'modules/fond/request';
 
 @use 'modules/error404';
 @use 'modules/content';
