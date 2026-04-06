@@ -1,7 +1,56 @@
 ---
+import { Image } from "astro:assets";
+import img1 from "../../../assets/images/expertise/2.png";
+import img2 from "../../../assets/images/expertise/1.png";
+import img3 from "../../../assets/images/expertise/3.png";
+import img4 from "../../../assets/images/expertise/4.png";
+
+const items = [
+    {
+        img: img1,
+        title: "Разработка",
+        text: "Знаем как найти специалистов, сформировать стэк технических решений",
+    },
+    {
+        img: img2,
+        title: "Операционка",
+        text: "Поможем построить оргструктуру и функциональные команды, внедрить KPI",
+    },
+    {
+        img: img3,
+        title: "Продажи",
+        text: "Уделяем большое значение коммерческому блоку, отделам продаж, автоматизации процессов",
+    },
+    {
+        img: img4,
+        title: "Продвижение",
+        text: "Экспетры в автоматизации е-ком, маркетинга и SEO",
+    },
+];
 ---
 <section class="expertise section">
     <div class="container">
-        <h2>Expertise</h2>
+        <div class="section__header">
+            <h2 class="section__title">Наша экспертиза</h2>
+            <p class="section__text">Мы — не акселератор. Не тратим бюджетные деньги на антропоморфных роботов. Не пудрим мозги семинарами, местом в коворкинге и скидкой на хостинг. Наша экспертиза поможет построить основные процессы и вывести проект на рынок.</p>
+        </div>
+        <div class="expertise__items">
+            {items.map((item) => (
+                <div class="expertise__item">
+                    <div class="expertise__item-header">
+                        <h3 class="expertise__item-title">{item.title}</h3>
+                    </div>
+                    <div class="expertise__item-content">
+                        <p class="expertise__item-text">{item.text}</p>
+                        <Image
+                                class="expertise__item-img img"
+                                src={item.img}
+                                alt={item.title}
+                                format="webp"
+                        />
+                    </div>
+                </div>
+            ))}
+        </div>
     </div>
 </section>

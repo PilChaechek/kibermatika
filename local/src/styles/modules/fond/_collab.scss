@@ -2,6 +2,7 @@
 
 .collab {
   .section__text {
+    color: var(--font-color-text);
     @include respond(2xl){
       max-width: 560px;
     }

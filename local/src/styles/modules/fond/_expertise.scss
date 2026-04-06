@@ -1,4 +1,152 @@
 @use '../../mixins/breakpoints' as *;
 
 .expertise {
+  .section__title {
+    margin-bottom: 16px;
+    @include respond(2xl){
+      margin-bottom: 24px;
+    }
+  }
+  .section__text {
+    color: var(--font-color-text);
+  }
+  .section__header {
+    @include respond(2xl){
+      margin-bottom: 60px;
+    }
+  }
+  &__items {
+    display: grid;
+    gap: 20px;
+    @include respond(sm){
+      gap: 12px;
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @include respond(2xl){
+      gap: 20px;
+    }
+  }
+
+  &__item {
+    overflow: hidden;
+    border-radius: 24px;
+    height: 240px;
+    @include respond(md){
+      height: 214px;
+    }
+    @include respond(2xl){
+      height: 336px;
+      border-radius: 32px;
+    }
+    @include respond(3xl){
+      height: 488px;
+    }
+
+  }
+
+  &__item-header {
+    background: var(--color-10);
+    padding: 12px 20px;
+    display: inline-flex;
+    font-weight: 500;
+    border-radius: 0 24px 0 0;
+    position: relative;
+    @include respond(md){
+      padding: 12px 20px;
+    }
+
+    @include respond(2xl){
+      padding: 16px 40px;
+      border-radius: 0 32px 0 0;
+    }
+
+    @include respond(3xl){
+      padding: 28px 66px;
+    }
+    &:before,&:after {
+      content: "";
+      display: block;
+      width: 24px;
+      height: 24px;
+      position: absolute;
+      left: 100%;
+      bottom: 0;
+      @include respond(md){
+        width: 32px;
+        height: 32px;
+      }
+    }
+    &:before {
+      background: var(--color-10);
+    }
+    &:after {
+      background-color: #fff;
+      border-bottom-left-radius: 20px;
+
+      @include respond(md){
+        border-bottom-left-radius: 24px;
+      }
+      @include respond(3xl){
+        border-bottom-left-radius: 32px;
+      }
+    }
+
+  }
+
+  &__item-title {
+    font-weight: 500;
+
+    @include respond(2xl){
+      font-size: toRem(36,20);
+    }
+
+    @include respond(3xl){
+      font-size: toRem(48,24);
+    }
+  }
+
+  &__item-content {
+    background: linear-gradient(360deg, #e2e6f5 0%, #f6f7fc 100%), #fff;
+    color: var(--font-color-text);
+    height: 100%;
+    padding: 16px 20px;
+    border-top-right-radius: 24px;
+    @include respond(md){
+      padding: 16px 20px;
+    }
+
+    @include respond(2xl){
+      padding: 28px 40px;
+      border-top-right-radius: 32px;
+    }
+
+    @include respond(3xl){
+      padding: 36px 66px;
+    }
+  }
+
+  &__item-img {
+    height: auto;
+    margin: 0 auto;
+    max-width: 60%;
+    @include respond(md){
+      max-width: 60%;
+    }
+    @include respond(2xl){
+      max-width: 360px;
+    }
+    @include respond(3xl){
+      max-width: 80%;
+    }
+  }
+
+  &__item-text {
+    margin-bottom: 24px;
+    @include respond(md){
+      margin-bottom: 12px;
+    }
+    @include respond(2xl){
+      margin-bottom: 24px;
+    }
+  }
 }
