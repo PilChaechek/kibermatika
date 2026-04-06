@@ -1,7 +1,85 @@
 ---
+import { Image } from "astro:assets";
+import img1 from "../../../assets/images/tickets/1.webp";
+import img2 from "../../../assets/images/carousel/projects/2.png";
+import imgF1 from "../../../assets/images/tickets/i1.png";
+
+const items = [
+    {
+        title: "История S-Бустера: от идеи до <br> 100 млн оборота за год",
+        link_text: "Читать",
+        img: img2,
+        classImg: "v1",
+    }
+];
 ---
-<section class="ticket section">
+<section class="ticket-section section section--v10">
     <div class="container">
-        <h2>Ticket</h2>
+        <div class="ticket-section__inner">
+            <div class="ticket-section__items">
+                {
+                    items.map((item) => (
+                            <div class="ticket">
+                                <a href="#" class="ticket__inner link">
+                                    <div class="ticket__left">
+                                        <div class="ticket__content">
+                                            <h3 class="ticket__title" set:html={item.title}></h3>
+                                        </div>
+                                        <div class="ticket__image">
+                                            <img
+                                                    src={item.img.src}
+                                                    class="img ticket__image-src"
+                                                    alt=""
+                                            />
+                                        </div>
+                                    </div>
+
+                                    <div class="ticket__right">
+                                        <div class="ticket__link">
+                                            <div  class="ticket__link-text" set:html={item.link_text}/>
+                                            <svg
+                                                    width="15"
+                                                    height="27"
+                                                    viewBox="0 0 15 27"
+                                                    fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                            >
+                                                <path
+                                                        d="M15 11.75H11V15.75H15V11.75Z"
+                                                        fill="#101651"
+                                                />
+                                                <path
+                                                        d="M11 14.75H7V18.75H11V14.75Z"
+                                                        fill="#101651"
+                                                />
+                                                <path
+                                                        d="M8 18.75H4V22.75H8V18.75Z"
+                                                        fill="#101651"
+                                                />
+                                                <path
+                                                        d="M4 22.75H0V26.75H4V22.75Z"
+                                                        fill="#101651"
+                                                />
+                                                <path
+                                                        d="M4 0L0 0V4H4V0Z"
+                                                        fill="#101651"
+                                                />
+                                                <path
+                                                        d="M8 3.875H4V7.875H8V3.875Z"
+                                                        fill="#101651"
+                                                />
+                                                <path
+                                                        d="M11 7.875H7V11.875H11V7.875Z"
+                                                        fill="#101651"
+                                                />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                    ))
+                }
+            </div>
+        </div>
     </div>
 </section>

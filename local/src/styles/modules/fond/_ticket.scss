@@ -1,4 +1,104 @@
 @use '../../mixins/breakpoints' as *;
 
-.ticket {
+.ticket-section {
+
+  .ticket__inner {
+    justify-content: center;
+    max-width: 426px;
+    margin: auto;
+    display: block;
+    @include respond(md) {
+      display: grid;
+      grid-template-columns: 1fr 160px;
+      min-height: 160px;
+      max-width: 100%;
+    }
+    @include respond(2xl) {
+      min-height: 192px;
+      grid-template-columns: 1fr 230px;
+    }
+    @include respond(3xl) {
+      min-height: 300px;
+      grid-template-columns: 1fr 254px;
+    }
+  }
+
+  .ticket__image {
+    padding-top: 24px;
+    height: auto;
+    @include respond(md) {}
+  }
+
+  .ticket__image-src {
+    position: static;
+    transform: none;
+    margin: auto;
+    max-width: 180px;
+    @include respond(md){
+      position: absolute;
+      max-width: 100%;
+      height: auto;
+      top: 24%;
+      margin: 0;
+    }
+    @include respond(2xl){
+      height: auto;
+      top: 40px;
+    }
+  }
+
+  .ticket__title {
+    margin-bottom: 0;
+    br {
+      display: none;
+      @include respond(2xl){
+        display: block;
+      }
+    }
+  }
+
+  .ticket__content {
+    padding: 1.8rem 1.5rem 3rem 1.5rem;
+    @include respond(md) {
+      padding: 1.5rem 1.5rem 1.5rem 1.7rem;
+    }
+    @include respond(2xl) {
+      padding: 1.5rem 2.5rem;
+    }
+  }
+
+  .ticket__left {
+    background: linear-gradient(to bottom, #e4f3fe 0%, #e4f3fe 49%, #f8ddf7 100%);
+    @include respond(md) {
+      background: linear-gradient(to right, #e4f3fe 0%, #e4f3fe 49%, #f8ddf7 100%);
+      grid-template-columns: 1fr 170px;
+    }
+
+    @include respond(lg) {
+      grid-template-columns: 1fr 320px;
+    }
+  }
+
+  .ticket__right {
+    display: block;
+    max-width: calc(100% - 40px);
+    margin: auto;
+    background: linear-gradient(135deg, #dce2fd, #f4c4f2);
+    @include respond(md) {
+      background: #f8ddf7;
+    }
+    @include respond(md) {
+      display: grid;
+      max-width: 100%;
+      margin: initial;
+    }
+  }
+
+  .ticket__link {
+    max-width: 100%;
+    @include respond(md) {
+      max-width: inherit;
+    }
+  }
+
 }

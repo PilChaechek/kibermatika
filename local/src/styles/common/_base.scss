@@ -216,3 +216,9 @@ body {
   background: linear-gradient(180deg, #eceefa 0%, #eceefa 50%, #ebedf9 75%, #fff 100%);
 }
 
+.section--v10 {
+  background: linear-gradient(180deg, var(--color-3) 0%, #f0f2ff 25%, #ebedf9 50%, #fff 100%);
+  @include respond(md){
+    background: linear-gradient(180deg, var(--color-3) 0%, #f0f2ff 25%, #ebedf9 50%, #fff 100%);
+  }
+}
