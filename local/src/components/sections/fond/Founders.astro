@@ -1,7 +1,37 @@
 ---
+import { Image } from "astro:assets";
+import img1 from "../../../assets/images/founders/founders.png";
 ---
 <section class="founders section">
     <div class="container">
-        <h2>Founders</h2>
+        <div class="founders__inner">
+            <h2 class="founders__title">От основателей</h2>
+            <div class="founders__desc">
+                <div class="founders__desc-left">
+                    <svg class="founders__desc-icon" width="33" height="30" viewBox="0 0 33 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M14.3018 3.92383H10.7266V7.84766H7.15137V13.7334H14.3018V29.4277H0V5.88574H3.5752V1.96191H7.15137V0H14.3018V3.92383ZM32.1016 0V3.92383H28.5264V7.84766H24.9502V13.7324H32.1016V29.4277H17.7998V5.88574H21.375V1.96191H24.9502V0H32.1016Z" fill="black"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M14.3018 3.92383H10.7266V7.84766H7.15137V13.7334H14.3018V29.4277H0V5.88574H3.5752V1.96191H7.15137V0H14.3018V3.92383ZM32.1016 0V3.92383H28.5264V7.84766H24.9502V13.7324H32.1016V29.4277H17.7998V5.88574H21.375V1.96191H24.9502V0H32.1016Z" fill="url(#paint0_linear_4448_126)"/>
+                        <defs>
+                            <linearGradient id="paint0_linear_4448_126" x1="10.0834" y1="2.42703" x2="25.2219" y2="36.7314" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#C6C9EC"/>
+                                <stop offset="1" stop-color="#EED2EC"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+
+                    <p class="founders__text">Инвестиции в проекты — это история личной эволюции. Сначала ты накапливаешь опыт как сотрудник, потом используешь его как руководитель, с этими компетенциями — создаешь что-то свое. После запуска десятка проектов для нас ценно передать этот опыт другим классным чувакам. Надеемся, ты один из них!</p>
+                </div>
+                <div class="founders__desc-right">
+                    <Image
+                        class="founders__img img"
+                        src={img1}
+                        alt=""
+                        format="webp"
+                    />
+                </div>
+
+            </div>
+
+        </div>
     </div>
 </section>

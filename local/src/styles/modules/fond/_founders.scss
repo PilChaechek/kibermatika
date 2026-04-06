@@ -1,4 +1,90 @@
 @use '../../mixins/breakpoints' as *;
 
+@include respond(md){}
+@include respond(2xl){}
+@include respond(3xl){}
+
 .founders {
+  &__inner {
+    background: linear-gradient(90deg, #EEF0F8 0%, #DBE0F1 100%);
+    border-radius: 32px;
+    padding: 24px 24px 0 24px;
+    overflow: hidden;
+    @include respond(md){}
+    @include respond(2xl){
+      padding: 36px 54px 0 54px;
+      border-radius: 32px;
+      min-height: 542px;
+    }
+    @include respond(3xl){
+      min-height: 724px;
+      padding: 50px 72px 0 72px;
+    }
+  }
+  &__title {
+    font-weight: 500;
+    letter-spacing: -0.05em;
+    line-height: 0.9;
+    font-size: 34px;
+
+    @include respond(md){
+      font-size: 56px;
+    }
+    @include respond(2xl){
+      font-size: toRem(96,20);
+    }
+    @include respond(3xl){
+      font-size: toRem(128,24);
+    }
+  }
+  &__desc {
+
+    @include respond(sm){
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      align-items: end;
+    }
+
+    @include respond(2xl){
+    }
+    @include respond(3xl){
+      gap: 24px;
+    }
+
+  }
+  &__desc-left {
+    padding: 24px 0;
+    @include respond(2xl){
+      padding-bottom: 36px;
+    }
+    @include respond(3xl){
+      padding-bottom: 50px;
+    }
+  }
+  &__desc-right {
+
+  }
+  &__desc-icon {
+    width: 40px;
+    height: auto;
+    margin-bottom: 12px;
+    @include respond(md){
+      width: 32px;
+    }
+    @include respond(2xl){
+      width: 62px;
+      margin-bottom: 24px;
+    }
+    @include respond(3xl){
+      width: 82px;
+    }
+  }
+  &__img {
+    height: auto;
+    scale: 1.2;
+    @include respond(xs){
+      scale: 1;
+    }
+  }
 }
