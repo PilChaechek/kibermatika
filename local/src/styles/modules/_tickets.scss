@@ -437,6 +437,57 @@
     }
   }
 
+  &__file-input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  &__file-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    height: 52px;
+    border-radius: 12px;
+    border: 1.5px dashed var(--color-1);
+    background-color: transparent;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color .2s ease, border-color .2s ease;
+    @include respond(xs){
+      border-radius: 20px;
+      height: 64px;
+    }
+    @include respond(md){
+      height: 72px;
+    }
+    @include respond(3xl){
+      height: 80px;
+      border-radius: 20px;
+    }
+    svg {
+      flex-shrink: 0;
+    }
+    &:hover {
+      background-color: rgba(16, 22, 81, 0.05);
+    }
+  }
+
+  &__file-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
+  }
+
   &__submit-btn {
     width: 100%;
   }
