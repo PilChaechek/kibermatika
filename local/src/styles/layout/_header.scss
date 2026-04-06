@@ -176,6 +176,9 @@
   justify-content: center;
   height: 100%;
   @include respond(md){
+    padding: 4px 8px;
+  }
+  @include respond(2xl){
     padding: 4px 12px;
   }
 }

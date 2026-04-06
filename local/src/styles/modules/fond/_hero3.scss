@@ -1,7 +1,211 @@
 @use '../../mixins/breakpoints' as *;
 
 .fond-hero {
-  .icon-badge--v1 .icon-badge__icon-src{
-    height: inherit;
+
+  &.section {
+    padding-top: 2rem;
+    @include respond(md){
+      padding-top: 9rem;
+    }
+  }
+  .icon-badge--v1 {
+    display: none;
+    @include respond(md) {
+      display: inline-flex;
+    }
+    .icon-badge__icon-src{
+      width: 100%;
+      max-width: 64%;
+      height: auto;
+      left: 50%;
+      margin-left: -16px;
+    }
+  }
+
+  .hero__title {
+    @include respond(2xl) {
+      margin: 0 0 2rem 0;
+    }
+  }
+  .card__content-inner {
+    background-color: #fff;
+    min-height: 200px;
+    @include respond(3xl) {
+      min-height: 315px;
+    }
+  }
+  .cards__title {
+    margin-bottom: 12px;
+    @include respond(md) {
+      margin-bottom: 24px;
+    }
+    @include respond(2xl) {
+      margin-bottom: 32px;
+    }
+    @include respond(3xl) {
+      margin-bottom: 36px;
+    }
+  }
+  .card__title {
+
+    @include respond(md) {
+      margin-bottom: 16px;
+    }
+    @include respond(2xl) {
+      margin-bottom: 24px;
+    }
+    @include respond(3xl) {
+      margin-bottom: 32px;
+    }
+  }
+  &__desc {
+    margin-bottom: 70px;
+    color: var(--font-color-text);
+    @include respond(md){
+      max-width: 340px;
+      margin-bottom: 50px;
+    }
+    @include respond(2xl){
+      max-width: 504px;
+      margin-bottom: 74px;
+      font-size: toRem(24,20);
+    }
+    @include respond(3xl){
+      max-width: 760px;
+      margin-bottom: 114px;
+      font-size: toRem(28,24);
+    }
+  }
+}
+
+.title-text {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: -32px;
+  @include respond(sm){
+    position: static;
+
+  }
+}
+
+.word-image-3 {
+  gap: 12px;
+  display: inline-flex;
+  flex-wrap: wrap;
+  line-height: 1;
+  position: relative;
+  background: linear-gradient(-90deg, #94ffa6 0%, #e8ff79 100%);
+  border-radius: toRem(68,24);
+  padding: 4px 53px 4px 4px;
+  height: 46px;
+
+  @include respond(md){
+    height: 54px;
+    padding: 4px 66px 4px 4px;
+  }
+
+  @include respond(2xl){
+    padding: 4px 96px 4px 20px;
+    height: 86px;
+    gap: 18px;
+    //border-radius: toRem(52,20);
+  }
+  @include respond(3xl){
+    padding: 8px 130px 8px 32px;
+    height: 114px;
+  }
+
+  &:after {
+    content: "";
+    display: block;
+    transform: rotate(-10deg);
+    aspect-ratio: 308 / 299;
+    background: url("/images/slides/hero3/monkey_o.webp") no-repeat;
+    background-size: contain;
+    position: absolute;
+    right: -5px;
+    bottom: -4px;
+    width: 50px;
+    @include respond(xs){
+      width: 52px;
+    }
+    @include respond(md){
+      width: 64px;
+    }
+    @include respond(2xl){
+      width: 100px;
+    }
+  }
+}
+
+.word-image-4 {
+  display: inline-flex;
+  line-height: 1;
+  position: relative;
+  align-items: center;
+  overflow: hidden;
+  background: linear-gradient(90deg, #ff00f1 0%, #ff60f6 13.47%, #ffcefc 75.49%, #ffaefb 100%);
+  border-radius: toRem(68,24);
+  padding: 4px 53px 4px 12px;
+  height: 46px;
+
+  @include respond(md){
+    height: 54px;
+  }
+
+  @include respond(2xl){
+    padding: 4px 100px 4px 20px;
+    height: 86px;
+    //border-radius: toRem(52,20);
+  }
+  @include respond(3xl){
+    padding: 8px 130px 8px 32px;
+    height: 114px;
+
+  }
+
+  &:after {
+    content: '';
+    display: block;
+    width: 58px;
+    border-radius: 0 0 28px 0;
+    aspect-ratio: 308 / 299;
+    background: url("/images/slides/hero3/bone_o.webp") no-repeat;
+    background-size: contain;
+    position: absolute;
+    right: -5px;
+    bottom: -14px;
+
+    @include respond(md){
+      width: 66px;
+    }
+
+    @include respond(2xl){
+      width: 104px;
+      border-radius: 0 0 50px 0;
+      bottom: -24px;
+    }
+    @include respond(3xl){
+      width: 124px;
+    }
+  }
+}
+
+.fond-hero-title {
+  margin-bottom: 62px;
+  @include respond(md){
+    margin-bottom: 24px;
+  }
+  @include respond(2xl){
+    margin-bottom: 36px;
+  }
+  @include respond(3xl){
+    margin-bottom: 48px;
+  }
+  &__item-2 {
+    display: block;
+    @include respond(sm){
+      display: inline-flex;
+    }
   }
 }

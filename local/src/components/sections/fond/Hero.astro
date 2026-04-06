@@ -1,5 +1,6 @@
 ---
 import Badge from '../../../assets/images/badges/lightning.png';
+import { Image } from 'astro:assets';
 import Icon1 from '../../../assets/images/badges/badge1.webp';
 import Icon2 from '../../../assets/images/badges/badge2.webp';
 import Icon3 from '../../../assets/images/badges/badge3.webp';
@@ -25,19 +26,21 @@ const cards = [
     }
 ];
 ---
-<section class="hero fond-hero section section--v3">
+<section class="hero fond-hero section section--v1">
     <div class="container">
         <div class="hero__inner">
 
             <div class="icon-badge icon-badge--v1">
                 <div class="icon-badge__icon">
-                    <img src={Badge.src} class="img icon-badge__icon-src levitate" alt="" width="88" height="88">
+                    <Image src={Badge} class="img icon-badge__icon-src levitate" alt="" width={60} height={99} />
                 </div>
                 <div class="icon-badge__text">сняли ограничения,<br> запустили ускорение</div>
             </div>
 
-            <h1 class="hero__title">
-                <span class="word-image-1">Мозгиииии</span> и опыт <br> в <span class="word-image-3">продуктовой разработке</span>
+            <h1 class="hero__title fond-hero-title">
+                <span class="word-image-4">Мозгиииии</span>
+                <span class="fond-hero-title__item-2">и опыт</span>
+                в <span class="word-image-3">продуктовой <span class="title-text">разработке</span></span>
             </h1>
 
             <p class="fond-hero__desc">Инвестируем в людей и новые продукты. <br>Используем наш опыт и экспертизу для реализации крутых идей. Меньше набитых шишек, больше кайфа.</p>
