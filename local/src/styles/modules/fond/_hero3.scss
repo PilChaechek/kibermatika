@@ -1,0 +1,7 @@
+@use '../../mixins/breakpoints' as *;
+
+.fond-hero {
+  .icon-badge--v1 .icon-badge__icon-src{
+    height: inherit;
+  }
+}
