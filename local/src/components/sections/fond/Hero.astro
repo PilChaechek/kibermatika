@@ -55,35 +55,6 @@ const cards = [
                         <div class="cards__items">
                             {cards.map(card => (
                                     <div class={`cards__item card card--${card.slide}`}>
-                                        <div class="card__images">
-
-                                            {card.slide === 1 && (
-                                                    <svg class="card__img card__img--1" width="685" height="358" viewBox="0 0 685 358" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M-88 108.23L146.938 295.541C172.228 315.704 208.656 292.183 200.687 260.836L158.53 94.9971C149.577 59.7765 194.97 37.227 217.627 65.6403L347.04 227.932C368.471 254.808 411.67 236.185 406.843 202.151L394.368 114.195C389.543 80.178 432.703 61.5463 454.15 88.3873L643 324.732" stroke="#64FF64" stroke-width="105" />
-                                                    </svg>
-                                                    <img src="/images/slides/hero/cards/s1-1.webp" class="img card__img card__img--2" alt="">
-                                                    <img src="/images/slides/hero/cards/s1-2.webp" class="img card__img card__img--3" alt="">
-                                                    <img src="/images/slides/hero/cards/s1-3.webp" class="img card__img card__img--4" alt="">
-
-                                            )}
-                                            {card.slide === 2 && (
-                                                    <svg class="card__img card__img--1" width="767" height="403" viewBox="0 0 767 403" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M-9 258.284L208.022 343.765C226.801 351.161 243.66 329.536 231.904 313.129L147.542 195.39C134.584 177.305 156.034 154.587 174.833 166.485L422.029 322.939C437.501 332.731 456.991 318.593 452.486 300.845L397.119 82.7727C392.985 66.4889 409.335 52.5431 424.763 59.1937L744 196.809" stroke="#FF78F7" stroke-width="114.75" />
-                                                    </svg>
-                                                    <img src="/images/slides/hero/cards/s2-1.webp" class="img card__img card__img--2" alt="">
-                                                    <img src="/images/slides/hero/cards/s2-2.webp" class="img card__img card__img--3" alt="">
-                                                    <img src="/images/slides/hero/cards/s2-3.webp" class="img card__img card__img--4" alt="">
-                                            )}
-                                            {card.slide === 3 && (
-                                                    <svg class="card__img card__img--1" width="648" height="326" viewBox="0 0 648 326" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M99.12 13.3736L59.7932 180.845C50.6832 219.64 97.1905 246.885 126.576 219.969L256.904 100.592C286.853 73.1599 334.041 101.97 323.324 141.145L303.044 215.275C292.505 253.799 338.189 282.707 368.492 256.689L526.597 120.936C533.941 114.631 543.301 111.164 552.98 111.164H647.787" stroke="#A7FF42" stroke-width="117" />
-                                                    </svg>
-                                                    <img src="/images/slides/hero/cards/s3-1.webp" class="img card__img card__img--2" alt="">
-                                                    <img src="/images/slides/hero/cards/s3-2.webp" class="img card__img card__img--3" alt="">
-                                                    <img src="/images/slides/hero/cards/s3-3.webp" class="img card__img card__img--4" alt="">
-                                            )}
-
-                                        </div>
                                         <div class="card__content">
                                             <div class="card__content-inner">
                                                 <h3 class="card__title">{card.title}</h3>

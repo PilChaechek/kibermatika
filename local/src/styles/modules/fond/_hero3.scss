@@ -34,6 +34,7 @@
       min-height: 315px;
     }
   }
+
   .cards__title {
     margin-bottom: 12px;
     @include respond(md) {
@@ -46,6 +47,11 @@
       margin-bottom: 36px;
     }
   }
+
+  .card__content {
+    margin-top: 0;
+  }
+
   .card__title {
 
     @include respond(md) {
