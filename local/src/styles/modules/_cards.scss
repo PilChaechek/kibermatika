@@ -92,18 +92,8 @@
     z-index: 10;
     border-radius: 24px;
     flex-grow: 1;
-    /* 2. Логика маски:
-       Слой 1: Наш SVG (в правом нижнем углу, не повторять)
-       Слой 2: Сплошная заливка (linear-gradient) на весь блок
-    */
     -webkit-mask-image: var(--corner-mask), linear-gradient(#fff, #fff);
     mask-image: var(--corner-mask), linear-gradient(#fff, #fff);
-    /* 3. КОМПОЗИЦИЯ (Магия вырезания):
-     Говорим браузеру: "Возьми Слой 2 (весь блок) и ВЫЧТИ из него Слой 1 (уголок)"
-     destination-out - стандарт для Webkit (Chrome/Safari)
-     exclude - стандарт спецификации CSS
-      */
-    /* Позиционирование слоев */
     -webkit-mask-position: bottom right, center;
     mask-position: bottom right, center;
     -webkit-mask-repeat: no-repeat;
@@ -267,26 +257,27 @@
     }
   }
 
-  &:hover {
-    .card__img--1 {
-      --s: 1.05;
-      --r: -2deg;
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      .card__img--1 {
+        --s: 1.05;
+        --r: -2deg;
+      }
+      .card__img--2 {
+        --x: -12px;
+        --y: -8px;
+        --r: -3deg;
+      }
+      .card__img--3 {
+        --s: 1.05;
+        --r: -2deg;
+      }
+      .card__img--4 {
+        --x: 10px;
+        --y: -15px;
+        --s: 1.05;
+      }
     }
-    .card__img--2 {
-      --x: -12px;
-      --y: -8px;
-      --r: -3deg;
-    }
-    .card__img--3 {
-      --s: 1.05;
-      --r: -2deg;
-    }
-    .card__img--4 {
-      --x: 10px;
-      --y: -15px;
-      --s: 1.05;
-    }
-
   }
 }
 
@@ -365,24 +356,26 @@
     }
   }
 
-  &:hover {
-    .card__img--1 {
-      --s: 1.05;
-      --r: -2deg;
-    }
-    .card__img--2 {
-      --x: -12px;
-      --y: -8px;
-      --r: -3deg;
-    }
-    .card__img--3 {
-      --s: 1.05;
-      --r: -2deg;
-    }
-    .card__img--4 {
-      --x: 10px;
-      --y: -15px;
-      --s: 1.05;
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      .card__img--1 {
+        --s: 1.05;
+        --r: -2deg;
+      }
+      .card__img--2 {
+        --x: -12px;
+        --y: -8px;
+        --r: -3deg;
+      }
+      .card__img--3 {
+        --s: 1.05;
+        --r: -2deg;
+      }
+      .card__img--4 {
+        --x: 10px;
+        --y: -15px;
+        --s: 1.05;
+      }
     }
   }
 }
@@ -446,24 +439,26 @@
     }
   }
 
-  &:hover {
-    .card__img--1 {
-      --s: 1.05;
-      --r: -2deg;
-    }
-    .card__img--2 {
-      --x: -12px;
-      --y: -8px;
-      --r: -3deg;
-    }
-    .card__img--3 {
-      --s: 1.05;
-      --r: -2deg;
-    }
-    .card__img--4 {
-      --x: 10px;
-      --y: -15px;
-      --s: 1.05;
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      .card__img--1 {
+        --s: 1.05;
+        --r: -2deg;
+      }
+      .card__img--2 {
+        --x: -12px;
+        --y: -8px;
+        --r: -3deg;
+      }
+      .card__img--3 {
+        --s: 1.05;
+        --r: -2deg;
+      }
+      .card__img--4 {
+        --x: 10px;
+        --y: -15px;
+        --s: 1.05;
+      }
     }
   }
 }

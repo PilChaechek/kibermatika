@@ -53,7 +53,6 @@
   }
 
   .card__title {
-
     @include respond(md) {
       margin-bottom: 16px;
     }
@@ -64,6 +63,7 @@
       margin-bottom: 32px;
     }
   }
+
   &__desc {
     margin-bottom: 70px;
     color: var(--font-color-text);
