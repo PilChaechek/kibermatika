@@ -5,6 +5,12 @@ import Icon1 from '../../../assets/images/badges/badge1.webp';
 import Icon2 from '../../../assets/images/badges/badge2.webp';
 import Icon3 from '../../../assets/images/badges/badge3.webp';
 
+import Image1 from '../../../assets/images/hero3/brain.png';
+import Image2 from '../../../assets/images/hero3/purple_ball.png';
+import Image3 from '../../../assets/images/hero3/torus.png';
+import Image4 from '../../../assets/images/hero3/green_ball.png';
+import Image5 from '../../../assets/images/hero3/rocket.png';
+
 const cards = [
     {
         slide: 1,
@@ -26,7 +32,7 @@ const cards = [
     }
 ];
 ---
-<section class="hero fond-hero section section--v7">
+<section class="hero fund-hero section section--v7">
     <div class="container">
         <div class="hero__inner">
 
@@ -37,13 +43,25 @@ const cards = [
                 <div class="icon-badge__text">сняли ограничения,<br> запустили ускорение</div>
             </div>
 
-            <h1 class="hero__title fond-hero-title">
-                <span class="word-image-4">Мозгиииии</span>
-                <span class="fond-hero-title__item-2">и опыт</span>
-                в <span class="word-image-3">продуктовой <span class="title-text">разработке</span></span>
-            </h1>
+            <div class="fund-hero-title">
+                <h1 class="hero__title fund-hero-title__title">
+                    Мозгиииии
+                    <span class="fund-hero-title__item-2">и опыт</span> <br> в
+                    <span class="word-image-3">продуктовой <span class="title-text">разработке</span></span>
+                </h1>
+                <div class="fund-hero-title__images">
+                    <Image src={Image1} quality={100} class="img fund-hero-title__image fund-hero-title__image-1" alt="" />
+                    <Image src={Image2} quality={100} class="img fund-hero-title__image fund-hero-title__image-2" alt="" />
+                    <Image src={Image3} quality={100} class="img fund-hero-title__image fund-hero-title__image-3" alt="" />
+                    <Image src={Image4} quality={100} class="img fund-hero-title__image fund-hero-title__image-4" alt="" />
+                    <Image src={Image5} quality={100} class="img fund-hero-title__image fund-hero-title__image-5" alt="" />
+                </div>
+            </div>
 
-            <p class="fond-hero__desc">Инвестируем в людей и новые продукты. <br>Используем наш опыт и экспертизу для реализации крутых идей. Меньше набитых шишек, больше кайфа.</p>
+
+
+
+            <p class="fund-hero__desc">Инвестируем в людей и новые продукты. <br>Используем наш опыт и экспертизу для реализации крутых идей. Меньше набитых шишек, больше кайфа.</p>
 
 
 

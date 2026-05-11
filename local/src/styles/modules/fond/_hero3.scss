@@ -1,7 +1,7 @@
 @use '../../mixins/breakpoints' as *;
 
-.fond-hero {
-
+.fund-hero {
+  overflow: hidden;
   &.section {
     padding-top: 2rem;
     @include respond(md){
@@ -67,6 +67,8 @@
   &__desc {
     margin-bottom: 70px;
     color: var(--font-color-text);
+    position: relative;
+    z-index: 1;
     @include respond(md){
       max-width: 340px;
       margin-bottom: 50px;
@@ -95,53 +97,35 @@
 }
 
 .word-image-3 {
-  gap: 12px;
   display: inline-flex;
   flex-wrap: wrap;
   line-height: 1;
   position: relative;
-  background: linear-gradient(-90deg, #94ffa6 0%, #e8ff79 100%);
+  align-items: center;
   border-radius: toRem(68,24);
-  padding: 4px 53px 4px 4px;
-  height: 46px;
+  padding: 0 16px;
+  height: 60px;
+  gap: 12px;
+
+  backdrop-filter: blur(40px);
+  box-shadow: inset 0 -2px 8px 0 rgba(255, 255, 255, 0.7), inset 0 6px 16px 0 rgba(169, 125, 184, 0.25), 0 10px 25px 0 rgba(147, 122, 161, 0.07);
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.2) 0%, rgba(233, 221, 245, 0.35) 30%, rgba(207, 167, 217, 0.45) 100%);
+  border: 1px solid rgba(216, 180, 226, 0.4);
 
   @include respond(md){
     height: 54px;
-    padding: 4px 66px 4px 4px;
   }
 
   @include respond(2xl){
-    padding: 4px 96px 4px 20px;
-    height: 86px;
-    gap: 18px;
-    //border-radius: toRem(52,20);
+    height: 114px;
+    padding: 0 32px;
   }
   @include respond(3xl){
-    padding: 8px 130px 8px 32px;
-    height: 114px;
+    height: 146px;
+    gap: 24px;
+    padding: 0 52px;
   }
 
-  &:after {
-    content: "";
-    display: block;
-    transform: rotate(-10deg);
-    aspect-ratio: 308 / 299;
-    background: url("/images/slides/hero3/monkey_o.webp") no-repeat;
-    background-size: contain;
-    position: absolute;
-    right: -5px;
-    bottom: -4px;
-    width: 50px;
-    @include respond(xs){
-      width: 52px;
-    }
-    @include respond(md){
-      width: 64px;
-    }
-    @include respond(2xl){
-      width: 100px;
-    }
-  }
 }
 
 .word-image-4 {
@@ -197,8 +181,9 @@
   }
 }
 
-.fond-hero-title {
+.fund-hero-title {
   margin-bottom: 62px;
+  position: relative;
   @include respond(md){
     margin-bottom: 24px;
   }
@@ -208,10 +193,86 @@
   @include respond(3xl){
     margin-bottom: 48px;
   }
+  br {
+    display: none;
+    @include respond(md){
+      display: block;
+    }
+  }
+  &__title {
+    position: relative;
+    z-index: 1;
+  }
   &__item-2 {
     display: block;
     @include respond(sm){
       display: inline-flex;
+    }
+  }
+  &__image {
+    position: absolute;
+    height: auto;
+    @include respond(3xl){
+      &.img {
+        max-width: 100%;
+      }
+    }
+  }
+
+  &__image-1 {
+    top: -20px;
+    left: 9%;
+    max-width: 135px;
+    @include respond(md){
+      //max-width: 120px;
+    }
+    @include respond(2xl){
+      max-width: 248px;
+    }
+  }
+  &__image-2 {
+    max-width: 58px;
+    top: -26px;
+    right: 25%;
+    @include respond(2xl){
+      max-width: 100px;
+      top: -24px;
+      right: 52%;
+    }
+  }
+  &__image-3 {
+    max-width: 128px;
+    right: -31px;
+    top: 10%;
+    @include respond(2xl){
+      top: -66px;
+      right: 32%;
+      max-width: 200px;
+    }
+  }
+  &__image-4 {
+    top: calc(100% + -10px);
+    left: 15%;
+    z-index: 1;
+    display: none;
+    max-width: 70px;
+    @include respond(xs){
+      display: block;
+    }
+    @include respond(2xl){
+      max-width: 100px;
+    }
+  }
+  &__image-5 {
+
+    z-index: 1;
+    max-width: 70px;
+    top: calc(100% - 0px);
+    right: 14%;
+    @include respond(2xl){
+      max-width: 160px;
+      top: calc(100% - 32px);
+      right: 30%;
     }
   }
 }
