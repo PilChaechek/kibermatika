@@ -256,7 +256,7 @@
     z-index: 1;
     display: none;
     max-width: 70px;
-    @include respond(xs){
+    @include respond(md){
       display: block;
     }
     @include respond(2xl){
